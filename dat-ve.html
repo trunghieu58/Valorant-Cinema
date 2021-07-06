@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Đặt vé - VALORANT CINEMA</title>
+    <link rel="icon" href="assets/img/icon.png" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+
+
+    <!-- JS Files -->
+    <script src="assets/js/bootstrap.js" defer="defer"></script>
+    <script src="assets/js/bootstrap-datepicker.js" defer="defer"></script>
+    <script src="assets/js/jquery.bcSwipe.min.js" defer="defer"></script>
+    <script src="assets/js/app.js" defer="defer"></script>
+    <script src="assets/js/main 2.js" defer="defer"></script>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/venobox/venobox.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        $(function() {
+            $("#datepicker").datepicker();
+        });
+
+        var stateObject = {
+            "Đà Nẵng": {
+                "Hải Châu": [],
+                "Cẩm Lệ": [],
+                "Liên Chiểu": [],
+                "Sơn Trà": [],
+                "Thanh Khê": [],
+                "Hoà Vang": [],
+                "Hoàng Sa": [],
+                "Ngũ Hành Sơn": []
+            },
+            "TP Hồ Chí Minh": {
+                "Quận 1": [],
+                "Quận 2": [],
+                "Quận 3": [],
+                "Quận 4": [],
+                "Quận 5": [],
+                "Quận 6": [],
+                "Quận 7": [],
+                "Quận 8": [],
+                "Quận 9": [],
+                "Quận 10": [],
+                "Quận 11": [],
+                "Quận 12": [],
+                "Quận Bình Chánh": [],
+                "Quận Bình Thạnh": [],
+                "Quận Bình Tân": [],
+                "Quận Gò Vấp": [],
+                "Quận Tân Bình": []
+            },
+            "Hà Nội": {
+                "Quận Tân Bình": [],
+                "Quận 1": [],
+                "Quận 2": []
+            },
+        }
+        window.onload = function() {
+            var CitySel = document.getElementById("CitySel"),
+                DistrictSel = document.getElementById("DistrictSel");
+            for (var country in stateObject) {
+                CitySel.options[CitySel.options.length] = new Option(country, country);
+            }
+            CitySel.onchange = function() {
+                DistrictSel.length = 1; // remove all options bar first
+                if (this.selectedIndex < 1) return; // done
+                for (var state in stateObject[this.value]) {
+                    DistrictSel.options[DistrictSel.options.length] = new Option(state, state);
+                }
+            }
+            CitySel.onchange(); // reset in case page is reloaded
+        }
+    </script>
+</head>
+
+<body>
+    <!-- <span us-spinner="" spinner-key="spinner-1" spinner-start-active="false" class="ng-scope"></span> -->
+
+    <!-- ======= Header ======= -->
+    <div class="header">
+        <!-- ======= Top Bar ======= -->
+        <div ng-controller="headerController" class="">
+            <div class="container-fluid top-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="header-nav-wrapper">
+                            <div class="col-md-3 col-sm-4 col-xs-4">
+                                <div class="logo">
+                                    <a href="./home.html"><img src="assets/img/logo.png" data-src="website/images/logo.png" alt="Valorant Cinema" class="lazy hidden-xs hidden-sm loaded" data-was-processed="true"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="primary-nav-wrapper desktop hidden-xs hidden-sm">
+                                    <div class="search">
+                                        <galaxy-search-bar class="ng-isolate-scope">
+                                            <form class="search-form ng-pristine ng-valid" ng-submit="submit()">
+                                                <div class="input-append">
+                                                    <input placeholder="Tìm tên phim, diễn viên..." class="search-box ng-pristine ng-untouched ng-valid ng-empty" type="text" autocomplete="off" ng-model="searchKey" ng-model-options="{ updateOn: &quot;default blur&quot;, debounce: { default: 500, blur: 0 } }"
+                                                        ,="" ng-change="search(searchKey)">
+                                                    <button type="submit" class="search-btn"><i
+                                                            class="fa fa-search"></i></button>
+                                                </div>
+                                            </form>
+                                        </galaxy-search-bar>
+                                    </div>
+
+
+                                    <div class="secondary-nav-wrapper">
+                                        <ul class="secondary-nav">
+                                            <li>
+                                                <a id="loginLink" href="#" ng-show="!userInfo.memberId" ng-click="openLogin()"><i class="fa fa-user"></i>Đăng nhập/ Đăng
+                                                    ký</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="primary-nav-wrapper hidden-lg hidden-md">
+                                        <div class="secondary-nav-wrapper">
+                                            <ul class="secondary-nav">
+                                                <li><a id="loginLinkMobile" href="#" ng-show="!userInfo.memberId" ng-click="openLogin()"><i class="fa fa-user"></i>Đăng nhập/ Đăng
+                                                        ký</a></li>
+                                            </ul>
+                                        </div>/
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="galaxy-nav ng-scope">
+            <div class="container">
+                <div class="search hidden-lg hidden-md">
+                    <galaxy-search-bar class="ng-isolate-scope">
+                        <form class="search-form ng-pristine ng-valid" ng-submit="submit()">
+                            <div class="input-append">
+                                <input placeholder="Tìm tên phim, diễn viên..." class="search-box ng-pristine ng-untouched ng-valid ng-empty" type="text" autocomplete="off" ng-model="searchKey" ng-model-options="{ updateOn: &quot;default blur&quot;, debounce: { default: 500, blur: 0 } }"
+                                    ,="" ng-change="search(searchKey)">
+                                <button type="submit" class="search-btn"><i class="icon-search"></i></button>
+                                <!-- ngIf: dataSearch && dataSearch.items && dataSearch.items.length>0 -->
+                            </div>
+                        </form>
+                    </galaxy-search-bar>
+                </div>
+                <nav>
+                    <ul class="primary-nav">
+                        <li><a href="lich-chieu.html">Mua vé</a></li>
+                        <li class="sub-nav"><a href="javascript:;">Phim</a>
+                            <div id="sub-menu">
+                                <ul class="undefined">
+                                    <li><a href="phim-dang-chieu.html">Phim đang chiếu</a></li>
+                                    <li><a href="phim-sap-chieu.html">Phim sắp chiếu</a></li>
+                                </ul>
+                            </div>
+                            <div id="sub-menu-movie" class="hidden-sm hidden-xs">
+                                <div class="visible-lg-block">
+                                    <div class="row submenu-title">
+                                        <div class="col-sm-12">
+                                            <h3><a href="phim-dang-chieu.html">Phim đang chiếu</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="row movies-group-header">
+                                        <!-- ngRepeat: movie in item.movieShowing | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieShowing | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/2020/7/28/2560x1440_1595930517102.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">Black Water: Abyss</h4>
+                                                <h4 class="vn upper-text ng-binding">Cá Sấu Tử Thần</h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieShowing | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieShowing | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/2020/6/26/pen-450x300_1593152409838.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">Peninsula</h4>
+                                                <h4 class="vn upper-text ng-binding">Bán Đảo Peninsula</h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieShowing | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieShowing | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/2020/8/3/450-mai-ben_1596440879459.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">Endless</h4>
+                                                <h4 class="vn upper-text ng-binding">Mãi Bên Em</h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieShowing | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieShowing | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/c/i/civil-ngang.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">CAPTAIN AMERICA: NỘI CHIẾN SIÊU ANH HÙNG
+                                                </h4>
+                                                <h4 class="vn upper-text ng-binding">CAPTAIN AMERICA: NỘI CHIẾN SIÊU ANH HÙNG
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieShowing | limitTo:4 -->
+                                    </div>
+                                    <div class="row submenu-title">
+                                        <div class="col-sm-12">
+                                            <h3><a href="phim-sap-chieu.html">Phim sắp chiếu</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="row movies-group-header">
+                                        <!-- ngRepeat: movie in item.movieCommingSoon | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/2020/8/10/450-spy_1597048018892.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">My Spy</h4>
+                                                <h4 class="vn upper-text ng-binding">Điệp Viên Siêu Lầy</h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieCommingSoon | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/2020/8/10/450-ke_1597032051764.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">You're Not Alone</h4>
+                                                <h4 class="vn upper-text ng-binding">Kẻ Ẩn Nấp</h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieCommingSoon | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/2020/8/7/450-ke-cap_1596799942763.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">Simon's Got A Gift</h4>
+                                                <h4 class="vn upper-text ng-binding">Kẻ Cắp Nhân Dạng</h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieCommingSoon | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/2020/7/29/1350x900_1596006042621.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">The Elfkins – Baking A Difference</h4>
+                                                <h4 class="vn upper-text ng-binding">Tí Hon Hậu Đậu</h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieCommingSoon | limitTo:4 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="sub-nav"><a href="javascript:;">Góc điện ảnh</a>
+                            <div id="sub-menu">
+                                <ul class="undefined">
+                                    <li><a href="dien-anh.html">Thể loại phim</a></li>
+                                    <li><a href="dien-vien.html">Diễn viên</a></li>
+                                    <li><a href="dao-dien.html">Đạo diễn</a></li>
+                                    <li><a href="binh-luan-film.html">Bình luận phim</a></li>
+                                    <li><a href="blog-dien-anh.html">Blog điện ảnh</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sub-nav"><a href="javascript:;">Sự kiện</a>
+                            <div id="sub-menu">
+                                <ul class="undefined">
+                                    <li><a href="khuyen-mai.html">Ưu đãi</a></li>
+                                    <li><a href="phim-hay.html">Phim hay tháng</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="rap-gia-ve.html">Rạp/Giá Vé</a></li>
+                        <li><a href="gop-y.html">Hỗ trợ</a></li>
+                        <li><a href="chinh-sach.html">Chính sách</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- ======= End Top Bar ======= -->
+    </div>
+    <!-- ======= Header ======= -->
+
+
+    <!-- ====== Form đăng nhập ===== -->
+    <div ng-controller="loginController" class="ng-scope">
+        <div id="login-modal" class="modal fade" style="display: none;">
+            <!-- ngIf: openLogin -->
+            <div ng-if="openLogin" class="modal-dialog ng-scope">
+                <div class="modal-outer-container">
+                    <div class="modal-middle-container">
+                        <div class="login-wrapper animated slideInDown">
+                            <div class="login-container"><span class="close" aria-hidden="true" data-dismiss="modal" aria-label="Close">&times;</span>
+
+                                <div class="tab-login-line">
+                                    <ul class="nav nav-tabs">
+                                        <li class="tablinks" onclick="openLogin(event, 'tab_login_1')" id="defaultOpen">
+                                            <a data-toggle="tab">ĐĂNG NHẬP</a></li>
+                                        <li><a class="line">/</a></li>
+                                        <li class="tablinks" onclick="openLogin(event, 'tab_login_2')"><a data-toggle="tab">ĐĂNG KÝ</a></li>
+                                    </ul>
+                                    <div class="row">
+                                        <div class="col-md-12">
+
+                                            <div id="tab_login_1" class="tab-pane active tabcontent">
+                                                <div class="login-tab-wrapper">
+                                                    <div class="login-heading">
+                                                        <div class="text-heading">
+                                                            <!-- ngIf: !enableSkip --><span ng-if="!enableSkip" class="sub-text ng-scope">Vui lòng đăng nhập trước khi
+                                                                mua vé để tích luỹ điểm, cơ hội nhận thêm nhiều ưu đãi
+                                                                từ chương trình thành viên Galaxy Cinema.</span>
+                                                            <!-- end ngIf: !enableSkip -->
+                                                            <!-- ngIf: enableSkip -->
+                                                        </div>
+                                                        <!-- ngIf: message -->
+                                                    </div>
+                                                    <form ng-submit="submit()" class="login-form ng-valid-email ng-dirty ng-valid-parse ng-valid ng-valid-required">
+                                                        <input placeholder="Email" type="email" ng-model="userInfo.email" required="required" class="login ng-valid-email ng-not-empty ng-dirty ng-valid ng-valid-required ng-touched"><input placeholder="Mật khẩu"
+                                                            type="password" ng-model="userInfo.password" required="required" class="login ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched">
+                                                        <div class="login-remember">
+                                                            <div class="forget-pass"><a id="forgetPass" href="" ng-click="openForgetPass()">Quên mật khẩu?</a></div>
+                                                        </div><button class="btn primary input"><i ng-show="isSubmit"
+                                                                class="fa fa-pulse fa-spinner ng-hide"></i>Đăng
+                                                            nhập</button>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+
+
+                                            <div id="tab_login_2" class="tab-pane tabcontent">
+                                                <div class="login-tab-wrapper">
+                                                    <!-- ngIf: message -->
+                                                    <div class="login-form">
+                                                        <form ng-submit="submit()" class="ng-invalid ng-invalid-required ng-valid-maxlength ng-valid-email ng-dirty ng-valid-parse">
+                                                            <input placeholder="Họ tên" type="text" ng-model="user.fullName" required="required" class="login first ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
+
+                                                            <div class="row city">
+                                                                <div class="col-md-6 col-sm-6 col-xs-6 first-col">
+                                                                    <input type="text" placeholder="Số điện thoại" maxlength="14" ng-model="user.mobilePhone" required="required" class="login register-input ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength">
+                                                                </div>
+                                                                <div class="col-md-6 col-sm-6 col-xs-6 second-col mt-14">
+                                                                    <select id="gender" class="btn-select login">
+                                                                        <option class="ng-binding ng-scope"
+                                                                            value="kkongchon" selected="selected"><a
+                                                                                class="ng-binding">Chọn giới tính</a>
+                                                                        </option>
+                                                                        <option class="ng-binding ng-scope" value="Nam">
+                                                                            Nam</option>
+                                                                        <option class="ng-binding ng-scope" value="Nu">
+                                                                            Nữ</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <input type="email" placeholder="Email" ng-model="user.email" required="required" class="login register-input remove-mb ng-valid-email ng-not-empty ng-dirty ng-valid ng-valid-required ng-touched">
+
+                                                            <div class="row city">
+                                                                <div class="col-md-6 col-sm-6 col-xs-6 first-col"><input type="password" placeholder="Mật khẩu" ng-model="user.password" required="required" class="login ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched">
+                                                                </div>
+                                                                <div class="col-md-6 col-sm-6 col-xs-6 second-col">
+                                                                    <input type="password" placeholder="Xác nhận mật khẩu" ng-model="user.confirmPassword" required="required" class="login ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="row city mt-14">
+                                                                <div class="col-md-6 col-sm-6 col-xs-6 first-col">
+                                                                    <select name="state" id="CitySel" size="1" class="btn-select login">
+                                                                        <option value="" selected="selected">Chọn thành
+                                                                            phố</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-md-6 col-sm-6 col-xs-6 second-col">
+                                                                    <select name="state" id="DistrictSel" size="1" class="btn-select login">
+                                                                        <option value="" selected="selected">Chọn Quận
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="row birthday-signup mt-14">
+                                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                    <galaxy-datepicker ng-model="user.dateOfBirth" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty">
+                                                                        <a class="btn btn-select login location datepicker">
+                                                                            <input type="text" id="datepicker" name="" class="btn-select-input date" placeholder="Ngày Sinh (MM/dd/yyyy)">
+                                                                            <span class="select-calendar"><i
+                                                                                    class="fa fa-calendar"></i></span>
+                                                                        </a>
+                                                                    </galaxy-datepicker>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-sm-12 col-xs-12"><input placeholder="Địa chỉ" type="text" ng-model="user.address" required="required" class="login register-input ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row captcha">
+                                                                <div class="col-md-6 col-sm-6 col-xs-8 first-col">
+                                                                    <script>
+                                                                        function onSubmit(token) {
+                                                                            document.getElementById("demo-form").submit();
+                                                                        }
+                                                                    </script>
+                                                                    <div class="g-recaptcha" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit' data-action='submit'>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <p class="text-confirm-signup">Tôi đã đọc và đồng ý với&nbsp;
+                                                                <a ng-click="openPolicy()" data-toggle="modal" data-target="#popupPolicies"><b>CHÍNH
+                                                                        SÁCH&nbsp;</b></a>của chương trình.&nbsp;</p>
+                                                            <br><button class="btn primary input"><i ng-show="isSubmit"
+                                                                    class="fa fa-pulse fa-spinner ng-hide"></i>Đăng
+                                                                ký</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <script>
+                                            function openLogin(evt, cityName) {
+                                                var i, tabcontent, tablinks;
+                                                tabcontent = document.getElementsByClassName("tabcontent");
+                                                for (i = 0; i < tabcontent.length; i++) {
+                                                    tabcontent[i].style.display = "none";
+                                                }
+                                                tablinks = document.getElementsByClassName("tablinks");
+                                                for (i = 0; i < tablinks.length; i++) {
+                                                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                                                }
+                                                document.getElementById(cityName).style.display = "block";
+                                                evt.currentTarget.className += " active";
+                                            }
+
+                                            // Get the element with id="defaultOpen" and click on it
+                                            document.getElementById("defaultOpen").click();
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div ng-controller="forgetPassController" class="ng-scope">
+            <div id="forgetpass-modal" style="z-index:1111;" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-outer-container">
+                        <div class="modal-middle-container">
+                            <div class="login-wrapper animated slideInDown">
+                                <div class="login-container"><span ng-click="closeModelForget()" class="close"><i
+                                            class="fa fa-times"></i></span>
+                                    <div class="tab-login-line">
+                                        <div class="tab-login-title">Quên mật khẩu</div>
+                                        <div class="login-tab-wrapper">
+                                            <div class="login-heading">
+                                                <div class="text-heading"><span class="sub-text">Vui lòng cung cấp email
+                                                        đăng nhập và số điện thoại</span></div>
+                                            </div>
+                                            <!-- ngIf: message -->
+
+                                            <form ng-submit="submit()" class="login-form ng-pristine ng-valid-email ng-invalid ng-invalid-required">
+                                                <input placeholder="Email" type="email" ng-model="item.email" required="required" class="login ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required">
+                                                <input type="text" placeholder="Số điện thoại" maxlength="14" ng-model="user.mobilePhone" required="required" class="login register-input ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength">
+
+
+                                                <div class="row captcha">
+                                                    <div class="col-md-6 col-sm-6 col-xs-8 first-col">
+                                                        <script>
+                                                            function onSubmit(token) {
+                                                                document.getElementById("demo-form").submit();
+                                                            }
+                                                        </script>
+                                                        <div class="g-recaptcha" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit' data-action='submit'></div>
+                                                    </div>
+                                                </div><button class="btn primary input"><i ng-show="isSubmit"
+                                                        class="fa fa-pulse fa-spinner ng-hide"></i>Cấp lại mật
+                                                    khẩu</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--#success-modal(style='display: none;')-->
+        <div ng-controller="registerController" class="ng-scope">
+            <div id="success-modal" style="z-index:1111;" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-outer-container">
+                        <div class="modal-middle-container">
+                            <div class="login-wrapper animated slideInDown">
+                                <div class="login-container"><span ng-click="closeModelSuccess()" class="close"><i
+                                            class="icon-cancel"></i></span>
+                                    <div class="tab-login-line">
+                                        <div class="tab-login-title">Đăng ký thành công</div>
+                                        <div class="login-tab-wrapper">
+                                            <div class="login-heading success"><i class="icon-success"></i>
+                                                <div class="text-heading"><span class="sub-text">Bạn vui lòng truy cập
+                                                        email để kích hoạt tài
+                                                        khoản.</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="popupPolicies" ng-controller="policiesPopupController" style="z-index: 1100" class="dialog modal fade ng-scope">
+        <div class="modal-dialog">
+            <div class="modal-outer-container">
+                <div class="modal-middle-container">
+                    <div class="login-wrapper animated bounceIn location">
+                        <div class="login-container dialog"><span class="close" aria-hidden="true" data-dismiss="modal" aria-label="Close">&times;</span>
+                            <h2>Chính sách</h2>
+                            <div id="policiesTab">
+                                <div ng-controller="policyController" class="tab-movies-line ng-scope">
+                                    <ul class="nav nav-tabs">
+                                        <!-- ngRepeat: (key, item) in info -->
+                                    </ul>
+                                    <div class="tab-content content-text">
+                                        Trong này sẽ có cái lz gì đấy như là Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic molestias eveniet doloribus! Laudantium, ex numquam? Repellat tempore optio facilis, quia provident reprehenderit est dolore modi debitis nobis eligendi
+                                        enim culpa!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Form đăng nhập -->
+
+
+    <!-- ======= Main ======= -->
+    <main id="main">
+        <div class="wrapper">
+            <div class="block-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="home.html">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="home.html">Đặt vé</a></li>
+                            <li class="breadcrumb-item active upper-text">My Spy</li>
+                        </ol>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <section class="detail-feature">
+                                <article>
+                                    <div class="col-md-4 col-sm-4 col-xs-8 col-xs-offset-2 col-md-offset-0">
+                                        <div class="detail-feat-img"><img src="assets/img/300-spy_1597048094454.jpg" class="loading" data-was-processed="true">
+                                            <div class="play-bt">
+                                                <galaxy-watch-trailer data-title="My Spy" ng-trailer="https://www.youtube.com/watch?v=xr6PvrZQ_TY" class="ng-isolate-scope"><a class="btn primary animated fadeInUp" ng-click="submit()"> trailer</a></galaxy-watch-trailer>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="details col-md-8 col-sm-8 col-xs-12">
+                                        <h2 class="detail-title upper-text">My Spy</h2>
+                                        <h2 class="detail-title vn upper-text">Điệp Viên Siêu Lầy</h2>
+                                        <div class="detail-rating">
+                                            <div ng-controller="ratingController" class="rating-wrap detail ng-scope">
+                                                <div class="rating-movie detail">
+                                                    <div class="rating-value detail"><strong class="ng-binding">9.2</strong><span style="color: black;">/10</span>
+                                                        <div class="rating-view" style="position: absolute;"><span class="ng-binding" style="color: black;">393</span></div>
+                                                    </div>
+                                                    <div class="rating-bt">
+                                                        <button id="rating-click" type="submit" ng-click="showRaiting()" class="btn btn-primary btn-sm">Đánh giá</button></div>
+                                                    <div class="rating-user">
+                                                        <div class="rate">
+                                                            <input type="radio" id="star5" name="rate" value="5" />
+                                                            <label for="star5" title="text">5 stars</label>
+                                                            <input type="radio" id="star4" name="rate" value="4" />
+                                                            <label for="star4" title="text">4 stars</label>
+                                                            <input type="radio" id="star3" name="rate" value="3" />
+                                                            <label for="star3" title="text">3 stars</label>
+                                                            <input type="radio" id="star2" name="rate" value="2" />
+                                                            <label for="star2" title="text">2 stars</label>
+                                                            <input type="radio" id="star1" name="rate" value="1" />
+                                                            <label for="star1" title="text">1 star</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="detail-rating">
+                                                <span><i class="fa fa-clock-o"></i></span>
+                                                <span>101 phút</span>
+                                            </div>
+                                            <div class="detail-info">
+                                                <div class="detail-info-row"><label>Thể loại:</label>
+                                                    <div class="detail-info-right">
+                                                        <a>Hành động,</a><a>Hài</a>
+                                                    </div>
+                                                </div>
+                                                <div class="detail-info-row"><label>Nhà sản xuất:</label>
+                                                    <div class="detail-info-right">
+                                                        <a>Dream Bros. Entertainment</a>
+                                                    </div>
+                                                </div>
+                                                <div class="detail-info-row"><label>Đạo diễn:</label>
+                                                    <div class="detail-info-right">
+                                                        <a>Peter Segal</a>
+                                                    </div>
+                                                </div>
+                                                <div class="detail-info-row"><label>Quốc gia:</label>
+                                                    <div class="detail-info-right">
+                                                        <a>Mỹ</a>
+                                                    </div>
+                                                </div>
+                                                <div class="detail-info-row"><label>Diễn viên:</label>
+                                                    <div class="detail-info-right">
+                                                        <a>Dave Bautista,</a>
+                                                        <a>Chloe Coleman</a>
+                                                    </div>
+                                                </div>
+                                                <div class="detail-info-row"><label>Ngày:</label>
+                                                    <div class="detail-info-right">
+                                                        12/8/2020
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row detail-description">
+                                        <div class="col-md-12 col sm-12 col-xs-12">
+                                            <div class="content-text">
+                                                <section id="info">
+                                                    <h3>Nội dung phim</h3>
+                                                    <div class="content-text-actors-info content-text"><br>
+                                                        <auto-folded folded-height="200" class="ng-isolate-scope">
+                                                            <div>
+                                                                <div class="shadow hidden"></div>
+                                                                <div class="auto-folded" ng-transclude="" style="display: block;">
+                                                                    <p class="ng-scope"><span style="font-size:14px;"><span style="font-family:Arial,Helvetica,sans-serif;">Một điệp viên CIA trong lần thực hiện nhiệm vụ đã bị bé gái 9 tuổi phát hiện thân phận. Điều kiện để giữ bí mật chính là cô bé yêu cầu người điệp viên nhận mình làm đệ tử. Từ đây bộ đôi bất đắc dĩ lại trở nên ăn rơ bất ngờ.</span></span>
+                                                                    </p>
+
+                                                                    <p class="ng-scope"><span style="font-size:14px;"><span style="font-family:Arial,Helvetica,sans-serif;"><b><a href="phim-dang-chieu.html">Phim mới</a></b> Điệp Viên Siêu Lầy, dự kiến ra mắt tại các <b><a href="rap-gia-ve.html">rạp chiếu phim</a> từ 14.08.2020.</b></span></span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </auto-folded>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </section>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <section id="getPromotion" ng-controller="registerEmailController" class="hidden-xs ng-scope">
+                                <h3>Nhận khuyến mãi</h3>
+                                <div class="box-promotion">
+                                    <form ng-submit="submit()" class="ng-pristine ng-valid-email ng-invalid ng-invalid-required"><input placeholder="Email" type="email" ng-model="email" required="" class="login ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required"><button class="btn primary input">đăng ký</button></form>
+                                </div>
+                            </section>
+                            <section id="movieSidebar" class="hidden-xs">
+                                <h3>Phim đang chiếu</h3>
+                                <div class="row movies-group">
+                                    <div class="col-md-13 col-sm-12 col-xs-12 movie-item">
+                                        <div class="article-movie-home"><img src="assets/img/450-ham-quy_1597634132726.jpg" class="loading" data-was-processed="true">
+                                            <a href="dat-ve.html">
+                                                <div class="decription-hover overlay">
+                                                    <div class="movies-content"><i class="icon-c18"></i>
+                                                        <div class="group">
+                                                            <div class="btn secondary-white">mua vé</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="title-movie">
+                                            <h4 class="upper-text">Behind You</h4>
+                                            <h4 class="vn upper-text">Hầm Quỷ</h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-13 col-sm-12 col-xs-12 movie-item">
+                                        <div class="article-movie-home"><img src="assets/img/450_1597717998760.jpg" class="loading" data-was-processed="true">
+                                            <a href="dat-ve.html">
+                                                <div class="decription-hover overlay">
+                                                    <div class="movies-content"><i class="icon-c18"></i>
+                                                        <div class="group">
+                                                            <div class="btn secondary-white">mua vé</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="title-movie">
+                                            <h4 class="upper-text">Rogue</h4>
+                                            <h4 class="vn upper-text">Biệt Đội Săn Mồi</h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-13 col-sm-12 col-xs-12 movie-item">
+                                        <div class="article-movie-home"><img src="assets/img/450-minh-oi_1597654382025.jpg" class="loading" data-was-processed="true">
+                                            <a href="dat-ve.html">
+                                                <div class="decription-hover overlay">
+                                                    <div class="movies-content"><i></i>
+                                                        <div class="group">
+                                                            <div class="btn secondary-white">mua vé</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="title-movie">
+                                            <h4 class="upper-text">My Love, Don't Cross That River</h4>
+                                            <h4 class="vn upper-text">Mình Ơi, Xin Đừng Qua Sông</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 pull-right"><a href="phim-dang-chieu.html" class="btn secondary fl-right">Xem thêm</a></div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Contact</h2>
+                    <p>Contact Us</p>
+                </div>
+            </div>
+
+            <div class="container" data-aos="fade-up">
+
+                <div class="row mt-5">
+                    <div class="col-lg-4">
+                        <div class="info">
+                            <div class="address">
+                                <i class="icofont-google-map"></i>
+                                <h4>Location:</h4>
+                                <p>1 Nguyễn Văn Linh- Hải Châu- Đà Nẵng</p>
+                            </div>
+
+                            <div class="open-hours">
+                                <i class="icofont-clock-time icofont-rotate-90"></i>
+                                <h4>Open Hours:</h4>
+                                <p>
+                                    Monday-Saturday:<br> 8:00 AM - 23:00 PM
+                                </p>
+                            </div>
+
+                            <div class="email">
+                                <i class="icofont-envelope"></i>
+                                <h4>Email:</h4>
+                                <p>valorantteam@gmail.com</p>
+                            </div>
+
+                            <div class="phone">
+                                <i class="icofont-phone"></i>
+                                <h4>Call:</h4>
+                                <p>+84 369123478</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-8 mt-5 mt-lg-0">
+                        <div data-aos="fade-up">
+                            <iframe style="border:0; width: 700px; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.0855462599047!2d108.22231711699898!3d16.061049995256443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTbCsDAzJzM5LjgiTiAxMDjCsDEzJzI1LjUiRQ!5e0!3m2!1sen!2s!4v1597320681181!5m2!1sen!2s"
+                                frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <!-- End Contact Section -->
+    </main>
+    <!-- End #main -->
+
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_nav_menu">
+                                <h1 class="title-widget">Giới thiệu</h1>
+                                <ul>
+                                    <li><a href="https://www.galaxycine.vn/ve-chung-toi"><i
+                                                class="fa fa-angle-double-right"></i> Về chúng
+                                            tôi</a></li>
+                                    <li><a href="https://www.galaxycine.vn/thoa-thuan-su-dung"><i
+                                                class="fa fa-angle-double-right"></i>
+                                            Thoả thuận sử dụng</a></li>
+                                    <li><a href="https://www.galaxycine.vn/quy-che-hoat-dong"><i
+                                                class="fa fa-angle-double-right"></i> Quy
+                                            chế hoạt động</a></li>
+                                    <li><a href="https://www.galaxycine.vn/chinh-sach-bao-mat"><i
+                                                class="fa fa-angle-double-right"></i>
+                                            Chính sách bảo mật</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_nav_menu">
+                                <h1 class="title-widget">Góc điện ảnh</h1>
+                                <ul>
+                                    <li><a href="https://www.galaxycine.vn/dien-anh"><i
+                                                class="fa fa-angle-double-right"></i> Thể loại
+                                            phim</a></li>
+                                    <li><a href="https://www.galaxycine.vn/binh-luan-phim"><i
+                                                class="fa fa-angle-double-right"></i> Bình
+                                            luận phim</a></li>
+                                    <li><a href="https://www.galaxycine.vn/movie-blog"><i
+                                                class="fa fa-angle-double-right"></i> Blog điện
+                                            ảnh</a></li>
+                                    <li><a href="https://www.galaxycine.vn/phim-hay"><i
+                                                class="fa fa-angle-double-right"></i> Phim hay
+                                            tháng</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_nav_menu">
+                                <h1 class="title-widget">Hỗ trợ</h1>
+                                <ul>
+                                    <li><a href="https://www.galaxycine.vn/gop-y"><i
+                                                class="fa fa-angle-double-right"></i> Góp ý</a></li>
+                                    <li><a href="https://www.galaxycine.vn/sale-and-service"><i
+                                                class="fa fa-angle-double-right"></i> Sale
+                                            &amp; Services</a></li>
+                                    <li><a href="https://www.galaxycine.vn/rap-gia-ve"><i
+                                                class="fa fa-angle-double-right"></i> Rạp / giá
+                                            vé</a></li>
+                                    <li><a href="https://www.galaxycine.vn/tuyen-dung"><i
+                                                class="fa fa-angle-double-right"></i> Tuyển
+                                            dụng</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_recent_news">
+                                <h1 class="title-widget">Kết nối Valorant cinema</h1>
+                                <div class="social-icons">
+                                    <ul class="nomargin">
+                                        <a href="https://facebook.com/galaxycine.vn" target="_blank"><i id="social"
+                                                class="fa fa-facebook-official"></i></a>
+                                        <a href="https://www.youtube.com/user/galaxymovies" target="_blank"><i
+                                                id="social" class="fa fa-youtube-play"></i></a>
+                                        <a href="https://www.instagram.com/galaxycinema/" target="_blank"><i id="social"
+                                                class="fa fa-instagram"></i></a>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <br>
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_recent_news">
+                                <h1 class="title-widget">Download App</h1>
+                                <div class="social-icons">
+                                    <ul class="nomargin">
+                                        <a href="https://itunes.apple.com/vn/app/galaxy-cinema/id593312549?l=vi&amp;mt=8" target="_blank"><i id="social" class="fa fa-apple"></i></a>
+                                        <a href="https://play.google.com/store/apps/details?id=com.galaxy.cinema&amp;hl=vi" target="_blank"><i id="social" class="fa fa-google"></i></a></ul>
+                        </ul>
+                        </div>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                        <a href="https://www.galaxycine.vn/"><img src="assets/img/galaxy-logo-footer.png" alt="Galaxy Cinema"></a>
+                        <div class="copyright">
+                            <p>Công Ty Cổ Phần Phim Thiên Ngân, Tầng 5, Toà Nhà Mặt Trời Sông Hồng, 23 Phan Chu Trinh, Phường Phan Chu Trinh, Quận Hoàn Kiếm, Hà Nội</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <script src="assets/js/lazyload.js" async="async"></script>
+    <script>
+        window.lazyLoadOptions = {
+            img: ".lazy"
+        };
+    </script>
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top" onclick="scrollTopAnimated()"><i class="bx bx-up-arrow-alt"></i></a>
+    <script type="text/javascript">
+        function scrollTopAnimated() {
+            $("html, body").animate({
+                scrollTop: "0"
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>

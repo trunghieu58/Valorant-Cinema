@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>HOME - VALORANT CINEMA</title>
+    <link rel="icon" href="assets/img/icon.png" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+
+
+    <!-- JS Files -->
+    <script src="assets/js/bootstrap.js" defer="defer"></script>
+    <script src="assets/js/bootstrap-datepicker.js" defer="defer"></script>
+    <script src="assets/js/jquery.bcSwipe.min.js" defer="defer"></script>
+    <script src="assets/js/app.js" defer="defer"></script>
+    <script src="assets/js/main 2.js" defer="defer"></script>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/venobox/venobox.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        $(function() {
+            $("#datepicker").datepicker();
+        });
+
+        var stateObject = {
+            "Đà Nẵng": {
+                "Hải Châu": [],
+                "Cẩm Lệ": [],
+                "Ngũ Hành Sơn": []
+            },
+            "TP Hồ Chí Minh": {
+                "Quận ?": [],
+                "Quận 1": [],
+                "Quận 2": []
+            },
+            "Hà Nội": {
+                "Quận Tân Bình": [],
+                "Quận 1": [],
+                "Quận 2": []
+            },
+        }
+        window.onload = function() {
+            var CitySel = document.getElementById("CitySel"),
+                DistrictSel = document.getElementById("DistrictSel");
+            for (var country in stateObject) {
+                CitySel.options[CitySel.options.length] = new Option(country, country);
+            }
+            CitySel.onchange = function() {
+                DistrictSel.length = 1; // remove all options bar first
+                if (this.selectedIndex < 1) return; // done
+                for (var state in stateObject[this.value]) {
+                    DistrictSel.options[DistrictSel.options.length] = new Option(state, state);
+                }
+            }
+            CitySel.onchange(); // reset in case page is reloaded
+        }
+    </script>
+</head>
+
+<body>
+    <!-- <span us-spinner="" spinner-key="spinner-1" spinner-start-active="false" class="ng-scope"></span> -->
+
+    <!-- ======= Header ======= -->
+    <div class="header">
+        <!-- ======= Top Bar ======= -->
+        <div ng-controller="headerController" class="">
+            <div class="container-fluid top-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="header-nav-wrapper">
+                            <div class="col-md-3 col-sm-4 col-xs-4">
+                                <div class="logo">
+                                    <a href="./home.html"><img src="assets/img/logo.png" data-src="website/images/logo.png" alt="Valorant Cinema" class="lazy hidden-xs hidden-sm loaded" data-was-processed="true"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="primary-nav-wrapper desktop hidden-xs hidden-sm">
+                                    <div class="search">
+                                        <galaxy-search-bar class="ng-isolate-scope">
+                                            <form class="search-form ng-pristine ng-valid" ng-submit="submit()">
+                                                <div class="input-append">
+                                                    <input placeholder="Tìm tên phim, diễn viên..." class="search-box ng-pristine ng-untouched ng-valid ng-empty" type="text" autocomplete="off" ng-model="searchKey" ng-model-options="{ updateOn: &quot;default blur&quot;, debounce: { default: 500, blur: 0 } }"
+                                                        ,="" ng-change="search(searchKey)">
+                                                    <button type="submit" class="search-btn"><i
+                                                            class="fa fa-search"></i></button>
+                                                </div>
+                                            </form>
+                                        </galaxy-search-bar>
+                                    </div>
+
+
+                                    <div class="secondary-nav-wrapper">
+                                        <ul class="secondary-nav">
+                                            <li>
+                                                <!-- ngIf: userInfo.memberId -->
+                                                <div ng-if="userInfo.memberId" class="dropdown ng-scope">
+                                                    <a style="display: flex; align-items: center; justify-content: center; color: #f26b38;" ng-style="{ display: (userInfo.fullName ? &#39;block&#39; : &#39;none&#39;) }" href="https://www.galaxycine.vn/thanh-vien" ng-if="userInfo" data-toggle="dropdown"
+                                                        aria-expanded="true" class="dropdown-toggle ng-scope">
+                                                        <i class="fa fa-user-circle" style="font-size: 20px;"></i>
+                                                            <span class="ng-binding">Trần Duy Tiến</span>
+                                                    </a>
+                                                    <div class="dropdown-menu">
+                                                        <a href="thanh-vien.html" class="dropdown-item">Tài khoản</a>
+                                                        <a ng-click="logout()" class="dropdown-item">Thoát</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="galaxy-nav ng-scope">
+            <div class="container">
+                <div class="search hidden-lg hidden-md">
+                    <galaxy-search-bar class="ng-isolate-scope">
+                        <form class="search-form ng-pristine ng-valid" ng-submit="submit()">
+                            <div class="input-append">
+                                <input placeholder="Tìm tên phim, diễn viên..." class="search-box ng-pristine ng-untouched ng-valid ng-empty" type="text" autocomplete="off" ng-model="searchKey" ng-model-options="{ updateOn: &quot;default blur&quot;, debounce: { default: 500, blur: 0 } }"
+                                    ,="" ng-change="search(searchKey)">
+                                <button type="submit" class="search-btn"><i class="icon-search"></i></button>
+                                <!-- ngIf: dataSearch && dataSearch.items && dataSearch.items.length>0 -->
+                            </div>
+                        </form>
+                    </galaxy-search-bar>
+                </div>
+                <nav>
+                    <ul class="primary-nav">
+                        <li><a href="lich-chieu.html">Mua vé</a></li>
+                        <li class="sub-nav"><a href="javascript:;">Phim</a>
+                            <div id="sub-menu">
+                                <ul class="undefined">
+                                    <li><a href="phim-dang-chieu.html">Phim đang chiếu</a></li>
+                                    <li><a href="phim-sap-chieu.html">Phim sắp chiếu</a></li>
+                                </ul>
+                            </div>
+                            <div id="sub-menu-movie" class="hidden-sm hidden-xs">
+                                <div class="visible-lg-block">
+                                    <div class="row submenu-title">
+                                        <div class="col-sm-12">
+                                            <h3><a href="phim-dang-chieu.html">Phim đang chiếu</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="row movies-group-header">
+                                        <!-- ngRepeat: movie in item.movieShowing | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieShowing | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/2020/7/28/2560x1440_1595930517102.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">Black Water: Abyss</h4>
+                                                <h4 class="vn upper-text ng-binding">Cá Sấu Tử Thần</h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieShowing | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieShowing | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/2020/6/26/pen-450x300_1593152409838.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">Peninsula</h4>
+                                                <h4 class="vn upper-text ng-binding">Bán Đảo Peninsula</h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieShowing | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieShowing | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/2020/8/3/450-mai-ben_1596440879459.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">Endless</h4>
+                                                <h4 class="vn upper-text ng-binding">Mãi Bên Em</h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieShowing | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieShowing | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/c/i/civil-ngang.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">CAPTAIN AMERICA: NỘI CHIẾN SIÊU ANH HÙNG
+                                                </h4>
+                                                <h4 class="vn upper-text ng-binding">CAPTAIN AMERICA: NỘI CHIẾN SIÊU ANH HÙNG
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieShowing | limitTo:4 -->
+                                    </div>
+                                    <div class="row submenu-title">
+                                        <div class="col-sm-12">
+                                            <h3><a href="phim-sap-chieu.html">Phim sắp chiếu</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="row movies-group-header">
+                                        <!-- ngRepeat: movie in item.movieCommingSoon | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/2020/8/10/450-spy_1597048018892.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">My Spy</h4>
+                                                <h4 class="vn upper-text ng-binding">Điệp Viên Siêu Lầy</h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieCommingSoon | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/2020/8/10/450-ke_1597032051764.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">You're Not Alone</h4>
+                                                <h4 class="vn upper-text ng-binding">Kẻ Ẩn Nấp</h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieCommingSoon | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/2020/8/7/450-ke-cap_1596799942763.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">Simon's Got A Gift</h4>
+                                                <h4 class="vn upper-text ng-binding">Kẻ Cắp Nhân Dạng</h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieCommingSoon | limitTo:4 -->
+                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4" class="col-sm-3 ng-scope">
+                                            <article style="background-image: url(https://galaxycine.vn/media/2020/7/29/1350x900_1596006042621.jpg)" class="article-movie-header">
+                                                <a href="#" style="width:100%;">
+                                                    <figure>
+                                                        <figcaption class="overlay">
+                                                            <div class="movies-content-header">
+                                                                <galaxy-icon-movie ng-age="movie.age">
+                                                                </galaxy-icon-movie>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white btn-header">Mua vé
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </article>
+                                            <div class="title-movie-header">
+                                                <h4 class="upper-text ng-binding">The Elfkins – Baking A Difference</h4>
+                                                <h4 class="vn upper-text ng-binding">Tí Hon Hậu Đậu</h4>
+                                            </div>
+                                        </div>
+                                        <!-- end ngRepeat: movie in item.movieCommingSoon | limitTo:4 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="sub-nav"><a href="javascript:;">Góc điện ảnh</a>
+                            <div id="sub-menu">
+                                <ul class="undefined">
+                                    <li><a href="dien-anh.html">Thể loại phim</a></li>
+                                    <li><a href="dien-vien.html">Diễn viên</a></li>
+                                    <li><a href="dao-dien.html">Đạo diễn</a></li>
+                                    <li><a href="binh-luan-film.html">Bình luận phim</a></li>
+                                    <li><a href="blog-dien-anh.html">Blog điện ảnh</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sub-nav"><a href="javascript:;">Sự kiện</a>
+                            <div id="sub-menu">
+                                <ul class="undefined">
+                                    <li><a href="khuyen-mai.html">Ưu đãi</a></li>
+                                    <li><a href="phim-hay.html">Phim hay tháng</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="rap-gia-ve.html">Rạp/Giá Vé</a></li>
+                        <li><a href="gop-y.html">Hỗ trợ</a></li>
+                        <li><a href="chinh-sach.html">Chính sách</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- ======= End Top Bar ======= -->
+    </div>
+
+    <!-- ======= Header ======= -->
+
+
+
+
+
+
+    <!-- ======= Main ======= -->
+    <main id="main">
+        <!-- ======= Chọn film / Mua vé nhanh ======= -->
+        <div class="" data-aos="fade-up">
+            <div class="row">
+                <div id="main-carousel" data-ride="carousel" data-interval="3000" class="carousel slide">
+                    <ol class="carousel-indicators hidden-sm hidden-xs">
+                        <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#main-carousel" data-slide-to="1" class=""></li>
+                        <li data-target="#main-carousel" data-slide-to="2" class=""></li>
+                        <li data-target="#main-carousel" data-slide-to="3" class=""></li>
+                        <li data-target="#main-carousel" data-slide-to="4" class=""></li>
+                    </ol>
+                    <div role="listbox" class="carousel-inner">
+                        <a href="#" link="#" class="item active"><img src="assets/img/2048x682_1596801201446.jpg" class="lazy hidden-xs hidden-sm loaded" data-was-processed="true"><img src="assets/img/template-banner.jpg"
+                                 class="lazy hidden-md hidden-lg"></a>
+                        <a href="#" link="#" class="item"><img src="assets/img/banner-2048x682_1595474714190.jpg" class="lazy hidden-xs hidden-sm loaded" data-was-processed="true"><img src="assets/img/template-banner.jpg"
+                                 class="lazy hidden-md hidden-lg"></a>
+                        <a href="#" link="#" class="item"><img src="assets/img/banner-2048x682_1595908669432.jpg" data-was-processed="true"><img src="assets/img/template-banner.jpg"
+                                 class="lazy hidden-md hidden-lg"></a>
+                        <a href="#" link="#" class="item"><img src="assets/img/banner-2048x682_1596010717788.jpg" class="lazy hidden-xs hidden-sm loaded" data-was-processed="true"><img src="assets/img/template-banner.jpg"
+                                 class="lazy hidden-md hidden-lg"></a>
+                        <a href="#" link="#" class="item"><img src="assets/img/valorant-website-3_1593575170161.jpg" class="lazy hidden-xs hidden-sm loaded" data-was-processed="true"><img src="assets/img/template-banner.jpg"
+                                 class="lazy hidden-md hidden-lg"></a>
+                    </div>
+                    <a role="button" href="#main-carousel" data-slide="prev" class="left carousel-control hidden-xs hidden-sm"><span aria-hidden="true"
+                            class="glyphicon glyphicon-chevron-left"></span><span class="sr-only">Previous</span></a>
+                    <a role="button" href="#main-carousel" data-slide="next" class="right carousel-control hidden-xs hidden-sm"><span aria-hidden="true"
+                            class="glyphicon glyphicon-chevron-right"></span><span class="sr-only">Next</span></a>
+
+
+
+                    <div class="container">
+                        <div class="box-buy-ticket animated zoomIn">
+                            <section ng-controller="quickBuyTicket" class="tabs ng-scope">
+                                <div class="label-tab hidden-sm hidden-xs">mua vé nhanh</div>
+                                <br>
+                                <h3 class="hidden-lg hidden-md">Mua Vé Nhanh</h3>
+                                <input id="tab-1" type="radio" name="radio-set" checked="checked" ng-click="clickTabNavTicket(&quot;byMovie&quot;)" class="tab-selector-1"><label for="tab-1" class="tab-label-1">Theo phim</label>
+                                <input id="tab-2" type="radio" name="radio-set" ng-click="clickTabNavTicket(&quot;byDate&quot;) " class="tab-selector-2"><label for="tab-2" class="tab-label-2">Theo ngày</label>
+                                <div class="clear-shadow"></div>
+                                <div id="id-block-ticket" ng-hide="isMobile == true &amp;&amp; flagShowBlockTicket == false" class="content">
+                                    <div class="content-1">
+                                        <form class="ng-pristine ng-valid">
+                                            <galaxy-select ng-model="byMovie" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                                <a class="btn btn-select btn-select-light">
+
+                                                    <span class="btn-select-value ng-binding">Chọn phim</span>
+                                                    <span class="btn-select-arrow"></span>
+                                                    <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <option value="? number:-1 ?" selected="selected"></option>
+                                                        <!-- ngIf: !model.disablePlaceholder -->
+                                                        <!-- ngRepeat: item in items -->
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                            Black Water: Abyss
+                                                        </option><!-- end ngRepeat: item in items -->
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                            Peninsula
+                                                        </option><!-- end ngRepeat: item in items -->
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                            Endless
+                                                        </option><!-- end ngRepeat: item in items -->
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                            CAPTAIN AMERICA: NỘI CHIẾN SIÊU ANH HÙNG
+                                                        </option><!-- end ngRepeat: item in items -->
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                            Big Hero 6
+                                                        </option><!-- end ngRepeat: item in items -->
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="5" class="ng-binding ng-scope" value="number:5">
+                                                            Ghost Writer
+                                                        </option><!-- end ngRepeat: item in items -->
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="6" class="ng-binding ng-scope" value="number:6">
+                                                            Unhinged
+                                                        </option><!-- end ngRepeat: item in items -->
+                                                    </select>
+                                                </a>
+                                            </galaxy-select>
+                                            <galaxy-select ng-model="cinemaConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                                <a class="btn btn-select btn-select-light">
+
+                                                    <span class="btn-select-value ng-binding">Chọn rạp</span>
+                                                    <span class="btn-select-arrow"></span>
+                                                    <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <option value="? number:-1 ?" selected="selected"></option>
+                                                        <!-- ngIf: !model.disablePlaceholder -->
+                                                        <!-- ngRepeat: item in items -->
+                                                    </select>
+                                                </a>
+                                            </galaxy-select>
+                                            <galaxy-select ng-model="dateConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                                <a class="btn btn-select btn-select-light">
+
+                                                    <span class="btn-select-value ng-binding">Chọn ngày</span>
+                                                    <span class="btn-select-arrow"></span>
+                                                    <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <option value="? number:-1 ?" selected="selected"></option>
+                                                        <!-- ngIf: !model.disablePlaceholder -->
+                                                        <!-- ngRepeat: item in items -->
+                                                    </select>
+                                                </a>
+                                            </galaxy-select>
+                                            <galaxy-select ng-model="sessionConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                                <a class="btn btn-select btn-select-light">
+
+                                                    <span class="btn-select-value ng-binding">Chọn suất</span>
+                                                    <span class="btn-select-arrow"></span>
+                                                    <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <option value="? number:-1 ?" selected="selected"></option>
+                                                        <!-- ngIf: !model.disablePlaceholder -->
+                                                        <!-- ngRepeat: item in items -->
+                                                    </select>
+                                                </a>
+                                            </galaxy-select>
+                                        </form>
+                                    </div>
+                                    <div class="content-2">
+                                        <form class="ng-pristine ng-valid">
+                                            <galaxy-select ng-model="byDate" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                                <a class="btn btn-select btn-select-light">
+
+                                                    <span class="btn-select-value ng-binding">Chọn ngày</span>
+                                                    <span class="btn-select-arrow"></span>
+                                                    <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <option value="? number:-1 ?" selected="selected"></option>
+                                                        <!-- ngIf: !model.disablePlaceholder -->
+                                                        <!-- ngRepeat: item in items -->
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                            Thứ ba, 11/08/2020
+                                                        </option><!-- end ngRepeat: item in items -->
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                            Thứ tư, 12/08/2020
+                                                        </option><!-- end ngRepeat: item in items -->
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                            Thứ năm, 13/08/2020
+                                                        </option><!-- end ngRepeat: item in items -->
+                                                    </select>
+                                                </a>
+                                            </galaxy-select>
+                                            <galaxy-select ng-model="cinemaConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                                <a class="btn btn-select btn-select-light">
+
+                                                    <span class="btn-select-value ng-binding">Chọn rạp</span>
+                                                    <span class="btn-select-arrow"></span>
+                                                    <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <option value="? number:-1 ?" selected="selected"></option>
+                                                        <!-- ngIf: !model.disablePlaceholder -->
+                                                        <!-- ngRepeat: item in items -->
+                                                    </select>
+                                                </a>
+                                            </galaxy-select>
+                                            <galaxy-select ng-model="movieConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                                <a class="btn btn-select btn-select-light">
+
+                                                    <span class="btn-select-value ng-binding">Chọn phim</span>
+                                                    <span class="btn-select-arrow"></span>
+                                                    <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <option value="? number:-1 ?" selected="selected"></option>
+                                                        <!-- ngIf: !model.disablePlaceholder -->
+                                                        <!-- ngRepeat: item in items -->
+                                                    </select>
+                                                </a>
+                                            </galaxy-select>
+                                            <galaxy-select ng-model="sessionConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                                <a class="btn btn-select btn-select-light">
+
+                                                    <span class="btn-select-value ng-binding">Chọn suất</span>
+                                                    <span class="btn-select-arrow"></span>
+                                                    <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <option value="? number:-1 ?" selected="selected"></option>
+                                                        <!-- ngIf: !model.disablePlaceholder -->
+                                                        <!-- ngRepeat: item in items -->
+                                                    </select>
+                                                </a>
+                                            </galaxy-select>
+                                        </form>
+                                    </div>
+                                    <!-- ngIf: isMobile == true -->
+                                </div>
+                                <!-- ngIf: isMobile == false --><a id="loginBuyticket" ng-if="isMobile == false" ng-click="buyTicket()" class="btn primary fl-right btn-buyticket-box ng-scope">Mua
+                                    vé</a>
+                                <!-- end ngIf: isMobile == false -->
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- End Chọn film / Mua vé nhanh -->
+
+
+        <!-- ======= Thông tin phim mới / đang chiếu ======= -->
+        <section id="thongtin" class="movies" data-src="why-us">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tab-movies">
+                            <div class="tab-movies-line">
+                                <ul class="nav nav-tabs movie-home">
+                                    <li class="active"><a href="#tab_default_1" data-toggle="tab">Phim đang chiếu</a></li>
+                                    <li><a href="#tab_default_2" data-toggle="tab">Phim sắp
+                                            chiếu</a></li>
+                                </ul>
+                                <div class="tab-content movies">
+                                    <div id="tab_default_1" class="tab-pane active">
+                                        <div class="row movies-group animated fadeInUp">
+                                            <div class="col-md-4 col-sm-4 col-xs-6 movie-item" data-aos="zoom-in">
+                                                <div class="article-movie-home"><img src="assets/img/2560x1440_1595930517102.jpg" data-src="https://galaxycine.vn/media/2020/7/28/2560x1440_1595930517102.jpg" class="lazy loaded" data-was-processed="true">
+                                                    <a href="#">
+                                                        <div class="decription-hover overlay">
+                                                            <div class="movies-content"><i></i>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white">mua vé</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="title-movie">
+                                                    <h4 class="upper-text">Black Water: Abyss</h4>
+                                                    <h4 class="vn upper-text">Cá Sấu Tử Thần</h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-6 movie-item" data-aos="zoom-in">
+                                                <div class="article-movie-home"><img src="assets/img/pen-450x300_1593152409838.jpg" data-src="https://galaxycine.vn/media/2020/6/26/pen-450x300_1593152409838.jpg" class="lazy loaded" data-was-processed="true">
+                                                    <a href="#">
+                                                        <div class="decription-hover overlay">
+                                                            <div class="movies-content"><i></i>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white">mua vé</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+
+                                                <div class="title-movie">
+                                                    <h4 class="upper-text">Peninsula</h4>
+                                                    <h4 class="vn upper-text">Bán Đảo Peninsula</h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-6 movie-item" data-aos="zoom-in">
+                                                <div class="article-movie-home"><img src="assets/img/450-mai-ben_1596440879459.jpg" data-src="https://galaxycine.vn/media/2020/8/3/450-mai-ben_1596440879459.jpg" class="lazy loaded" data-was-processed="true">
+                                                    <a href="#">
+                                                        <div class="decription-hover overlay">
+                                                            <div class="movies-content"><i></i>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white">mua vé</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="title-movie">
+                                                    <h4 class="upper-text">Endless</h4>
+                                                    <h4 class="vn upper-text">Mãi Bên Em</h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-6 movie-item" data-aos="zoom-in">
+                                                <div class="article-movie-home"><img src="assets/img/civil-ngang.jpg" data-src="https://galaxycine.vn/media/c/i/civil-ngang.jpg" class="lazy loaded" data-was-processed="true">
+                                                    <a href="#">
+                                                        <div class="decription-hover overlay">
+                                                            <div class="movies-content"><i></i>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white">mua vé</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="title-movie">
+                                                    <h4 class="upper-text">CAPTAIN AMERICA: NỘI CHIẾN SIÊU ANH HÙNG</h4>
+                                                    <h4 class="vn upper-text">CAPTAIN AMERICA: NỘI CHIẾN SIÊU ANH HÙNG
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-6 movie-item" data-aos="zoom-in">
+                                                <div class="article-movie-home"><img src="assets/img/big-hero-6_1596009358376.jpg" data-src="https://galaxycine.vn/media/2020/7/29/big-hero-6_1596009358376.jpg" class="lazy loaded" data-was-processed="true">
+                                                    <a href="#">
+                                                        <div class="decription-hover overlay">
+                                                            <div class="movies-content"><i></i>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white">mua vé</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="title-movie">
+                                                    <h4 class="upper-text">Big Hero 6</h4>
+                                                    <h4 class="vn upper-text">Biệt Đội Big Hero 6</h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-6 movie-item" data-aos="zoom-in">
+                                                <div class="article-movie-home"><img src="assets/img/450-ghost_1595993350819.jpg" data-src="https://galaxycine.vn/media/2020/7/29/450-ghost_1595993350819.jpg" class="lazy loaded" data-was-processed="true">
+                                                    <a href="#">
+                                                        <div class="decription-hover overlay">
+                                                            <div class="movies-content"><i></i>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white">mua vé</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+
+                                                <div class="title-movie">
+                                                    <h4 class="upper-text">Ghost Writer</h4>
+                                                    <h4 class="vn upper-text">Hồn Ma Văn Sĩ</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12 pull-right"><a href="home.htmlphim-dang-chieu" class="btn secondary fl-right">Xem thêm</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="tab_default_2" class="tab-pane">
+                                        <div class="row movies-group animated fadeInUp">
+                                            <div class="col-md-4 col-sm-4 col-xs-6 movie-item">
+                                                <div class="article-movie-home"><img src="https://galaxycine.vn/media/2020/8/10/450-spy_1597048018892.jpg" class="lazy">
+                                                    <a href="#">
+                                                        <div class="decription-hover overlay">
+                                                            <div class="movies-content"><i></i>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white">Xem trước</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="title-movie">
+                                                    <h4 class="upper-text">My Spy</h4>
+                                                    <h4 class="vn upper-text">Điệp Viên Siêu Lầy</h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-6 movie-item">
+                                                <div class="article-movie-home"><img src="https://galaxycine.vn/media/2020/8/10/450-ke_1597032051764.jpg" class="lazy">
+                                                    <a href="#">
+                                                        <div class="decription-hover overlay">
+                                                            <div class="movies-content"><i></i>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white">Xem trước</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="title-movie">
+                                                    <h4 class="upper-text">You're Not Alone</h4>
+                                                    <h4 class="vn upper-text">Kẻ Ẩn Nấp</h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-6 movie-item">
+                                                <div class="article-movie-home"><img src="https://galaxycine.vn/media/2020/8/7/450-ke-cap_1596799942763.jpg" class="lazy">
+                                                    <a href="#">
+                                                        <div class="decription-hover overlay">
+                                                            <div class="movies-content"><i></i>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white">Xem trước</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="title-movie">
+                                                    <h4 class="upper-text">Simon's Got A Gift</h4>
+                                                    <h4 class="vn upper-text">Kẻ Cắp Nhân Dạng</h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-6 movie-item">
+                                                <div class="article-movie-home"><img src="https://galaxycine.vn/media/2020/7/29/1350x900_1596006042621.jpg" class="lazy">
+                                                    <a href="#">
+                                                        <div class="decription-hover overlay">
+                                                            <div class="movies-content"><i></i>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white">Xem trước</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="title-movie">
+                                                    <h4 class="upper-text">The Elfkins – Baking A Difference</h4>
+                                                    <h4 class="vn upper-text">Tí Hon Hậu Đậu</h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-6 movie-item">
+                                                <div class="article-movie-home"><img src="https://galaxycine.vn/media/2020/6/22/450x300_1592795432576.jpg" class="lazy">
+                                                    <a href="#">
+                                                        <div class="decription-hover overlay">
+                                                            <div class="movies-content"><i></i>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white">Xem trước</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="title-movie">
+                                                    <h4 class="upper-text">Tiệc Trăng Máu</h4>
+                                                    <h4 class="vn upper-text"></h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-6 movie-item">
+                                                <div class="article-movie-home"><img src="https://galaxycine.vn/media/2020/6/3/83701756-623014251789245-7046287981056884736-o_1591173944477.jpg" class="lazy">
+                                                    <a href="#">
+                                                        <div class="decription-hover overlay">
+                                                            <div class="movies-content"><i></i>
+                                                                <div class="group">
+                                                                    <div class="btn secondary-white">Xem trước</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="title-movie">
+                                                    <h4 class="upper-text">Tenet</h4>
+                                                    <h4 class="vn upper-text"></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12 pull-right"><a href="phim-sap-chieu.html" class="btn secondary fl-right">Xem thêm</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- End Thông tin phim mới / đang chiếu -->
+
+
+        <!-- ======= Bình luận phim/ Blog diện ảnh ======= -->
+        <section id="binhluan" class="menu section-bg">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <a href="binh-luan-film.html" class="title-block" data-aos="zoom-in">
+                            <h3>Bình luận phim</h3>
+                        </a>
+                        <article class="blog" data-aos="zoom-in">
+                            <div class="movie-thumb">
+                                <a href="#" class="has-overlay">
+                                    <img src="/assets/img/template-post.jpg" data-src="https://galaxycine.vn/media/2020/7/18/watch-train-for-busan-2-peninsula-trailer-2-2020_1595053105581.jpg" class="lazy"></a>
+                            </div>
+                            <h5><a href="#">[Review]
+                                    Train To Busan 2 - Peninsula: Nhiều Hành Động, Đông Zombie Và Kang Dong Won Đẹp Xuất
+                                    Sắc</a></h5>
+                            <ul ng-controller="postController" class="article-blog-like ng-scope">
+                                <li><span class="like"><span class="like">
+                                            <div data-href="#"
+                                                data-layout="button_count" data-action="like" data-size="small"
+                                                data-show-faces="false" data-share="false" class="fb-like"></div>
+                                        </span></span>
+                                </li>
+                                <li style="margin-right: 10px;"><span>
+                                        <div class="view-wrap"><i class="fa fa-eye"></i><span
+                                                class="ng-binding">6741</span></div>
+                    </span>
+                    </li>
+                    <li>
+                        <div class="rating-movie rating-home">
+                            <span class="rating-value"><strong class="review-home ng-binding"><i
+                                                    class="fa fa-star" aria-hidden="true"></i> 8.6</strong><span> /
+                                                10</span><span class="ng-binding">&nbsp;(325)</span></span>
+                        </div>
+                    </li>
+                    </ul>
+                    <div class="blog-content hidden-xs">
+                        <p><span style="font-size:14px;"><span
+                                            style="font-family:Arial,Helvetica,sans-serif;"><span
+                                                style="line-height:107%">Năm 2016, phim hay Train To Busan tạo tiếng
+                                                vang trên toàn cầu, mở
+                                                đường cho nhiều bộ phim về xác sống xuất sắc khác của Hàn Quốc như
+                                                Rampant, Kingdom… Chính vì
+                                                vậy, Train To Busan 2 – Peninsula được chờ đợi từng ngày từ khi còn là
+                                                dự án trên bàn giấy.
+                                            </span></span>
+                            </span>
+                        </p>
+
+                        <p>
+                            <!--| -->
+                        </p>
+                    </div>
+                    <!--ul.article-blog-footer-->
+                    <!--  li-->
+                    <!--    galaxy-rating(ng-value='#{item.point}')-->
+                    </article>
+                    <article class="blog" data-aos="zoom-in">
+                        <div class="movie-thumb">
+                            <a href="#" class="has-overlay">
+                                <img src="./REGISTER_files/template-post.jpg" data-src="https://galaxycine.vn/media/2020/7/15/wonder-woman-1984-publicity-still-5-h-2019-1_1594801321671.jpg" class="lazy"></a>
+                        </div>
+                        <h5><a href="#">[Preview]
+                                    Wonder Woman 1984: Bí Ẩn Nào Đằng Sau Sự Trở Về Của Người Tình Wonder Woman?</a>
+                        </h5>
+                        <ul ng-controller="postController" class="article-blog-like ng-scope">
+                            <li><span class="like"><span class="like">
+                                            <div data-href="#"
+                                                data-layout="button_count" data-action="like" data-size="small"
+                                                data-show-faces="false" data-share="false" class="fb-like"></div>
+                                        </span></span>
+                            </li>
+                            <li style="margin-right: 10px;"><span>
+                                        <div class="view-wrap"><i class="fa fa-eye"></i><span
+                                                class="ng-binding">1485</span></div>
+                </span>
+                </li>
+                <li>
+                    <div class="rating-movie rating-home"><span class="rating-value"><strong
+                                                class="review-home ng-binding"><i class="fa fa-star"
+                                                    aria-hidden="true"></i> 7.0</strong><span> / 10</span><span class="ng-binding">&nbsp;(0)</span></span>
+                    </div>
+                </li>
+                </ul>
+                <div class="blog-content hidden-xs">
+                    <p><span style="font-size:14px;"><span
+                                            style="font-family:Arial,Helvetica,sans-serif;"><span
+                                                style="line-height:107%">Từ một bộ phim chẳng mấy được kỳ vọng, Wonder
+                                                Woman trở thành điểm
+                                                sáng của vũ trụ điện ảnh DC mở rộng giữa mớ tác phẩm bị giới chuyên môn
+                                                “gạch đá” nặng nề -
+                                                Batman v Superman: Dawn Of Justice, Suicide Squad và Justice League.
+                                                Chẳng những các nhà phê
+                                                bình khen ngợi, nữ thần chiến binh Diana Prince còn chiếm trọn cảm tình
+                                                khán giả, cô giúp nhà
+                                                sản xuất thu về hơn 821 triệu $ từ kinh phí 149 triệu $. </span></span>
+                        </span>
+                    </p>
+
+                    <p>
+                        <!--| -->
+                    </p>
+                </div>
+                <!--ul.article-blog-footer-->
+                <!--  li-->
+                <!--    galaxy-rating(ng-value='#{item.point}')-->
+                </article>
+                <article class="blog" data-aos="zoom-in">
+                    <div class="movie-thumb">
+                        <a href="#" class="has-overlay">
+                            <img src="assets/img/template-post.jpg" data-src="https://galaxycine.vn/media/2020/7/13/450x300_1594630509431.jpg" class="lazy"></a>
+                    </div>
+                    <h5><a href="#">[Review]
+                                    Bằng Chứng Vô Hình: Ăn Mắt, Ái Tử Thi...Biến Thái Đầy Táo Bạo!</a></h5>
+                    <ul ng-controller="postController" ng-init="init({&quot;id&quot;:&quot;763f8325-5d07-4d8f-b78b-6362f4e63a56&quot;,&quot;slug&quot;:&quot;review-bang-chung-vo-hinh-an-mat-ai-tu-thibien-thai-day-tao-bao&quot;,&quot;name&quot;:&quot;[Review] Bằng Chứng Vô Hình: Ăn Mắt, Ái Tử Thi...Biến Thái Đầy Táo Bạo!&quot;,&quot;description&quot;:&quot;&lt;p style=\&quot;margin:0in 0in 10pt\&quot;&gt;&lt;span style=\&quot;font-size:14px;\&quot;&gt;&lt;span style=\&quot;font-family:Arial,Helvetica,sans-serif;\&quot;&gt;&lt;span style=\&quot;line-height:115%\&quot;&gt;&lt;a href=\&quot;home.htmldat-ve/bang-chung-vo-hinh\&quot;&gt;&lt;b&gt;&lt;i&gt;Bằng Chứng V&amp;ocirc; H&amp;igrave;nh&lt;/i&gt;&lt;/b&gt;&lt;/a&gt; l&amp;agrave; tựa &lt;a href=\&quot;home.htmlphim-dang-chieu\&quot;&gt;phim mới&lt;/a&gt; của đạo diễn Trịnh Đ&amp;igrave;nh L&amp;ecirc; Minh, cha đẻ của t&amp;aacute;c phẩm Thưa Mẹ Con Đi từng g&amp;acirc;y ấn tượng tốt với kh&amp;aacute;n giả v&amp;agrave;o m&amp;ugrave;a h&amp;egrave; năm 2019. Được remake từ bộ phim Nh&amp;acirc;n Chứng M&amp;ugrave; của H&amp;agrave;n Quốc, &lt;strong&gt;Bằng Chứng V&amp;ocirc; H&amp;igrave;nh&lt;/strong&gt; thuộc thể loại trinh th&amp;aacute;m, r&amp;ugrave;ng rợn n&amp;oacute;i về cuộc rượt đuổi giữa một g&amp;atilde; s&amp;aacute;t nh&amp;acirc;n h&amp;agrave;ng loạt biến th&amp;aacute;i v&amp;agrave; c&amp;ocirc; g&amp;aacute;i m&amp;ugrave; &amp;ndash; nh&amp;acirc;n chứng duy nhất c&amp;oacute; thể đứng ra chỉ tội hắn.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;\n\n&lt;p style=\&quot;margin:0in 0in 10pt\&quot;&gt;&lt;span style=\&quot;font-size:14px;\&quot;&gt;&lt;span style=\&quot;font-family:Arial,Helvetica,sans-serif;\&quot;&gt;&lt;span style=\&quot;line-height:115%\&quot;&gt;C&amp;acirc;u chuyện của phim bắt đầu khi Thu (Phương Anh Đ&amp;agrave;o) trong một lần t&amp;igrave;nh cờ&amp;nbsp;đ&amp;atilde; rơi v&amp;agrave;o tầm ngắm của g&amp;atilde; s&amp;aacute;t nh&amp;acirc;n (Quang Tuấn), tuy nhi&amp;ecirc;n Thu đ&amp;atilde; may mắn tho&amp;aacute;t được nguy hiểm. Hiện trường khi ấy ngo&amp;agrave;i sự c&amp;oacute; mặt của Thu th&amp;igrave; vẫn c&amp;ograve;n một nh&amp;acirc;n chứng kh&amp;aacute;c l&amp;agrave; Hải (Otis), ch&amp;iacute;nh v&amp;igrave; sự hiện diện &amp;ldquo;kh&amp;ocirc;ng đ&amp;uacute;ng chỗ&amp;rdquo; n&amp;ecirc;n Hải cũng bị truy s&amp;aacute;t để bịt đầu mối. &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;\n\n&lt;p style=\&quot;margin:0in 0in 10pt\&quot;&gt;&lt;span style=\&quot;font-size:14px;\&quot;&gt;&lt;span style=\&quot;font-family:Arial,Helvetica,sans-serif;\&quot;&gt;&lt;span style=\&quot;line-height:115%\&quot;&gt;Từng l&amp;agrave; một cựu học vi&amp;ecirc;n cảnh s&amp;aacute;t c&amp;oacute; th&amp;agrave;nh t&amp;iacute;ch xuất sắc, v&amp;igrave; tai nạn giao th&amp;ocirc;ng n&amp;ecirc;n Thu đ&amp;atilde; mất đi người em trai v&amp;agrave; hỏng vĩnh viễn thị lực của m&amp;igrave;nh. Ch&amp;iacute;nh nhờ kỹ năng được đ&amp;agrave;o tạo b&amp;agrave;i bản n&amp;ecirc;n c&amp;ocirc; đ&amp;atilde; phối hợp c&amp;ugrave;ng H&amp;ograve;a (&amp;Aacute;i Phương) &amp;ndash; nữ cảnh s&amp;aacute;t chỉ huy trực tiếp điều tra vụ &amp;aacute;n. Dựa tr&amp;ecirc;n số chứng cớ &amp;iacute;t ỏi, Thu, Hải v&amp;agrave; H&amp;ograve;a phải rất kh&amp;oacute; khăn mới c&amp;oacute; thể định vị v&amp;agrave; truy l&amp;ugrave;ng g&amp;atilde; tội phạm kia.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;\n\n&lt;p style=\&quot;margin:0in 0in 10pt\&quot;&gt;&lt;span style=\&quot;font-size:14px;\&quot;&gt;&lt;span style=\&quot;font-family:Arial,Helvetica,sans-serif;\&quot;&gt;&lt;span style=\&quot;line-height:115%\&quot;&gt;Nội dung được x&amp;acirc;y dựng b&amp;aacute;m s&amp;aacute;t nguy&amp;ecirc;n t&amp;aacute;c, nhưng đạo diễn vẫn kh&amp;eacute;o l&amp;eacute;o c&amp;oacute; sự điều chỉnh để c&amp;aacute;c t&amp;igrave;nh tiết ph&amp;ugrave; hợp với văn h&amp;oacute;a Việt Nam. Với đề t&amp;agrave;i điều tra, ph&amp;aacute; &amp;aacute;n pha lẫn ch&amp;uacute;t ly kỳ n&amp;ecirc;n Bằng Chứng V&amp;ocirc; H&amp;igrave;nh kh&amp;ocirc;ng khai th&amp;aacute;c mạnh về kh&amp;iacute;a cạnh điều tra hoặc c&amp;aacute;c kỹ thuật hỗ trợ ti&amp;ecirc;n tiến. Mạch phim chủ yếu được x&amp;acirc;y dựng dựa tr&amp;ecirc;n t&amp;acirc;m l&amp;yacute; nh&amp;acirc;n vật v&amp;agrave; c&amp;aacute;c chi tiết nhỏ mang t&amp;iacute;nh chất &amp;ldquo;ch&amp;igrave;a kh&amp;oacute;a&amp;rdquo; giải quyết vấn đề.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;\n\n&lt;p style=\&quot;margin:0in 0in 10pt\&quot;&gt;&lt;span style=\&quot;font-size:14px;\&quot;&gt;&lt;span style=\&quot;font-family:Arial,Helvetica,sans-serif;\&quot;&gt;&lt;span style=\&quot;line-height:115%\&quot;&gt;Phương Anh Đ&amp;agrave;o ho&amp;agrave;n to&amp;agrave;n chứng minh được thực lực diễn xuất của bản th&amp;acirc;n qua vai Thu. C&amp;aacute;c ph&amp;acirc;n cảnh sinh hoạt hằng ng&amp;agrave;y cũng như sự căng thẳng khi đối đầu với t&amp;ecirc;n s&amp;aacute;t nh&amp;acirc;n đều được Phương Anh Đ&amp;agrave;o thể hiện ở mức tốt. Đặc biệt l&amp;agrave; với c&amp;aacute;ch biểu đạt nội t&amp;acirc;m ho&amp;agrave;n hảo, người xem hiểu được nỗi đau v&amp;agrave; sự dằn vặt của Thu từ một sự việc đ&amp;aacute;ng tiếc trong qu&amp;aacute; khứ v&amp;agrave; đồng cảm th&amp;ecirc;m về mối li&amp;ecirc;n hệ giữa c&amp;ocirc; v&amp;agrave; Hải. Ở phần h&amp;agrave;nh động, mức độ lăn xả v&amp;igrave; vai diễn đ&amp;atilde; đủ gi&amp;uacute;p Phương Anh Đ&amp;agrave;o ghi điểm bởi sự nghi&amp;ecirc;m t&amp;uacute;c đầu tư v&amp;agrave;o vai diễn, ngo&amp;agrave;i ra cũng phải nhắc đến người bạn đặc biệt đ&amp;atilde; đồng h&amp;agrave;nh với c&amp;ocirc; &amp;ndash; ch&amp;uacute; ch&amp;oacute; Ben v&amp;ocirc; c&amp;ugrave;ng đ&amp;aacute;ng y&amp;ecirc;u v&amp;agrave; trung th&amp;agrave;nh.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;\n\n&lt;p style=\&quot;margin: 0in 0in 10pt; text-align: center;\&quot;&gt;&lt;span style=\&quot;font-size:14px;\&quot;&gt;&lt;span style=\&quot;font-family:Arial,Helvetica,sans-serif;\&quot;&gt;&lt;span style=\&quot;line-height:115%\&quot;&gt;&lt;img alt=\&quot;\&quot; height=\&quot;349\&quot; src=\&quot;/media/2020/7/13/1135x660_1594631128956.jpg\&quot; width=\&quot;600\&quot; /&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;\n\n&lt;p style=\&quot;margin:0in 0in 10pt\&quot;&gt;&lt;span style=\&quot;font-size:14px;\&quot;&gt;&lt;span style=\&quot;font-family:Arial,Helvetica,sans-serif;\&quot;&gt;&lt;span style=\&quot;line-height:115%\&quot;&gt;Ở ph&amp;iacute;a phản diện, sau vai diễn thầy ph&amp;aacute;p Lưu Huỳnh t&amp;agrave;n độc trong bộ phim Thất Sơn T&amp;acirc;m Linh, nam diễn vi&amp;ecirc;n Quang Tuấn tiếp tục cho thấy &amp;ldquo;c&amp;aacute;i duy&amp;ecirc;n&amp;rdquo; khi h&amp;oacute;a th&amp;acirc;n v&amp;agrave;o c&amp;aacute;c nh&amp;acirc;n vật giết người với t&amp;acirc;m sinh l&amp;yacute; kh&amp;ocirc;ng b&amp;igrave;nh thường. Lần n&amp;agrave;y g&amp;atilde; s&amp;aacute;t nh&amp;acirc;n do anh thủ vai vốn l&amp;agrave; một b&amp;aacute;c sĩ thẩm mỹ chuy&amp;ecirc;n khoa về mắt, sau khi bị phản bội trong t&amp;igrave;nh cảm th&amp;igrave; hắn quyết định trả th&amp;ugrave; tất cả phụ nữ bằng c&amp;aacute;ch dẫn dụ họ với sự h&amp;agrave;o nho&amp;aacute;ng vật chất rồi sau đ&amp;oacute; ra tay s&amp;aacute;t hại. Sự bất ổn trong t&amp;acirc;m l&amp;yacute; được thể hiện r&amp;otilde; khi hắn quan hệ với x&amp;aacute;c chết của những nạn nh&amp;acirc;n đ&amp;aacute;ng thương, đồng thời c&amp;ograve;n thực hiện h&amp;agrave;nh vi t&amp;agrave;n nhẫn kh&amp;oacute; lường tr&amp;ecirc;n cơ thể của họ. Diễn xuất của Quang Tuấn thuyết phục nhờ v&amp;agrave;o cử chỉ dứt kho&amp;aacute;t, &amp;aacute;nh mắt lạnh l&amp;ugrave;ng v&amp;agrave; giọng n&amp;oacute;i trầm g&amp;acirc;y &amp;aacute;m ảnh.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;\n\n&lt;p style=\&quot;margin:0in 0in 10pt\&quot;&gt;&lt;span style=\&quot;font-size:14px;\&quot;&gt;&lt;span style=\&quot;font-family:Arial,Helvetica,sans-serif;\&quot;&gt;&lt;span style=\&quot;line-height:115%\&quot;&gt;Vai diễn nữ trinh s&amp;aacute;t H&amp;ograve;a của &amp;Aacute;i Phương hay Hải do Otis đảm nhận đều ở mức tr&amp;ograve;n trịa về cảm x&amp;uacute;c v&amp;agrave; tạo h&amp;igrave;nh v&amp;ocirc; c&amp;ugrave;ng hợp vai.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;\n\n&lt;p style=\&quot;margin:0in 0in 10pt\&quot;&gt;&lt;span style=\&quot;font-size:14px;\&quot;&gt;&lt;span style=\&quot;font-family:Arial,Helvetica,sans-serif;\&quot;&gt;&lt;span style=\&quot;line-height:115%\&quot;&gt;&amp;Aacute;nh s&amp;aacute;ng trong phim được sử dụng hợp l&amp;yacute;, với t&amp;ocirc;ng m&amp;agrave;u x&amp;aacute;m xanh u tối bao tr&amp;ugrave;m thể hiện kh&amp;ocirc;ng kh&amp;iacute; căng thẳng xuy&amp;ecirc;n suốt phim. Sự kịch t&amp;iacute;nh v&amp;agrave; chất ly kỳ được truyền tải đầy đủ với g&amp;oacute;c m&amp;aacute;y đặc tả cận cảnh gương mặt g&amp;atilde; s&amp;aacute;t nh&amp;acirc;n, trong b&amp;oacute;ng tối đ&amp;ocirc;i mắt đi&amp;ecirc;n dại trắng d&amp;atilde; của hắn hiện l&amp;ecirc;n như sẵn s&amp;agrave;ng đoạt mạng bất cứ người n&amp;agrave;o.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;\n\n&lt;p style=\&quot;margin:0in 0in 10pt\&quot;&gt;&lt;span style=\&quot;font-size:14px;\&quot;&gt;&lt;span style=\&quot;font-family:Arial,Helvetica,sans-serif;\&quot;&gt;&lt;span style=\&quot;line-height:115%\&quot;&gt;B&amp;ecirc;n cạnh đ&amp;oacute;, &amp;acirc;m thanh của phim thật sự l&amp;agrave; điểm nhấn đặc sắc. Việc sử dụng những đoạn nhạc t&amp;igrave;nh huống đậm chất &amp;ldquo;thriller&amp;rdquo; được thể hiện trong c&amp;aacute;c cảnh rượt đuổi hoặc ở c&amp;aacute;c t&amp;igrave;nh huống &amp;ldquo;ng&amp;agrave;n c&amp;acirc;n treo sợi t&amp;oacute;c&amp;rdquo;, đ&amp;atilde; gi&amp;uacute;p tăng th&amp;ecirc;m cao tr&amp;agrave;o cho phim. Với ch&amp;acirc;n dung nh&amp;acirc;n vật ch&amp;iacute;nh l&amp;agrave; một người m&amp;ugrave;, việc ph&amp;aacute;t huy thế mạnh của mảng &amp;acirc;m thanh l&amp;agrave; sự sắp đặt tinh tế v&amp;ocirc; c&amp;ugrave;ng cần thiết.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;\n\n&lt;p style=\&quot;margin:0in 0in 10pt\&quot;&gt;&lt;span style=\&quot;font-size:14px;\&quot;&gt;&lt;span style=\&quot;font-family:Arial,Helvetica,sans-serif;\&quot;&gt;&lt;span style=\&quot;line-height:115%\&quot;&gt;Hiển nhi&amp;ecirc;n b&amp;ecirc;n cạnh c&amp;aacute;c điểm s&amp;aacute;ng, &lt;strong&gt;Bằng Chứng V&amp;ocirc; H&amp;igrave;nh&lt;/strong&gt; vẫn c&amp;ograve;n tồn tại đ&amp;acirc;u đ&amp;oacute; c&amp;aacute;c điểm chưa ho&amp;agrave;n hảo. Do t&amp;iacute;nh chất remake n&amp;ecirc;n phần nội dung kịch bản đ&amp;ocirc;i chỗ vẫn c&amp;ograve;n gượng &amp;eacute;p, thiếu t&amp;iacute;nh tự nhi&amp;ecirc;n khi ph&amp;aacute;t triển đường d&amp;acirc;y cốt truyện. C&amp;aacute;ch giải quyết vấn đề cũng như C&amp;aacute;c diễn vi&amp;ecirc;n tuy ho&amp;agrave;n thiện phần cảm x&amp;uacute;c, nhưng vẫn chưa đủ độ s&amp;acirc;u về việc khắc họa t&amp;iacute;nh c&amp;aacute;ch nh&amp;acirc;n vật. Nh&amp;acirc;n vật phản diện cũng v&amp;igrave; thế m&amp;agrave; phần động cơ v&amp;agrave; biến chuyển t&amp;acirc;m l&amp;yacute; cũng mờ nhạt. Thoại phim vẫn c&amp;oacute; đ&amp;ocirc;i chỗ hạn chế ở mặt đ&amp;agrave;i từ của diễn vi&amp;ecirc;n. B&amp;ecirc;n cạnh đ&amp;oacute;, việc lạm dụng chất m&amp;agrave;u tối để tăng t&amp;iacute;nh chất h&amp;igrave;nh sự cho phim, thỉnh thoảng đ&amp;atilde; khiến v&amp;agrave;i bối cảnh kh&amp;ocirc;ng ph&amp;ugrave; hợp.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;\n\n&lt;p style=\&quot;margin:0in 0in 10pt\&quot;&gt;&lt;span style=\&quot;font-size:14px;\&quot;&gt;&lt;span style=\&quot;font-family:Arial,Helvetica,sans-serif;\&quot;&gt;&lt;span style=\&quot;line-height:115%\&quot;&gt;D&amp;ugrave; vậy, &lt;strong&gt;Bằng Chứng V&amp;ocirc; H&amp;igrave;nh&lt;/strong&gt; tr&amp;ecirc;n tổng thể vẫn l&amp;agrave; một &lt;a href=\&quot;home.htmlphim-dang-chieu\&quot;&gt;phim hay&lt;/a&gt;, ho&amp;agrave;n to&amp;agrave;n chứng tỏ được chất lượng đang dần ph&amp;aacute;t triển của phim Việt. Nếu đang tr&amp;ocirc;ng đợi v&amp;agrave;o một t&amp;aacute;c phẩm đậm t&amp;iacute;nh giải tr&amp;iacute;, thỏa m&amp;atilde;n phần nh&amp;igrave;n v&amp;agrave; cả nội dung th&amp;igrave; ho&amp;agrave;n to&amp;agrave;n c&amp;oacute; thể đến ngay &lt;a href=\&quot;home.html\&quot;&gt;rạp chiếu phim&lt;/a&gt; gần nhất, để t&amp;igrave;m hiểu sự thật về tội &amp;aacute;c được phơi b&amp;agrave;y trong &lt;strong&gt;Bằng Chứng V&amp;ocirc; H&amp;igrave;nh&lt;/strong&gt;.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;\n\n&lt;p style=\&quot;margin:0in 0in 10pt\&quot;&gt;&amp;nbsp;&lt;/p&gt;\n\n&lt;p style=\&quot;margin:0in 0in 10pt\&quot;&gt;&amp;nbsp;&lt;/p&gt;\n\n&lt;p style=\&quot;margin:0in 0in 10pt\&quot;&gt;&amp;nbsp;&lt;/p&gt;\n\n&lt;p&gt;&lt;!--| --&gt;&lt;/p&gt;\n&quot;,&quot;shortDescription&quot;:&quot;&lt;p&gt;&lt;span style=\&quot;font-size:14px;\&quot;&gt;&lt;span style=\&quot;font-family:Arial,Helvetica,sans-serif;\&quot;&gt;&lt;span style=\&quot;line-height:115%\&quot;&gt;Nếu đang tr&amp;ocirc;ng đợi v&amp;agrave;o một t&amp;aacute;c phẩm đậm t&amp;iacute;nh giải tr&amp;iacute;, thỏa m&amp;atilde;n phần nh&amp;igrave;n v&amp;agrave; cả nội dung th&amp;igrave; Bằng Chứng V&amp;ocirc; H&amp;igrave;nh l&amp;agrave; lựa chọn th&amp;iacute;ch hợp nhất d&amp;agrave;nh cho người y&amp;ecirc;u điện ảnh trong thời điểm hiện tại&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;\n&quot;,&quot;seoId&quot;:&quot;cc94418c-573b-42d1-8098-25bbffb21813&quot;,&quot;type&quot;:&quot;review&quot;,&quot;views&quot;:2012,&quot;startdate&quot;:null,&quot;enddate&quot;:null,&quot;imageLandscape&quot;:&quot;/media/2020/7/13/450x300_1594630509431.jpg&quot;,&quot;imagePortrait&quot;:&quot;/media/2020/7/13/300x450_1594630813390.jpg&quot;,&quot;imageLandscapeMobile&quot;:&quot;/media/2020/7/13/913x391_1594630910762.jpg&quot;,&quot;point&quot;:9.196351051330566,&quot;totalVotes&quot;:550})"
+                        class="article-blog-like ng-scope">
+                        <li><span class="like"><span class="like">
+                                            <div data-href="#"
+                                                data-layout="button_count" data-action="like" data-size="small"
+                                                data-show-faces="false" data-share="false" class="fb-like"></div>
+                                        </span></span>
+                        </li>
+                        <li style="margin-right: 10px;"><span>
+                                        <div class="view-wrap"><i class="fa fa-eye"></i><span
+                                                class="ng-binding">2012</span></div>
+            </span>
+            </li>
+            <li>
+                <div class="rating-movie rating-home"><span class="rating-value"><strong
+                                                class="review-home ng-binding"><i class="fa fa-star"
+                                                    aria-hidden="true"></i> 9.2</strong><span> / 10</span><span class="ng-binding">&nbsp;(550)</span></span>
+                </div>
+            </li>
+            </ul>
+            <div class="blog-content hidden-xs">
+                <p><span style="font-size:14px;"><span
+                                            style="font-family:Arial,Helvetica,sans-serif;"><span
+                                                style="line-height:115%">Nếu đang trông đợi vào một tác phẩm đậm tính
+                                                giải trí, thỏa mãn phần
+                                                nhìn và cả nội dung thì Bằng Chứng Vô Hình là lựa chọn thích hợp nhất
+                                                dành cho người yêu điện
+                                                ảnh trong thời điểm hiện tại</span></span>
+                    </span>
+                </p>
+            </div>
+            <!--ul.article-blog-footer-->
+            <!--  li-->
+            <!--    galaxy-rating(ng-value='#{item.point}')-->
+            </article>
+            <article class="blog" data-aos="zoom-in">
+                <div class="movie-thumb">
+                    <a href="#" class="has-overlay">
+                        <img src="assets/img/template-post.jpg" data-src="https://galaxycine.vn/media/2020/7/3/peninsula-07_1593747258277.png" class="lazy"></a>
+                </div>
+                <h5><a href="#">[Preview]
+                                    Peninsula: Cuộc Chiến Mới Khác Biệt Hoàn Toàn Train to Busan</a></h5>
+                <ul ng-controller="postController" class="article-blog-like ng-scope">
+                    <li><span class="like"><span class="like">
+                                            <div data-href="#"
+                                                data-layout="button_count" data-action="like" data-size="small"
+                                                data-show-faces="false" data-share="false" class="fb-like"></div>
+                                        </span></span>
+                    </li>
+                    <li style="margin-right: 10px;"><span>
+                                        <div class="view-wrap"><i class="fa fa-eye"></i><span
+                                                class="ng-binding">4222</span></div>
+                        </span>
+                    </li>
+                    <li>
+                        <div class="rating-movie rating-home"><span class="rating-value"><strong
+                                                class="review-home ng-binding"><i class="fa fa-star"
+                                                    aria-hidden="true"></i> 8.6</strong><span> / 10</span><span class="ng-binding">&nbsp;(325)</span></span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="blog-content hidden-xs">
+                    <p><span style="font-size:14px;"><span
+                                            style="font-family:Arial,Helvetica,sans-serif;">Khi thưởng thức
+                                            bộ phim này, khán giả sẽ được chứng kiến, trải nghiệm một cuộc phiêu lưu
+                                            hoàn toàn khác với
+                                            những nhân vật riêng biệt.</span></span>
+                        <!--| -->
+                    </p>
+                </div>
+                <!--ul.article-blog-footer-->
+                <!--  li-->
+                <!--    galaxy-rating(ng-value='#{item.point}')-->
+            </article>
+            <!---->
+            </div>
+
+
+
+            <div class="col-md-6 col-xs-12">
+                <a href="blog-dien-anh.html" class="title-block">
+                    <h3>Blog điện ảnh</h3>
+                </a>
+                <article class="blog" data-aos="zoom-in">
+                    <div class="movie-thumb">
+                        <a href="#" class="has-overlay">
+                            <img src="assets/img/template-post.jpg" data-src="https://galaxycine.vn/media/2020/8/10/bomtan3_1597027247542.jpg" class="lazy"></a>
+                    </div>
+                    <h5><a href="#">Từ
+                                    2020 Nhìn Về Quá Khứ, Mùa Hè Điện Ảnh Nào Đáng Nhớ Nhất Với Bạn?</a></h5>
+                    <ul class="article-blog-like">
+                        <li><span class="like"><span class="like">
+                                            <div data-href="#"
+                                                data-layout="button_count" data-action="like" data-size="small"
+                                                data-show-faces="false" data-share="false" class="fb-like"></div>
+                                        </span></span>
+                        </li>
+                        <li><span>
+                                        <div class="view-wrap"><i class="fa fa-eye"></i><span>41</span></div>
+            </span>
+            </li>
+            </ul>
+            <div class="blog-content hidden-xs">
+                <p><span style="font-size:14px;"><span
+                                            style="font-family:Arial,Helvetica,sans-serif;"><span
+                                                style="line-height:150%"><span style="line-height:150%">Dịch bệnh đã
+                                                    khiến cho mùa hè năm 2020
+                                                    của giới mê điện ảnh trở nên nhàm chán biết bao nhiêu. Cũng chính
+                                                    điều này đã làm nhiều
+                                                    người ngày càng trở nên hoài niệm, nhớ nhung hơn quá khứ - những mùa
+                                                    hè mà họ được thoải mái
+                                                    ra rạp để thưởng thức hàng loạt bom tấn điện ảnh vừa chất lượng vừa
+                                                    giàu tính thương
+                                                    mại.</span></span>
+                    </span>
+                    </span>
+                    <!--| -->
+                </p>
+            </div>
+            </article>
+            <article class="blog" data-aos="zoom-in">
+                <div class="movie-thumb">
+                    <a href="#" class="has-overlay">
+                        <img src="assets/img/template-post.jpg" data-src="https://galaxycine.vn/media/2020/8/9/450-vuong_1596971034388.jpg" class="lazy"></a>
+                </div>
+                <h5><a href="#">Vương
+                                    Gia Vệ: Đưa Khán Giả Thưởng Thức Cô Đơn Trong Ngôi Nhà Điện Ảnh</a></h5>
+                <ul class="article-blog-like">
+                    <li><span class="like"><span class="like">
+                                            <div data-href="#"
+                                                data-layout="button_count" data-action="like" data-size="small"
+                                                data-show-faces="false" data-share="false" class="fb-like"></div>
+                                        </span></span>
+                    </li>
+                    <li><span>
+                                        <div class="view-wrap"><i class="fa fa-eye"></i><span>145</span></div>
+                        </span>
+                    </li>
+                </ul>
+                <div class="blog-content hidden-xs">
+                    <p><span style="font-size:14px;"><span
+                                            style="font-family:Arial,Helvetica,sans-serif;"><span
+                                                style="line-height:115%">Bằng tư duy nghệ thuật mới lạ, tầm nhìn vượt
+                                                thời đại, Vương Gia Vệ
+                                                đã gầy dựng nên một sự nghiệp hoành tráng cho riêng bản thân. Các tác
+                                                phẩm của ông đều được
+                                                ghi nhận tích cực bởi giới chuyên môn và luôn có thứ hạng cao trong các
+                                                bảng đánh giá xếp hạng
+                                                phim hay.</span></span>
+                        </span>
+                        <!--| -->
+                    </p>
+                </div>
+            </article>
+            <article class="blog" data-aos="zoom-in">
+                <div class="movie-thumb">
+                    <a href="#" class="has-overlay">
+                        <img src="assets/img/template-post.jpg" data-src="https://galaxycine.vn/media/2020/8/7/elsarapunzel-grid_1596781419715.jpg" class="lazy"></a>
+                </div>
+                <h5><a href="#">Bí
+                                    Mật Hậu
+                                    Trường: Disney - Chuyện Chưa Kể</a></h5>
+                <ul class="article-blog-like">
+                    <li><span class="like"><span class="like">
+                                            <div data-href="#"
+                                                data-layout="button_count" data-action="like" data-size="small"
+                                                data-show-faces="false" data-share="false" class="fb-like"></div>
+                                        </span></span>
+                    </li>
+                    <li><span>
+                                        <div class="view-wrap"><i class="fa fa-eye"></i><span>115</span></div>
+                        </span>
+                    </li>
+                </ul>
+                <div class="blog-content hidden-xs">
+                    <p>
+                        <!--| --><span style="font-size:14px;"><span
+                                            style="font-family:Arial,Helvetica,sans-serif;"><span
+                                                style="line-height:107%">Đằng sau đế chế điện ảnh hùng hậu nhất hiện nay
+                                                tại Hollywood có
+                                                những bất ngờ nào? Hãy cùng tìm hiểu 32 điều thú vị từ Nhà
+                                                Chuột!</span></span>
+                        </span>
+                    </p>
+                </div>
+            </article>
+            <article class="blog" data-aos="zoom-in">
+                <div class="movie-thumb">
+                    <a href="#" class="has-overlay">
+                        <img src="assets/img/template-post.jpg" data-src="https://galaxycine.vn/media/2020/8/6/phimhan4_1596727114601.png" class="lazy"></a>
+                </div>
+                <h5><a href="#">Điện
+                                    ảnh Hàn giữa mùa Covid: Có bom tấn nhưng vẫn chưa thể “phá đảo”</a></h5>
+                <ul class="article-blog-like">
+                    <li><span class="like"><span class="like">
+                                            <div data-href="#"
+                                                data-layout="button_count" data-action="like" data-size="small"
+                                                data-show-faces="false" data-share="false" class="fb-like"></div>
+                                        </span></span>
+                    </li>
+                    <li><span>
+                                        <div class="view-wrap"><i class="fa fa-eye"></i><span>312</span></div>
+                        </span>
+                    </li>
+                </ul>
+                <div class="blog-content hidden-xs">
+                    <p><span style="font-size:14px;"><span
+                                            style="font-family:Arial,Helvetica,sans-serif;"><span
+                                                style="line-height:150%"><span style="line-height:150%">Alive,
+                                                    Peninsula, Steel Rain 2: Summit
+                                                    – đây đều là những dự án được coi là bom tấn của điện Hàn Quốc giữa
+                                                    một mùa Covid đen tối,
+                                                    ảm đạm. Thế nhưng đáng tiếc, dù được đánh giá tốt nhưng các bộ phim
+                                                    này vẫn chưa thể đột phá
+                                                    hoàn toàn… </span></span>
+                        </span>
+                        </span>
+                        <!--| -->
+                    </p>
+                </div>
+            </article>
+        </section>
+        <!-- End Bình luận phim/ Blog diện ảnh -->
+
+
+        <!-- ======= Tin khuyến mãi ======= -->
+        <section id="specials" class="specials">
+            <div class="container" data-aos="fade-up">
+                <a href="khuyen-mai.html" class="title-block">
+                    <h3><b>Tin khuyến mãi</b></h3>
+                </a>
+                <div class="row promotion">
+                    <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                        <div class="promotion-item-home">
+                            <a href="#"><img src="assets/img/template-promo.jpg" data-src="https://galaxycine.vn/media/2020/8/4/300x450_1596510968809.jpg" class="lazy"></a>
+                            <div class="decription-hover overlay hidden-xs">
+                                <a href="#">
+                                    <div class="info">
+                                        <h2>Xem Phim – Đọc Sách – Nâng Tầm Phong Cách</h2>
+                                        <p></p>
+                                        <p>
+                                            <!--| --><span style="font-family:Arial,Helvetica,sans-serif;"><span
+                                                    style="font-size:14px;"><span style="line-height:107%"><span
+                                                            style="line-height:107%">Đến <b>Galaxy Cinema</b>, nhận ngay
+                                                            01 Voucher giảm giá đến
+                                                            25k của Fahasa!</span></span>
+                                            </span>
+                                            </span>
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </a>
+                                <div class="group">
+                                    <a href="#"></a><a href="#" class="btn secondary-white">chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                        <div class="promotion-item-home">
+                            <a href="#"><img src="assets/img/template-promo.jpg" data-src="https://galaxycine.vn/media/2020/7/28/300x450_1595908198027.jpg" class="lazy"></a>
+                            <div class="decription-hover overlay hidden-xs">
+                                <a href="#">
+                                    <div class="info">
+                                        <h2>Check-in Galaxy Linh Trung - Rinh Quà Siêu Khủng</h2>
+                                        <p></p>
+                                        <p>
+                                            <!--| --><span style="font-family:Arial,Helvetica,sans-serif;"><span
+                                                    style="font-size:14px;"><span style="line-height:107%">Voucher
+                                                        <b>Mua 01 tặng 01</b>,
+                                                        giảm giá <b>50% Combo 2</b>, giảm giá <b>50% Combo Family 2</b>,
+                                                        <b>Free</b> vị và
+                                                        <b>Upsize</b> cho Combo 1&amp;2 đang chờ các Stars tại <b>Galaxy
+                                                            Linh
+                                                            Trung</b>.</span></span>
+                                            </span>
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </a>
+                                <div class="group">
+                                    <a href="#"></a><a href="#" class="btn secondary-white">chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                        <div class="promotion-item-home">
+                            <a href="#"><img src="assets/img/template-promo.jpg" data-src="https://galaxycine.vn/media/2020/8/3/300x450_1596441166137.jpg" class="lazy"></a>
+                            <div class="decription-hover overlay hidden-xs">
+                                <a href="#">
+                                    <div class="info">
+                                        <h2>Đua Top Săn Vàng</h2>
+                                        <p></p>
+                                        <p>
+                                            <!--| --><span style="font-size:14px;"><span
+                                                    style="font-family:Arial,Helvetica,sans-serif;">Cặp nhẫn Doji trị
+                                                    giá 20 TRIỆU VNĐ,
+                                                    Movie Voucher đủ xem tới hết năm và Combo đặc biệt
+                                                    chưa-từng-có-tại-Việt-Nam... Đó là
+                                                    những phần quà siêu giá trị sẽ dành cho các Stars chiến thắng cuộc
+                                                    chơi <strong>ĐUA TOP
+                                                        SĂN VÀNG - Top thành viên chi tiêu cao nhất, tích lũy được nhiều
+                                                        Stars </strong>nhất
+                                                    từ 01/07 tới 30/09.</span></span>
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </a>
+                                <div class="group">
+                                    <a href="#"></a><a href="#" class="btn secondary-white">chi
+                                        tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                        <div class="promotion-item-home">
+                            <a href="#"><img src="assets/img/template-promo.jpg" data-src="https://galaxycine.vn/media/2020/6/26/300x450_1593140184016.jpg" class="lazy"></a>
+                            <div class="decription-hover overlay hidden-xs">
+                                <a href="#">
+                                    <div class="info">
+                                        <h2>Chào Hè 2020: Xem Phim Phủ Phê, Không Lo Về Giá</h2>
+                                        <p></p>
+                                        <p>Thưởng thức loạt bom tấn như Tiệc Trăng Máu, The New Mutans, A Quiet Place 2,… với giá “siêu hạt rẻ” - Các Stars của Galaxy ở Đà Nẵng đã sẵn sàng chưa?&nbsp;
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </a>
+                                <div class="group">
+                                    <a href="#"></a><a href="#" class="btn secondary-white">chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                        <div class="promotion-item-home">
+                            <a href="#"><img src="assets/img/template-promo.jpg" data-src="https://galaxycine.vn/media/2019/12/9/300x450_1575874237175.jpg" class="lazy"></a>
+                            <div class="decription-hover overlay hidden-xs">
+                                <a href="#">
+                                    <div class="info">
+                                        <h2>TƯNG BỪNG HÁI "SAO" – NHẬN ƯU ĐÃI KHỦNG</h2>
+                                        <p></p>
+                                        <p>Galaxy Cinema ra mắt hệ thống tích điểm thành viên hoàn toàn mới!
+                                            <!--| -->
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </a>
+                                <div class="group">
+                                    <a href="#"></a><a href="#" class="btn secondary-white">chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                        <div class="promotion-item-home">
+                            <a href="#"><img src="assets/img/template-promo.jpg" data-src="https://galaxycine.vn/media/2020/7/30/300x450_1596080013139.jpg" class="lazy"></a>
+                            <div class="decription-hover overlay hidden-xs">
+                                <a href="#">
+                                    <div class="info">
+                                        <h2>Ngày Tri Ân Của Galaxy Cinema - Ngày Thứ Hai ĐẦU TIÊN Mỗi Tháng</h2>
+                                        <p></p>
+                                        <p>
+                                            <!--| --><span style="font-size:11pt"><span style="line-height:115%"><span
+                                                        style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span
+                                                            style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Từ
+                                                            lâu, chương trình
+                                                            Ngày Tri Ân Nhằm tạo điều kiện thuận lợi hơn cho các khách
+                                                            hàng thả ga xem phim đã
+                                                            trở nên quen thuộc với các khách hàng thân yêu của Galaxy
+                                                            Cinema.</span></span>
+                                            </span>
+                                            </span>
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </a>
+                                <div class="group">
+                                    <a href="#"></a><a href="#" class="btn secondary-white">chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                        <div class="promotion-item-home">
+                            <a href="#"><img src="assets/img/template-promo.jpg" data-src="https://galaxycine.vn/media/2020/7/1/galaxy-website-1_1593573807717.jpg" class="lazy"></a>
+                            <div class="decription-hover overlay hidden-xs">
+                                <a href="#">
+                                    <div class="info">
+                                        <h2>X2 Thành Viên - X2 Quyền Lợi</h2>
+                                        <p></p>
+                                        <p><span style="font-size:14px;"><span
+                                                    style="font-family:Arial,Helvetica,sans-serif;">Mở rộng
+                                                    quyền lợi thành viên Galaxy Cinema với tính năng đổi điểm mới dành
+                                                    cho các Stars thân
+                                                    yêu. Tự do quy đổi SAO sang điểm VUI của TAPTAP để có thêm nhiều lựa
+                                                    chọn ưu đãi hấp dẫn
+                                                    với đa dạng lĩnh vực từ ăn uống, mua sắm, giải trí cho đến du
+                                                    lịch.</span></span>
+                                        </p>
+
+                                        <p>
+                                            <!--| -->
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </a>
+                                <div class="group">
+                                    <a href="#"></a><a href="#" class="btn secondary-white">chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                        <div class="promotion-item-home">
+                            <a href="#"><img src="assets/img/template-promo.jpg" data-src="https://galaxycine.vn/media/2019/10/11/300x450_1570766652733.jpg" class="lazy"></a>
+                            <div class="decription-hover overlay hidden-xs">
+                                <a href="#">
+                                    <div class="info">
+                                        <h2>Bắt Kịp Thời Đại 4.0: Bye Bye Thẻ Thành Viên Nhựa</h2>
+                                        <p></p>
+                                        <p><span style="font-size:14px;"><span
+                                                    style="font-family:Arial,Helvetica,sans-serif;"><span
+                                                        style="line-height:normal">Không cần thẻ nhựa rườm rà nữa! Khi
+                                                        đến Galaxy Cinema mọi
+                                                        thao tác đều được đơn giản hóa chỉ với một chiếc điện thoại di
+                                                        động.</span></span>
+                                            </span>
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </a>
+                                <div class="group">
+                                    <a href="#"></a><a href="#" class="btn secondary-white">chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                        <div class="promotion-item-home">
+                            <a href="#--tiep-suc-cung-pepsi"><img src="assets/img/template-promo.jpg" data-src="https://galaxycine.vn/media/2020/7/23/300x450_1595473388168.jpg" class="lazy"></a>
+                            <div class="decription-hover overlay hidden-xs">
+                                <a href="#--tiep-suc-cung-pepsi">
+                                    <div class="info">
+                                        <h2>Đua Top Săn Vàng- Tiếp Sức Cùng Pepsi</h2>
+                                        <p></p>
+                                        <p><span style="font-size:14px;"><span
+                                                    style="font-family:Arial,Helvetica,sans-serif;"><span
+                                                        style="line-height:107%">Từ 01.08 – 31.08.2020, <b>Pepsi</b> sẽ
+                                                        tiếp sức cho các Stars
+                                                        tham gia cuộc đua top “rinh” nhẫn vàng bằng hàng loạt những ưu
+                                                        đãi hấp
+                                                        dẫn!</span></span>
+                                            </span>
+                                        </p>
+
+                                        <p>
+                                            <!--| -->
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </a>
+                                <div class="group">
+                                    <a href="#--tiep-suc-cung-pepsi"></a><a href="#--tiep-suc-cung-pepsi" class="btn secondary-white">chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                        <div class="promotion-item-home">
+                            <a href="#"><img src="assets/img/template-promo.jpg" data-src="https://galaxycine.vn/media/2020/7/6/300x450_1594022105132.jpg" class="lazy"></a>
+                            <div class="decription-hover overlay hidden-xs">
+                                <a href="#">
+                                    <div class="info">
+                                        <h2>Chào Hè 2020: Xem Phim Giá Rẻ, Không Lo Về Giá</h2>
+                                        <p></p>
+                                        <p><span style="font-size:14px;"><span
+                                                    style="font-family:Arial,Helvetica,sans-serif;">Thưởng
+                                                    thức loạt bom tấn trên thế giới như Tiệc Trăng Máu, Peninsula, The
+                                                    New Mutans, A Quiet
+                                                    Place 2,… với giá “siêu hạt rẻ” - Các Stars của Galaxy ở Hải Phòng
+                                                    đã sẵn sàng
+                                                    chưa?&nbsp;</span></span>
+                                            <!--| -->
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </a>
+                                <div class="group">
+                                    <a href="#"></a><a href="#" class="btn secondary-white">chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                        <div class="promotion-item-home">
+                            <a href="#"><img src="assets/img/template-promo.jpg" data-src="https://galaxycine.vn/media/2019/9/30/300x450-80-1569464713921_1569830041346.jpg" class="lazy"></a>
+                            <div class="decription-hover overlay hidden-xs">
+                                <a href="#">
+                                    <div class="info">
+                                        <h2>Đặt Vé Online - Không Lo Trễ Nải</h2>
+                                        <p></p>
+                                        <p>Giờ đây, chỉ với một thao tác nhỏ là các Stars có thể đến thẳng phòng chiếu xem phim ngay lập tức. &nbsp;</p>
+                                        <p></p>
+                                    </div>
+                                </a>
+                                <div class="group">
+                                    <a href="#"></a><a href="#" class="btn secondary-white">chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- End Tin khuyến mãi -->
+
+
+        <!-- ======= Diễn viên ======= -->
+        <section id="events" class="events">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Diễn viên</h2>
+                </div>
+
+                <div class="row" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-lg-2">
+                        <ul class="nav nav-tabs flex-column col-4">
+                            <li class="nav-item">
+                                <a class="nav-link active show" data-toggle="tab" href="#tab-4">Christ Evans</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-5">Margot Robbie</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-6">Pariatur explicabo vel</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-7">Nostrum qui quasi</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-8">Iusto ut expedita aut</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-9 mt-4 mt-lg-0" style="color: #dedede">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab-4">
+                                <div class="row">
+                                    <div class="col-lg-8 details order-2 order-lg-1">
+                                        <h3>Khác với Chris Hemsworth vẫn đang loay hoay trong hình tượng vị thần sấm sét, đa số người hâm mộ vẫn nhìn nhận rõ ràng, Chris Evans và Captain America là hai con người hoàn toàn khác nhau. </h3>
+                                        <p class="font-italic">Ngày sinh : 13/6/1981
+                                            </br>
+                                            Chiều cao: 183 cm
+                                            </br>
+                                            Quốc tịch: Mỹ</p>
+                                        <p>Sinh ngày 13 tháng 6 năm 1981 tại Boston, bang Massachusetts, con đường diễn xuất của cậu bé Chris Evans bắt đầu từ nhỏ với những vở kịch trong trường học. Tình yêu diễn xuất lớn dần theo năm tháng, khi trưởng thành,
+                                            Evans lắng nghe tiếng gọi con tim, tới New York và thi vào trường nghệ thuật Lee Strasberg. Theo lời khuyên của bạn bè, anh bắt đầu tham gia thử vai một vài phim rồi dần nhận ra đam mê của bản thân là phim trường
+                                            chứ không phải sân khấu kịch nghệ. Ban đầu con đường sự nghiệp của Chris khá bằng phẳng.</br> Năm 2000, anh xuất hiện lần đầu tiên trên một phim truyền hình của đài CBS. Sau vài vai diễn nhỏ trên các phim kinh
+                                            phí thấp, Evans bắt đầu xuất hiện trong các dự án lớn hơn.</br> Cuối năm 2001, tên tuổi Chris Evans vụt sáng với vai diễn chàng hotboy trường học trong bộ phim chiếu rạp Not Another Teen Movie. Chiều cao 1m83
+                                            cùng khuôn mặt đẹp trai “chuẩn Mỹ” giúp anh nhanh chóng trở thành người tình trong mộng của nhiều cô gái...
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-4 text-center ">
+                                        <img src="assets/img/actors/1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab-5">
+                                <div class="row">
+                                    <div class="col-lg-8 details order-2 order-lg-1">
+                                        <h3>Et blanditiis nemo veritatis excepturi</h3>
+                                        <p class="font-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
+                                        <p>Ea ipsum voluptatem consequatur quis est. Illum error ullam omnis quia et reiciendis sunt sunt est. Non aliquid repellendus itaque accusamus eius et velit ipsa voluptates. Optio nesciunt eaque beatae accusamus lerode
+                                            pakto madirna desera vafle de nideran pal</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                                        <img src="assets/img/actors/2.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab-6">
+                                <div class="row">
+                                    <div class="col-lg-8 details order-2 order-lg-1">
+                                        <h3>Impedit facilis occaecati odio neque aperiam sit</h3>
+                                        <p class="font-italic">Eos voluptatibus quo. Odio similique illum id quidem non enim fuga. Qui natus non sunt dicta dolor et. In asperiores velit quaerat perferendis aut</p>
+                                        <p>Iure officiis odit rerum. Harum sequi eum illum corrupti culpa veritatis quisquam. Neque necessitatibus illo rerum eum ut. Commodi ipsam minima molestiae sed laboriosam a iste odio. Earum odit nesciunt fugiat sit
+                                            ullam. Soluta et harum voluptatem optio quae</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                                        <img src="assets/img/actors/3.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab-7">
+                                <div class="row">
+                                    <div class="col-lg-8 details order-2 order-lg-1">
+                                        <h3>Fuga dolores inventore laboriosam ut est accusamus laboriosam dolore</h3>
+                                        <p class="font-italic">Totam aperiam accusamus. Repellat consequuntur iure voluptas iure porro quis delectus
+                                        </p>
+                                        <p>Eaque consequuntur consequuntur libero expedita in voluptas. Nostrum ipsam necessitatibus aliquam fugiat debitis quis velit. Eum ex maxime error in consequatur corporis atque. Eligendi asperiores sed qui veritatis
+                                            aperiam quia a laborum inventore</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                                        <img src="assets/img/actors/4.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab-8">
+                                <div class="row">
+                                    <div class="col-lg-8 details order-2 order-lg-1">
+                                        <h3>Est eveniet ipsam sindera pad rone matrelat sando reda</h3>
+                                        <p class="font-italic">Omnis blanditiis saepe eos autem qui sunt debitis porro quia.
+                                        </p>
+                                        <p>Exercitationem nostrum omnis. Ut reiciendis repudiandae minus. Omnis recusandae ut non quam ut quod eius qui. Ipsum quia odit vero atque qui quibusdam amet. Occaecati sed est sint aut vitae molestiae voluptate vel</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                                        <img src="assets/img/actors/5.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- End Diễn viên -->
+
+
+        <!-- ======= Giới thiệu ======= -->
+        <section id="intro" class="intro">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <section id="content">
+                            <h3>Valorant Cinema</h3>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="content-intro">
+                                        <p style="margin-top:0in; margin-right:0in; margin-bottom:10.0pt; margin-left:0in; text-align:justify">
+                                            <span style="font-size:12pt"><span><a
+                                                        href="home.html"><b><span
+                                                                style="font-size:10.5pt"><span>Valorant Cinema</span></span>
+                                            </b>
+                                            </a><span style="font-size:10.5pt"><span>&nbsp;là một trong những
+                                                            công ty
+                                                            tư nhân đầu tiên về điện ảnh được thành lập từ năm 2003, đã
+                                                            khẳng định thương hiệu là 1
+                                                            trong 10 địa điểm vui chơi giải trí được yêu thích nhất.
+                                                            Ngoài hệ thống rạp chiếu phim
+                                                            hiện đại, thu hút hàng triệu lượt người đến xem, <a
+                                                                href="home.html"><b>Valorant
+                                                                    Cinema</b></a> còn hấp dẫn khán giả bởi
+                                                            không khí thân thiện cũng như chất lượng dịch vụ hàng
+                                                            đầu.</span></span>
+                                            </span>
+                                            </span>
+                                        </p>
+
+                                        <p style="margin-top:0in; margin-right:0in; margin-bottom:10.0pt; margin-left:0in; text-align:justify">
+                                            <span style="font-size:12pt"><span><span style="font-size:10.5pt"><span>Đến
+                                                            website <a
+                                                                href="home.html"><i>Valorant.vn</i></a>,
+                                                            quý khách sẽ được
+                                                            cập nhật nhanh chóng các <a
+                                                                href="phim-hay.html"><i>phim
+                                                                    hay
+                                                                    nhất</i></a> <a
+                                                                href="phim-dang-chieu.html"><i>phim
+                                                                    mới
+                                                                    nhất</i></a> đang chiếu hoặc sắp chiếu. <a
+                                                                href="lich-chieu.html"><i>Lịch
+                                                                    chiếu</i></a> tại mọi hệ thống <a
+                                                                href="home.html"><i>rạp chiếu phim</i>
+                                                            </a>của <a href="home.html"><b>Valorant
+                                                                    Cinema</b></a> cũng được cập nhật đầy đủ
+                                                            hàng ngày hàng giờ trên<i> trang chủ</i>. </span></span>
+                                            </span>
+                                            </span>
+                                        </p>
+
+                                        <p style="margin-top:0in; margin-right:0in; margin-bottom:10.0pt; margin-left:0in; text-align:justify">
+                                            <span style="font-size:12pt"><span><span style="font-size:10.5pt"><span>Đặt
+                                                            vé tại <b><a href="home.html">Valorant
+                                                                    Cinema</a> </b>dễ dàng chỉ sau vài
+                                                            thao tác vô cùng đơn giản. Để mua vé, hãy vào tab Mua vé.
+                                                            Quý khách có thể chọn Mua vé
+                                                            theo phim, theo rạp, theo ngày tùy cách nào tiện lợi nhất
+                                                            cho bản thân.Sau đó, tiến hành
+                                                            mua vé theo các bước hướng dẫn. Chỉ trong vài phút, quý
+                                                            khách sẽ nhận được tin nhắn và
+                                                            email phản hồi <i>Đặt vé thành công</i> của <a
+                                                                href="home.html"><b>Valorant
+                                                                    Cinema</b></a>. Quý khách có thể dùng tin nhắn lấy
+                                                            vé tại quầy vé của<a href="home.html">
+                                                                <b>Valorant Cinema</b></a> hoặc quét mã QR để một bước
+                                                            vào rạp mà không cần tốn thêm bất kỳ công đoạn nào
+                                                            nữa.</span></span>
+                                            </span>
+                                            </span>
+                                        </p>
+
+                                        <p style="margin-top:0in; margin-right:0in; margin-bottom:10.0pt; margin-left:0in; text-align:justify">
+                                            <span style="font-size:12pt"><span><span style="font-size:10.5pt"><span>Nếu
+                                                            bạn đã chọn được <a
+                                                                href="phim-hay.html"><i>phim
+                                                                    hay</i></a>
+                                                            để xem, hãy đặt vé cực nhanh bằng box <i>Mua Vé Nhanh</i>
+                                                            ngay từ <a href="home.html"><i>Trang
+                                                                    Chủ</i></a>. Chỉ cần một phút, tin nhắn và
+                                                            email phản hồi của <b><a
+                                                                    href="home.html">Valorant Cinema</a>
+                                                            </b>sẽ gửi
+                                                            ngay vào điện thoại và hộp mail của bạn. </span></span>
+                                            </span>
+                                            </span>
+                                        </p>
+
+                                        <p style="margin-top:0in; margin-right:0in; margin-bottom:10.0pt; margin-left:0in; text-align:justify">
+                                            <span style="font-size:12pt"><span><span style="font-size:10.5pt"><span>Nếu
+                                                            chưa quyết định sẽ xem <i>phim mới</i> nào, hãy tham khảo
+                                                            các bộ<a href="phim-hay.html">
+                                                                <i>phim hay</i></a> trong mục<a
+                                                                href="phim-dang-chieu.html">
+                                                                <i>Phim Đang Chiếu</i></a> cũng như <a
+                                                                href="phim-sap-chieu.html"><i>Phim
+                                                                    Sắp Chiếu</i> </a>tại <a
+                                                                href="rap-gia-ve.html"><i>rạp chiếu
+                                                                    phim</i></a> bằng cách vào mục <a
+                                                                href="binh-luan-film.html"><i>Bình
+                                                                    Luận Phim</i></a> ở <i><a
+                                                                    href="dien-anh.html">Góc Điện
+                                                                    Ảnh</a> </i>để đọc những bài bình
+                                                            luận chân thật nhất, tham khảo và cân nhắc. Sau đó, quý
+                                                            khách hãy đặt vé bằng box <i>Mua
+                                                                Vé Nhanh</i> ngay ở đầu trang để chọn được suất chiếu và
+                                                            chỗ ngồi vừa ý nhất.
+                                                            &nbsp;</span></span>
+                                            </span>
+                                            </span>
+                                        </p>
+
+                                        <p style="margin-top:0in; margin-right:0in; margin-bottom:10.0pt; margin-left:0in; text-align:justify">
+                                            <span style="font-size:12pt"><span><a
+                                                        href="home.html"><b><span
+                                                                style="font-size:10.5pt"><span>Valorant
+                                                                    Cinema</span></span>
+                                            </b>
+                                            </a><span style="font-size:10.5pt"><span> luôn có những chương
+                                                            trình<a href="khuyen-mai.html">
+                                                                <i>khuyến mãi</i>, <i>ưu đãi</i></a>, quà
+                                                            tặng vô cùng hấp dẫn như <i>giảm giá</i> vé, tặng vé xem
+                                                            phim miễn phí, tặng Combo, tặng
+                                                            quà phim… &nbsp;dành cho quý khách. </span></span>
+                                            </span>
+                                            </span>
+                                        </p>
+
+                                        <p style="margin-top:0in; margin-right:0in; margin-bottom:10.0pt; margin-left:0in; text-align:justify">
+                                            <span style="font-size:12pt"><span><span
+                                                        style="font-size:10.5pt"><span>Trang web <i>Valorant.vn</i>
+                                                            còn có mục <i>Góc Điện Ảnh</i> - sở hữu lượng dữ liệu về
+                                                            phim, diễn viên và đạo diễn, giúp
+                                                            quý khách dễ dàng chọn được phim mình yêu thích và nâng cao
+                                                            kiến thức về điện ảnh của bản
+                                                            thân. Ngoài ra, vào mỗi tháng, <a
+                                                                href="home.html"><strong>Valorant
+                                                                    Cinema</strong> </a>cũng giới thiệu các <a
+                                                                href="phim-sap-chieu.html"><i>phim
+                                                                    sắp chiếu</i></a> hot nhất trong
+                                                            mục <a href="phim-hay.html"><i>Phim Hay
+                                                                    Tháng</i> </a>để quý khách
+                                                            sớm có sự tính toán.</span></span>
+                                            </span>
+                                            </span>
+                                        </p>
+
+                                        <p style="margin-top:0in; margin-right:0in; margin-bottom:10.0pt; margin-left:0in; text-align:justify">
+                                            <span style="font-size:12pt"><span><span style="font-size:10.5pt"><span>Hiện
+                                                            nay, <a href="home.html"><strong><span>Valorant
+                                                                        Cinema</span></strong>
+                                            </a> đang ngày càng phát triển hơn nữa với các chương trình đặc sắc, các khuyến mãi hấp dẫn, đem đến cho khán giả những bộ phim bom tấn của thế giới và Việt Nam nhanh chóng và sớm nhất.
+                                            </span>
+                                            </span>
+                                            </span>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Giới thiệu -->
+
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Contact</h2>
+                    <p>Contact Us</p>
+                </div>
+            </div>
+
+            <div class="container" data-aos="fade-up">
+
+                <div class="row mt-5">
+                    <div class="col-lg-4">
+                        <div class="info">
+                            <div class="address">
+                                <i class="icofont-google-map"></i>
+                                <h4>Location:</h4>
+                                <p>1 Nguyễn Văn Linh- Hải Châu- Đà Nẵng</p>
+                            </div>
+
+                            <div class="open-hours">
+                                <i class="icofont-clock-time icofont-rotate-90"></i>
+                                <h4>Open Hours:</h4>
+                                <p>
+                                    Monday-Saturday:<br> 8:00 AM - 23:00 PM
+                                </p>
+                            </div>
+
+                            <div class="email">
+                                <i class="icofont-envelope"></i>
+                                <h4>Email:</h4>
+                                <p>valorantteam@gmail.com</p>
+                            </div>
+
+                            <div class="phone">
+                                <i class="icofont-phone"></i>
+                                <h4>Call:</h4>
+                                <p>+84 369123478</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-8 mt-5 mt-lg-0">
+                        <div data-aos="fade-up">
+                            <iframe style="border:0; width: 700px; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.0855462599047!2d108.22231711699898!3d16.061049995256443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTbCsDAzJzM5LjgiTiAxMDjCsDEzJzI1LjUiRQ!5e0!3m2!1sen!2s!4v1597320681181!5m2!1sen!2s"
+                                frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <!-- End Contact Section -->
+    </main>
+    <!-- End #main -->
+
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_nav_menu">
+                                <h1 class="title-widget">Giới thiệu</h1>
+                                <ul>
+                                    <li><a href="ve-chung-toi.html"><i
+                                                class="fa fa-angle-double-right"></i> Về chúng
+                                            tôi</a></li>
+                                    <li><a href="thoa-thuan-su-dung.html"><i
+                                                class="fa fa-angle-double-right"></i>
+                                            Thoả thuận sử dụng</a></li>
+                                    <li><a href="quy-che-hoat-dong.html"><i
+                                                class="fa fa-angle-double-right"></i> Quy
+                                            chế hoạt động</a></li>
+                                    <li><a href="chinh-sach-bao-mat.html"><i
+                                                class="fa fa-angle-double-right"></i>
+                                            Chính sách bảo mật</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_nav_menu">
+                                <h1 class="title-widget">Góc điện ảnh</h1>
+                                <ul>
+                                    <li><a href="dien-anh.html"><i
+                                                class="fa fa-angle-double-right"></i> Thể loại
+                                            phim</a></li>
+                                    <li><a href="binh-luan-film.html"><i
+                                                class="fa fa-angle-double-right"></i> Bình
+                                            luận phim</a></li>
+                                    <li><a href="blog-phim.html"><i
+                                                class="fa fa-angle-double-right"></i> Blog điện
+                                            ảnh</a></li>
+                                    <li><a href="phim-hay.html"><i
+                                                class="fa fa-angle-double-right"></i> Phim hay
+                                            tháng</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_nav_menu">
+                                <h1 class="title-widget">Hỗ trợ</h1>
+                                <ul>
+                                    <li><a href="gop-y.html"><i
+                                                class="fa fa-angle-double-right"></i> Góp ý</a></li>
+                                    <li><a href="#"><i
+                                                class="fa fa-angle-double-right"></i> Sale
+                                            &amp; Services</a></li>
+                                    <li><a href="rap-gia-ve.html"><i
+                                                class="fa fa-angle-double-right"></i> Rạp / giá
+                                            vé</a></li>
+                                    <li><a href="tuyen-dung.html"><i
+                                                class="fa fa-angle-double-right"></i> Tuyển
+                                            dụng</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_recent_news">
+                                <h1 class="title-widget">Kết nối Valorant cinema</h1>
+                                <div class="social-icons">
+                                    <ul class="nomargin">
+                                        <a href="#" target="_blank"><i id="social"
+                                                class="fa fa-facebook-official"></i></a>
+                                        <a href="#" target="_blank"><i
+                                                id="social" class="fa fa-youtube-play"></i></a>
+                                        <a href="#" target="_blank"><i id="social"
+                                                class="fa fa-instagram"></i></a>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <br>
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_recent_news">
+                                <h1 class="title-widget">Download App</h1>
+                                <div class="social-icons">
+                                    <ul class="nomargin">
+                                        <a href="https://itunes.apple.com/vn/app/galaxy-cinema/id593312549?l=vi&amp;mt=8" target="_blank"><i id="social" class="fa fa-apple"></i></a>
+                                        <a href="https://play.google.com/store/apps/details?id=com.galaxy.cinema&amp;hl=vi" target="_blank"><i id="social" class="fa fa-google"></i></a></ul>
+                        </ul>
+                        </div>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                        <a href="home.html"><img src="assets/img/galaxy-logo-footer.png" alt="Galaxy Cinema"></a>
+                        <div class="copyright">
+                            <p>Công Ty Cổ Phần Phim Thiên Ngân, Tầng 5, Toà Nhà Mặt Trời Sông Hồng, 23 Phan Chu Trinh, Phường Phan Chu Trinh, Quận Hoàn Kiếm, Hà Nội</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <script src="assets/js/lazyload.js" async="async"></script>
+    <script>
+        window.lazyLoadOptions = {
+            img: ".lazy"
+        };
+    </script>
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top" onclick="scrollTopAnimated()"><i class="bx bx-up-arrow-alt"></i></a>
+    <script type="text/javascript">
+        function scrollTopAnimated() {
+            $("html, body").animate({
+                scrollTop: "0"
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>

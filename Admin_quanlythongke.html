@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>ADMIN - VALORANT CINEMA</title>
+    <link rel="icon" href="assets/img/icon.png" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+
+
+    <!-- JS Files -->
+    <script src="assets/js/bootstrap.js" defer="defer"></script>
+    <script src="assets/js/bootstrap-datepicker.js" defer="defer"></script>
+    <script src="assets/js/jquery.bcSwipe.min.js" defer="defer"></script>
+    <script src="assets/js/app.js" defer="defer"></script>
+    <script src="assets/js/main 2.js" defer="defer"></script>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/venobox/venobox.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        var tabchon = 1;
+        $(function() {
+            $("#datepicker").datepicker();
+        });
+
+        $(function() {
+            $("#datepickeruser1").datepicker();
+            $("#datepickeruser2").datepicker({
+                useCurrent: false //Important! See issue #1075
+            });
+            $("#datepickeruser1").on("dp.change", function(e) {
+                $('#datepickeruser2').minDate(e.date);
+            });
+            $("#datepickeruser2").on("dp.change", function(e) {
+                $('#datepickeruser1').maxDate(e.date);
+            });
+        });
+
+        $(function() {
+            $("#datepickerphim1").datepicker();
+            $("#datepickerphim2").datepicker({
+                useCurrent: false //Important! See issue #1075
+            });
+            $("#datepickerphim1").on("dp.change", function(e) {
+                $('#datepickerphim2').minDate(e.date);
+            });
+            $("#datepickerphim2").on("dp.change", function(e) {
+                $('#datepickerphim1').maxDate(e.date);
+            });
+        });
+
+        var stateObject = {
+            "Đà Nẵng": {
+                "Hải Châu": [],
+                "Cẩm Lệ": [],
+                "Liên Chiểu": [],
+                "Sơn Trà": [],
+                "Thanh Khê": [],
+                "Hoà Vang": [],
+                "Hoàng Sa": [],
+                "Ngũ Hành Sơn": []
+            },
+            "TP Hồ Chí Minh": {
+                "Quận 1": [],
+                "Quận 2": [],
+                "Quận 3": [],
+                "Quận 4": [],
+                "Quận 5": [],
+                "Quận 6": [],
+                "Quận 7": [],
+                "Quận 8": [],
+                "Quận 9": [],
+                "Quận 10": [],
+                "Quận 11": [],
+                "Quận 12": [],
+                "Quận Bình Chánh": [],
+                "Quận Bình Thạnh": [],
+                "Quận Bình Tân": [],
+                "Quận Gò Vấp": [],
+                "Quận Tân Bình": []
+            },
+            "Hà Nội": {
+                "Quận Tân Bình": [],
+                "Quận 1": [],
+                "Quận 2": []
+            },
+        }
+        window.onload = function() {
+            var CitySel = document.getElementById("CitySel"),
+                DistrictSel = document.getElementById("DistrictSel");
+            for (var country in stateObject) {
+                CitySel.options[CitySel.options.length] = new Option(country, country);
+            }
+            CitySel.onchange = function() {
+                DistrictSel.length = 1; // remove all options bar first
+                if (this.selectedIndex < 1) return; // done
+                for (var state in stateObject[this.value]) {
+                    DistrictSel.options[DistrictSel.options.length] = new Option(state, state);
+                }
+            }
+            CitySel.onchange(); // reset in case page is reloaded
+
+            var CitySel2 = document.getElementById("CitySel2"),
+                DistrictSel2 = document.getElementById("DistrictSel2");
+            for (var country in stateObject) {
+                CitySel2.options[CitySel2.options.length] = new Option(country, country);
+            }
+            CitySel2.onchange = function() {
+                DistrictSel2.length = 1; // remove all options bar first
+                if (this.selectedIndex < 1) return; // done
+                for (var state in stateObject[this.value]) {
+                    DistrictSel2.options[DistrictSel2.options.length] = new Option(state, state);
+                }
+            }
+            CitySel2.onchange(); // reset in case page is reloaded
+        }
+    </script>
+</head>
+
+<body>
+    <span us-spinner="" spinner-key="spinner-1" spinner-start-active="false"></span>
+
+    <!-- ======= Header ======= -->
+    <div class="header">
+        <!-- ======= Top Bar ======= -->
+        <div ng-controller="headerController" class="">
+            <div class="container-fluid top-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="header-nav-wrapper">
+                            <div class="col-md-3 col-sm-4 col-xs-4">
+                                <div class="logo">
+                                    <a href="./home.html"><img src="assets/img/logo.png" data-src="website/images/logo.png" alt="Valorant Cinema" class="lazy hidden-xs hidden-sm loaded" data-was-processed="true"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="primary-nav-wrapper desktop hidden-xs hidden-sm">
+                                    <div class="search">
+                                        <galaxy-search-bar class="ng-isolate-scope">
+                                            <form class="search-form ng-pristine ng-valid" ng-submit="submit()">
+                                                <div class="input-append">
+                                                    <input placeholder="Tìm tên phim, diễn viên..." class="search-box ng-pristine ng-untouched ng-valid ng-empty" type="text" autocomplete="off" ng-model="searchKey" ng-model-options="{ updateOn: &quot;default blur&quot;, debounce: { default: 500, blur: 0 } }"
+                                                        ,="" ng-change="search(searchKey)">
+                                                    <button type="submit" class="search-btn"><i
+                                                            class="fa fa-search"></i></button>
+                                                </div>
+                                            </form>
+                                        </galaxy-search-bar>
+                                    </div>
+
+
+                                    <div class="secondary-nav-wrapper">
+                                        <ul class="secondary-nav">
+                                            <li>
+                                                <div ng-if="userInfo.memberId" class="dropdown ng-scope">
+                                                    <a style="display: flex; align-items: center; justify-content: center; color: #f26b38;" ng-style="{ display: (userInfo.fullName ? &#39;block&#39; : &#39;none&#39;) }" href="https://www.galaxycine.vn/thanh-vien" ng-if="userInfo" data-toggle="dropdown"
+                                                        aria-expanded="true" class="dropdown-toggle ng-scope">
+                                                        <i class="fa fa-user-circle" style="font-size: 20px;"></i>
+                                                        <span class="ng-binding">Trần Duy Tiến</span>
+                                                    </a>
+                                                    <div class="dropdown-menu">
+                                                        <a href="Admin_quanly.html" class="dropdown-item">Tài khoản</a>
+                                                        <a ng-click="logout()" class="dropdown-item">Thoát</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="galaxy-nav ng-scope">
+            <div class="container">
+                <div class="search hidden-lg hidden-md">
+                    <galaxy-search-bar class="ng-isolate-scope">
+                        <form class="search-form ng-pristine ng-valid" ng-submit="submit()">
+                            <div class="input-append">
+                                <input placeholder="Tìm tên phim, diễn viên..." class="search-box ng-pristine ng-untouched ng-valid ng-empty" type="text" autocomplete="off" ng-model="searchKey" ng-model-options="{ updateOn: &quot;default blur&quot;, debounce: { default: 500, blur: 0 } }"
+                                    ,="" ng-change="search(searchKey)">
+                                <button type="submit" class="search-btn"><i class="icon-search"></i></button>
+                                <!-- ngIf: dataSearch && dataSearch.items && dataSearch.items.length>0 -->
+                            </div>
+                        </form>
+                    </galaxy-search-bar>
+                </div>
+                <nav>
+                    <ul class="primary-nav">
+                        <li><a href="home.html">Trang chủ</a></li>
+                        <li><a href="Admin_quanly.html">Cá nhân</a></li>
+                        <li><a href="Admin_quanlythongke.html">Thống kê giao dịch</a></li>
+                        <li><a href="Admin_quanlythemthongtin.html">Thêm/ sửa</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- ======= End Top Bar ======= -->
+    </div>
+    <!-- ======= Header ======= -->
+
+    <!-- ======= Main ======= -->
+    <main id="main">
+        <div class="wrapper">
+            <div class="block-wrapper">
+                <div class="container">
+                    <div class="row" data-aos="fade-up">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="home.html">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="Admin_quanly.html">Admin</a></li>
+                            <li class="breadcrumb-item active">Thống kê giao dịch</li>
+                        </ol>
+                    </div>
+                    <div class="row" data-aos="fade-up">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="content-wrapper">
+                                <div class="tab-movies tab-crm">
+                                    <div class="tab-movies-line">
+                                        <div id="tab_thongke" class="tab-pane ng-scope active">
+                                            <div class="tab-movies-line">
+                                                <ul class="nav nav-tabs">
+                                                    <li id="tab_1"><a href="#tab_thongketheouser" data-toggle="tab" style="font-size: 16px">Thống kê theo users</a></li>
+                                                    <li id="tab_2"><a href="#tab_thongketheophim" data-toggle="tab" style="font-size: 16px">Thống kê theo phim</a></li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                    <div id="tab_thongketheouser" class="tab-pane ng-scope">
+                                                        <form class="member-form ng-pristine ng-valid">
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-sm-8 col-xs-8"><label>Từ</label>
+                                                                    <a class="btn btn-select login location datepicker" id="datepickeruser1">
+                                                                        <input type="text" class="btn-select-input date" placeholder="Từ ngày (MM/dd/yyyy)">
+                                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-8 col-xs-8"><label>Đến</label>
+                                                                    <a class="btn btn-select login location datepicker" id="datepickeruser2">
+                                                                        <input type="text" class="btn-select-input date" placeholder="Đến ngày (MM/dd/yyyy)">
+                                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <button id="submit" class="btn primary btn-login-buyticket">Lưu lại</button>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <form class="search-form" ng-submit="submit()">
+                                                                        <a class="btn btn-select login datepicker">
+                                                                            <input type="text" id="datepicker" name="" class="btn-select-input date" placeholder="Tìm theo người dùng">
+                                                                            <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+                                                                        </a>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table member-table table-striped">
+                                                                            <thead valign="top">
+                                                                                <tr>
+                                                                                    <th>ID_User</th>
+                                                                                    <th>Account</th>
+                                                                                    <th>Tổng (VNĐ)</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div id="tab_thongketheophim" class="tab-pane ng-scope">
+                                                        <form class="member-form ng-pristine ng-valid">
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-sm-8 col-xs-8"><label>Từ</label>
+                                                                    <a class="btn btn-select login location datepicker" id="datepickerphim1">
+                                                                        <input type="text" class="btn-select-input date" placeholder="Từ ngày (MM/dd/yyyy)">
+                                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-8 col-xs-8"><label>Đến</label>
+                                                                    <a class="btn btn-select login location datepicker" id="datepickerphim2">
+                                                                        <input type="text" class="btn-select-input date" placeholder="Đến ngày (MM/dd/yyyy)">
+                                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <form class="search-form" ng-submit="submit()">
+                                                                        <a class="btn btn-select login datepicker">
+                                                                            <input type="text" id="datepicker" name="" class="btn-select-input date" placeholder="Tìm theo phim">
+                                                                            <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+                                                                        </a>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table member-table table-striped">
+                                                                            <thead valign="top">
+                                                                                <tr>
+                                                                                    <th>ID_Film</th>
+                                                                                    <th>Tên phim</th>
+                                                                                    <th>Tổng (VNĐ)</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <script>
+                                                    $(document).ready(function() {
+                                                        if (tabchon == 1) {
+                                                            $('ul li[id="tab_1"]').toggleClass('active');
+                                                            $('div.tab-content [id="tab_thongketheouser"]').toggleClass('active');
+                                                        } else {
+                                                            $('ul li[id="tab_2"]').toggleClass('active');
+                                                            $('div.tab-content [id="tab_thongketheophim"]').toggleClass('active');
+                                                        }
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- End #main -->
+
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_nav_menu">
+                                <h1 class="title-widget">Giới thiệu</h1>
+                                <ul>
+                                    <li><a href="ve-chung-toi.html"><i class="fa fa-angle-double-right"></i> Về chúng
+                                            tôi</a></li>
+                                    <li><a href="thoa-thuan-su-dung.html"><i class="fa fa-angle-double-right"></i>
+                                            Thoả thuận sử dụng</a></li>
+                                    <li><a href="quy-che-hoat-dong.html"><i class="fa fa-angle-double-right"></i> Quy
+                                            chế hoạt động</a></li>
+                                    <li><a href="chinh-sach-bao-mat.html"><i class="fa fa-angle-double-right"></i>
+                                            Chính sách bảo mật</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_nav_menu">
+                                <h1 class="title-widget">Góc điện ảnh</h1>
+                                <ul>
+                                    <li><a href="dien-anh.html"><i class="fa fa-angle-double-right"></i> Thể loại
+                                            phim</a></li>
+                                    <li><a href="binh-luan-film.html"><i class="fa fa-angle-double-right"></i> Bình
+                                            luận phim</a></li>
+                                    <li><a href="blog-phim.html"><i class="fa fa-angle-double-right"></i> Blog điện
+                                            ảnh</a></li>
+                                    <li><a href="phim-hay.html"><i class="fa fa-angle-double-right"></i> Phim hay
+                                            tháng</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_nav_menu">
+                                <h1 class="title-widget">Hỗ trợ</h1>
+                                <ul>
+                                    <li><a href="gop-y.html"><i class="fa fa-angle-double-right"></i> Góp ý</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-double-right"></i> Sale
+                                            &amp; Services</a></li>
+                                    <li><a href="rap-gia-ve.html"><i class="fa fa-angle-double-right"></i> Rạp / giá
+                                            vé</a></li>
+                                    <li><a href="tuyen-dung.html"><i class="fa fa-angle-double-right"></i> Tuyển
+                                            dụng</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_recent_news">
+                                <h1 class="title-widget">Kết nối Valorant cinema</h1>
+                                <div class="social-icons">
+                                    <ul class="nomargin">
+                                        <a href="#" target="_blank"><i id="social"
+                                                class="icofont-facebook"></i></a>
+                                        <a href="#" target="_blank"><i id="social" class="icofont-youtube"></i></a>
+                                        <a href="#" target="_blank"><i id="social" class="fa fa-instagram"></i></a>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <br>
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_recent_news">
+                                <h1 class="title-widget">Download App</h1>
+                                <div class="social-icons">
+                                    <ul class="nomargin">
+                                        <a href="https://itunes.apple.com/vn/app/galaxy-cinema/id593312549?l=vi&amp;mt=8" target="_blank"><i id="social" class="icofont-brand-apple"></i></a>
+                                        <a href="https://play.google.com/store/apps/details?id=com.galaxy.cinema&amp;hl=vi" target="_blank"><i id="social" class="icofont-google-plus"></i></a></ul>
+                        </ul>
+                        </div>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                        <a href="home.html"><img src="assets/img/galaxy-logo-footer.png" alt="Galaxy Cinema"></a>
+                        <div class="copyright">
+                            <p>Công Ty Cổ Phần Phim Thiên Ngân, Tầng 5, Toà Nhà Mặt Trời Sông Hồng, 23 Phan Chu Trinh, Phường Phan Chu Trinh, Quận Hoàn Kiếm, Hà Nội</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <script src="assets/js/lazyload.js" async="async"></script>
+    <script>
+        window.lazyLoadOptions = {
+            img: ".lazy"
+        };
+    </script>
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top" onclick="scrollTopAnimated()"><i class="bx bx-up-arrow-alt"></i></a>
+    <script type="text/javascript">
+        function scrollTopAnimated() {
+            $("html, body").animate({
+                scrollTop: "0"
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>
