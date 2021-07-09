@@ -2391,7 +2391,7 @@ ul.search-list li:last-child {
     max-height: 42px;
 }
 
-.blog .blog-content * {}
+/* .blog .blog-content * {} */
 
 .blog:hover h5 a {
     color: #f26b38;
