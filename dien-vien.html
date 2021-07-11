@@ -7,7 +7,7 @@
 
     <title>Diễn viên - VALORANT CINEMA</title>
     <link rel="icon" href="assets/img/icon.png" type="image/x-icon">
-    
+
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
@@ -55,7 +55,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
-        $(function() {
+        $(function () {
             $("#datepicker").datepicker();
         });
 
@@ -76,13 +76,13 @@
                 "Quận 2": []
             },
         }
-        window.onload = function() {
+        window.onload = function () {
             var CitySel = document.getElementById("CitySel"),
                 DistrictSel = document.getElementById("DistrictSel");
             for (var country in stateObject) {
                 CitySel.options[CitySel.options.length] = new Option(country, country);
             }
-            CitySel.onchange = function() {
+            CitySel.onchange = function () {
                 DistrictSel.length = 1; // remove all options bar first
                 if (this.selectedIndex < 1) return; // done
                 for (var state in stateObject[this.value]) {
@@ -107,7 +107,9 @@
                         <div class="header-nav-wrapper">
                             <div class="col-md-3 col-sm-4 col-xs-4">
                                 <div class="logo">
-                                    <a href="./home.html"><img src="assets/img/logo.png" data-src="website/images/logo.png" alt="Valorant Cinema" class="lazy hidden-xs hidden-sm loaded" data-was-processed="true"></a>
+                                    <a href="./home.html"><img src="assets/img/logo.png"
+                                            data-src="website/images/logo.png" alt="Valorant Cinema"
+                                            class="lazy hidden-xs hidden-sm loaded" data-was-processed="true"></a>
                                 </div>
                             </div>
                             <div class="col-md-8 col-sm-8 col-xs-8">
@@ -116,7 +118,10 @@
                                         <galaxy-search-bar class="ng-isolate-scope">
                                             <form class="search-form ng-pristine ng-valid" ng-submit="submit()">
                                                 <div class="input-append">
-                                                    <input placeholder="Tìm tên phim, diễn viên..." class="search-box ng-pristine ng-untouched ng-valid ng-empty" type="text" autocomplete="off" ng-model="searchKey" ng-model-options="{ updateOn: &quot;default blur&quot;, debounce: { default: 500, blur: 0 } }"
+                                                    <input placeholder="Tìm tên phim, diễn viên..."
+                                                        class="search-box ng-pristine ng-untouched ng-valid ng-empty"
+                                                        type="text" autocomplete="off" ng-model="searchKey"
+                                                        ng-model-options="{ updateOn: &quot;default blur&quot;, debounce: { default: 500, blur: 0 } }"
                                                         ,="" ng-change="search(searchKey)">
                                                     <button type="submit" class="search-btn"><i
                                                             class="fa fa-search"></i></button>
@@ -129,7 +134,8 @@
                                     <div class="secondary-nav-wrapper">
                                         <ul class="secondary-nav">
                                             <li>
-                                                <a id="loginLink" href="#" ng-show="!userInfo.memberId" ng-click="openLogin()"><i class="fa fa-user"></i>Đăng nhập/ Đăng
+                                                <a id="loginLink" href="#" ng-show="!userInfo.memberId"
+                                                    ng-click="openLogin()"><i class="fa fa-user"></i>Đăng nhập/ Đăng
                                                     ký</a>
                                             </li>
                                         </ul>
@@ -137,7 +143,8 @@
                                     <div class="primary-nav-wrapper hidden-lg hidden-md">
                                         <div class="secondary-nav-wrapper">
                                             <ul class="secondary-nav">
-                                                <li><a id="loginLinkMobile" href="#" ng-show="!userInfo.memberId" ng-click="openLogin()"><i class="fa fa-user"></i>Đăng nhập/ Đăng
+                                                <li><a id="loginLinkMobile" href="#" ng-show="!userInfo.memberId"
+                                                        ng-click="openLogin()"><i class="fa fa-user"></i>Đăng nhập/ Đăng
                                                         ký</a></li>
                                             </ul>
                                         </div>/
@@ -155,7 +162,10 @@
                     <galaxy-search-bar class="ng-isolate-scope">
                         <form class="search-form ng-pristine ng-valid" ng-submit="submit()">
                             <div class="input-append">
-                                <input placeholder="Tìm tên phim, diễn viên..." class="search-box ng-pristine ng-untouched ng-valid ng-empty" type="text" autocomplete="off" ng-model="searchKey" ng-model-options="{ updateOn: &quot;default blur&quot;, debounce: { default: 500, blur: 0 } }"
+                                <input placeholder="Tìm tên phim, diễn viên..."
+                                    class="search-box ng-pristine ng-untouched ng-valid ng-empty" type="text"
+                                    autocomplete="off" ng-model="searchKey"
+                                    ng-model-options="{ updateOn: &quot;default blur&quot;, debounce: { default: 500, blur: 0 } }"
                                     ,="" ng-change="search(searchKey)">
                                 <button type="submit" class="search-btn"><i class="icon-search"></i></button>
                                 <!-- ngIf: dataSearch && dataSearch.items && dataSearch.items.length>0 -->
@@ -183,8 +193,11 @@
                                     </div>
                                     <div class="row movies-group-header">
                                         <!-- ngRepeat: movie in item.movieShowing | limitTo:4 -->
-                                        <div ng-repeat="movie in item.movieShowing | limitTo:4" class="col-sm-3 ng-scope">
-                                            <article style="background-image: url(https://galaxycine.vn/media/2020/7/28/2560x1440_1595930517102.jpg)" class="article-movie-header">
+                                        <div ng-repeat="movie in item.movieShowing | limitTo:4"
+                                            class="col-sm-3 ng-scope">
+                                            <article
+                                                style="background-image: url(https://galaxycine.vn/media/2020/7/28/2560x1440_1595930517102.jpg)"
+                                                class="article-movie-header">
                                                 <a href="#" style="width:100%;">
                                                     <figure>
                                                         <figcaption class="overlay">
@@ -206,8 +219,11 @@
                                             </div>
                                         </div>
                                         <!-- end ngRepeat: movie in item.movieShowing | limitTo:4 -->
-                                        <div ng-repeat="movie in item.movieShowing | limitTo:4" class="col-sm-3 ng-scope">
-                                            <article style="background-image: url(https://galaxycine.vn/media/2020/6/26/pen-450x300_1593152409838.jpg)" class="article-movie-header">
+                                        <div ng-repeat="movie in item.movieShowing | limitTo:4"
+                                            class="col-sm-3 ng-scope">
+                                            <article
+                                                style="background-image: url(https://galaxycine.vn/media/2020/6/26/pen-450x300_1593152409838.jpg)"
+                                                class="article-movie-header">
                                                 <a href="#" style="width:100%;">
                                                     <figure>
                                                         <figcaption class="overlay">
@@ -229,8 +245,11 @@
                                             </div>
                                         </div>
                                         <!-- end ngRepeat: movie in item.movieShowing | limitTo:4 -->
-                                        <div ng-repeat="movie in item.movieShowing | limitTo:4" class="col-sm-3 ng-scope">
-                                            <article style="background-image: url(https://galaxycine.vn/media/2020/8/3/450-mai-ben_1596440879459.jpg)" class="article-movie-header">
+                                        <div ng-repeat="movie in item.movieShowing | limitTo:4"
+                                            class="col-sm-3 ng-scope">
+                                            <article
+                                                style="background-image: url(https://galaxycine.vn/media/2020/8/3/450-mai-ben_1596440879459.jpg)"
+                                                class="article-movie-header">
                                                 <a href="#" style="width:100%;">
                                                     <figure>
                                                         <figcaption class="overlay">
@@ -252,8 +271,11 @@
                                             </div>
                                         </div>
                                         <!-- end ngRepeat: movie in item.movieShowing | limitTo:4 -->
-                                        <div ng-repeat="movie in item.movieShowing | limitTo:4" class="col-sm-3 ng-scope">
-                                            <article style="background-image: url(https://galaxycine.vn/media/c/i/civil-ngang.jpg)" class="article-movie-header">
+                                        <div ng-repeat="movie in item.movieShowing | limitTo:4"
+                                            class="col-sm-3 ng-scope">
+                                            <article
+                                                style="background-image: url(https://galaxycine.vn/media/c/i/civil-ngang.jpg)"
+                                                class="article-movie-header">
                                                 <a href="#" style="width:100%;">
                                                     <figure>
                                                         <figcaption class="overlay">
@@ -270,9 +292,11 @@
                                                 </a>
                                             </article>
                                             <div class="title-movie-header">
-                                                <h4 class="upper-text ng-binding">CAPTAIN AMERICA: NỘI CHIẾN SIÊU ANH HÙNG
+                                                <h4 class="upper-text ng-binding">CAPTAIN AMERICA: NỘI CHIẾN SIÊU ANH
+                                                    HÙNG
                                                 </h4>
-                                                <h4 class="vn upper-text ng-binding">CAPTAIN AMERICA: NỘI CHIẾN SIÊU ANH HÙNG
+                                                <h4 class="vn upper-text ng-binding">CAPTAIN AMERICA: NỘI CHIẾN SIÊU ANH
+                                                    HÙNG
                                                 </h4>
                                             </div>
                                         </div>
@@ -286,8 +310,11 @@
                                     </div>
                                     <div class="row movies-group-header">
                                         <!-- ngRepeat: movie in item.movieCommingSoon | limitTo:4 -->
-                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4" class="col-sm-3 ng-scope">
-                                            <article style="background-image: url(https://galaxycine.vn/media/2020/8/10/450-spy_1597048018892.jpg)" class="article-movie-header">
+                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4"
+                                            class="col-sm-3 ng-scope">
+                                            <article
+                                                style="background-image: url(https://galaxycine.vn/media/2020/8/10/450-spy_1597048018892.jpg)"
+                                                class="article-movie-header">
                                                 <a href="#" style="width:100%;">
                                                     <figure>
                                                         <figcaption class="overlay">
@@ -309,8 +336,11 @@
                                             </div>
                                         </div>
                                         <!-- end ngRepeat: movie in item.movieCommingSoon | limitTo:4 -->
-                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4" class="col-sm-3 ng-scope">
-                                            <article style="background-image: url(https://galaxycine.vn/media/2020/8/10/450-ke_1597032051764.jpg)" class="article-movie-header">
+                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4"
+                                            class="col-sm-3 ng-scope">
+                                            <article
+                                                style="background-image: url(https://galaxycine.vn/media/2020/8/10/450-ke_1597032051764.jpg)"
+                                                class="article-movie-header">
                                                 <a href="#" style="width:100%;">
                                                     <figure>
                                                         <figcaption class="overlay">
@@ -332,8 +362,11 @@
                                             </div>
                                         </div>
                                         <!-- end ngRepeat: movie in item.movieCommingSoon | limitTo:4 -->
-                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4" class="col-sm-3 ng-scope">
-                                            <article style="background-image: url(https://galaxycine.vn/media/2020/8/7/450-ke-cap_1596799942763.jpg)" class="article-movie-header">
+                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4"
+                                            class="col-sm-3 ng-scope">
+                                            <article
+                                                style="background-image: url(https://galaxycine.vn/media/2020/8/7/450-ke-cap_1596799942763.jpg)"
+                                                class="article-movie-header">
                                                 <a href="#" style="width:100%;">
                                                     <figure>
                                                         <figcaption class="overlay">
@@ -355,8 +388,11 @@
                                             </div>
                                         </div>
                                         <!-- end ngRepeat: movie in item.movieCommingSoon | limitTo:4 -->
-                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4" class="col-sm-3 ng-scope">
-                                            <article style="background-image: url(https://galaxycine.vn/media/2020/7/29/1350x900_1596006042621.jpg)" class="article-movie-header">
+                                        <div ng-repeat="movie in item.movieCommingSoon | limitTo:4"
+                                            class="col-sm-3 ng-scope">
+                                            <article
+                                                style="background-image: url(https://galaxycine.vn/media/2020/7/29/1350x900_1596006042621.jpg)"
+                                                class="article-movie-header">
                                                 <a href="#" style="width:100%;">
                                                     <figure>
                                                         <figcaption class="overlay">
@@ -421,14 +457,17 @@
                 <div class="modal-outer-container">
                     <div class="modal-middle-container">
                         <div class="login-wrapper animated slideInDown">
-                            <div class="login-container"><span class="close" aria-hidden="true" data-dismiss="modal" aria-label="Close">&times;</span>
+                            <div class="login-container"><span class="close" aria-hidden="true" data-dismiss="modal"
+                                    aria-label="Close">&times;</span>
 
                                 <div class="tab-login-line">
                                     <ul class="nav nav-tabs">
                                         <li class="tablinks" onclick="openLogin(event, 'tab_login_1')" id="defaultOpen">
-                                            <a data-toggle="tab">ĐĂNG NHẬP</a></li>
+                                            <a data-toggle="tab">ĐĂNG NHẬP</a>
+                                        </li>
                                         <li><a class="line">/</a></li>
-                                        <li class="tablinks" onclick="openLogin(event, 'tab_login_2')"><a data-toggle="tab">ĐĂNG KÝ</a></li>
+                                        <li class="tablinks" onclick="openLogin(event, 'tab_login_2')"><a
+                                                data-toggle="tab">ĐĂNG KÝ</a></li>
                                     </ul>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -437,7 +476,8 @@
                                                 <div class="login-tab-wrapper">
                                                     <div class="login-heading">
                                                         <div class="text-heading">
-                                                            <!-- ngIf: !enableSkip --><span ng-if="!enableSkip" class="sub-text ng-scope">Vui lòng đăng nhập trước khi
+                                                            <!-- ngIf: !enableSkip --><span ng-if="!enableSkip"
+                                                                class="sub-text ng-scope">Vui lòng đăng nhập trước khi
                                                                 mua vé để tích luỹ điểm, cơ hội nhận thêm nhiều ưu đãi
                                                                 từ chương trình thành viên Galaxy Cinema.</span>
                                                             <!-- end ngIf: !enableSkip -->
@@ -445,11 +485,17 @@
                                                         </div>
                                                         <!-- ngIf: message -->
                                                     </div>
-                                                    <form ng-submit="submit()" class="login-form ng-valid-email ng-dirty ng-valid-parse ng-valid ng-valid-required">
-                                                        <input placeholder="Email" type="email" ng-model="userInfo.email" required="required" class="login ng-valid-email ng-not-empty ng-dirty ng-valid ng-valid-required ng-touched"><input placeholder="Mật khẩu"
-                                                            type="password" ng-model="userInfo.password" required="required" class="login ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched">
+                                                    <form ng-submit="submit()"
+                                                        class="login-form ng-valid-email ng-dirty ng-valid-parse ng-valid ng-valid-required">
+                                                        <input placeholder="Email" type="email"
+                                                            ng-model="userInfo.email" required="required"
+                                                            class="login ng-valid-email ng-not-empty ng-dirty ng-valid ng-valid-required ng-touched"><input
+                                                            placeholder="Mật khẩu" type="password"
+                                                            ng-model="userInfo.password" required="required"
+                                                            class="login ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched">
                                                         <div class="login-remember">
-                                                            <div class="forget-pass"><a id="forgetPass" href="" ng-click="openForgetPass()">Quên mật khẩu?</a></div>
+                                                            <div class="forget-pass"><a id="forgetPass" href=""
+                                                                    ng-click="openForgetPass()">Quên mật khẩu?</a></div>
                                                         </div><button class="btn primary input"><i ng-show="isSubmit"
                                                                 class="fa fa-pulse fa-spinner ng-hide"></i>Đăng
                                                             nhập</button>
@@ -463,14 +509,21 @@
                                                 <div class="login-tab-wrapper">
                                                     <!-- ngIf: message -->
                                                     <div class="login-form">
-                                                        <form ng-submit="submit()" class="ng-invalid ng-invalid-required ng-valid-maxlength ng-valid-email ng-dirty ng-valid-parse">
-                                                            <input placeholder="Họ tên" type="text" ng-model="user.fullName" required="required" class="login first ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
+                                                        <form ng-submit="submit()"
+                                                            class="ng-invalid ng-invalid-required ng-valid-maxlength ng-valid-email ng-dirty ng-valid-parse">
+                                                            <input placeholder="Họ tên" type="text"
+                                                                ng-model="user.fullName" required="required"
+                                                                class="login first ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
 
                                                             <div class="row city">
                                                                 <div class="col-md-6 col-sm-6 col-xs-6 first-col">
-                                                                    <input type="text" placeholder="Số điện thoại" maxlength="14" ng-model="user.mobilePhone" required="required" class="login register-input ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength">
+                                                                    <input type="text" placeholder="Số điện thoại"
+                                                                        maxlength="14" ng-model="user.mobilePhone"
+                                                                        required="required"
+                                                                        class="login register-input ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength">
                                                                 </div>
-                                                                <div class="col-md-6 col-sm-6 col-xs-6 second-col mt-14">
+                                                                <div
+                                                                    class="col-md-6 col-sm-6 col-xs-6 second-col mt-14">
                                                                     <select id="gender" class="btn-select login">
                                                                         <option class="ng-binding ng-scope"
                                                                             value="kkongchon" selected="selected"><a
@@ -484,27 +537,38 @@
                                                                 </div>
                                                             </div>
 
-                                                            <input type="email" placeholder="Email" ng-model="user.email" required="required" class="login register-input remove-mb ng-valid-email ng-not-empty ng-dirty ng-valid ng-valid-required ng-touched">
+                                                            <input type="email" placeholder="Email"
+                                                                ng-model="user.email" required="required"
+                                                                class="login register-input remove-mb ng-valid-email ng-not-empty ng-dirty ng-valid ng-valid-required ng-touched">
 
                                                             <div class="row city">
-                                                                <div class="col-md-6 col-sm-6 col-xs-6 first-col"><input type="password" placeholder="Mật khẩu" ng-model="user.password" required="required" class="login ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched">
+                                                                <div class="col-md-6 col-sm-6 col-xs-6 first-col"><input
+                                                                        type="password" placeholder="Mật khẩu"
+                                                                        ng-model="user.password" required="required"
+                                                                        class="login ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched">
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-6 second-col">
-                                                                    <input type="password" placeholder="Xác nhận mật khẩu" ng-model="user.confirmPassword" required="required" class="login ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
+                                                                    <input type="password"
+                                                                        placeholder="Xác nhận mật khẩu"
+                                                                        ng-model="user.confirmPassword"
+                                                                        required="required"
+                                                                        class="login ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
                                                                 </div>
                                                             </div>
 
 
                                                             <div class="row city mt-14">
                                                                 <div class="col-md-6 col-sm-6 col-xs-6 first-col">
-                                                                    <select name="state" id="CitySel" size="1" class="btn-select login">
+                                                                    <select name="state" id="CitySel" size="1"
+                                                                        class="btn-select login">
                                                                         <option value="" selected="selected">Chọn thành
                                                                             phố</option>
                                                                     </select>
                                                                 </div>
 
                                                                 <div class="col-md-6 col-sm-6 col-xs-6 second-col">
-                                                                    <select name="state" id="DistrictSel" size="1" class="btn-select login">
+                                                                    <select name="state" id="DistrictSel" size="1"
+                                                                        class="btn-select login">
                                                                         <option value="" selected="selected">Chọn Quận
                                                                         </option>
                                                                     </select>
@@ -514,9 +578,13 @@
 
                                                             <div class="row birthday-signup mt-14">
                                                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <galaxy-datepicker ng-model="user.dateOfBirth" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty">
-                                                                        <a class="btn btn-select login location datepicker">
-                                                                            <input type="text" id="datepicker" name="" class="btn-select-input date" placeholder="Ngày Sinh (MM/dd/yyyy)">
+                                                                    <galaxy-datepicker ng-model="user.dateOfBirth"
+                                                                        class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty">
+                                                                        <a
+                                                                            class="btn btn-select login location datepicker">
+                                                                            <input type="text" id="datepicker" name=""
+                                                                                class="btn-select-input date"
+                                                                                placeholder="Ngày Sinh (MM/dd/yyyy)">
                                                                             <span class="select-calendar"><i
                                                                                     class="fa fa-calendar"></i></span>
                                                                         </a>
@@ -524,7 +592,10 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col-md-12 col-sm-12 col-xs-12"><input placeholder="Địa chỉ" type="text" ng-model="user.address" required="required" class="login register-input ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
+                                                                <div class="col-md-12 col-sm-12 col-xs-12"><input
+                                                                        placeholder="Địa chỉ" type="text"
+                                                                        ng-model="user.address" required="required"
+                                                                        class="login register-input ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
                                                                 </div>
                                                             </div>
 
@@ -535,14 +606,19 @@
                                                                             document.getElementById("demo-form").submit();
                                                                         }
                                                                     </script>
-                                                                    <div class="g-recaptcha" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit' data-action='submit'>
+                                                                    <div class="g-recaptcha"
+                                                                        data-sitekey="reCAPTCHA_site_key"
+                                                                        data-callback='onSubmit' data-action='submit'>
                                                                     </div>
                                                                 </div>
 
                                                             </div>
-                                                            <p class="text-confirm-signup">Tôi đã đọc và đồng ý với&nbsp;
-                                                                <a ng-click="openPolicy()" data-toggle="modal" data-target="#popupPolicies"><b>CHÍNH
-                                                                        SÁCH&nbsp;</b></a>của chương trình.&nbsp;</p>
+                                                            <p class="text-confirm-signup">Tôi đã đọc và đồng ý
+                                                                với&nbsp;
+                                                                <a ng-click="openPolicy()" data-toggle="modal"
+                                                                    data-target="#popupPolicies"><b>CHÍNH
+                                                                        SÁCH&nbsp;</b></a>của chương trình.&nbsp;
+                                                            </p>
                                                             <br><button class="btn primary input"><i ng-show="isSubmit"
                                                                     class="fa fa-pulse fa-spinner ng-hide"></i>Đăng
                                                                 ký</button>
@@ -598,9 +674,14 @@
                                             </div>
                                             <!-- ngIf: message -->
 
-                                            <form ng-submit="submit()" class="login-form ng-pristine ng-valid-email ng-invalid ng-invalid-required">
-                                                <input placeholder="Email" type="email" ng-model="item.email" required="required" class="login ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required">
-                                                <input type="text" placeholder="Số điện thoại" maxlength="14" ng-model="user.mobilePhone" required="required" class="login register-input ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength">
+                                            <form ng-submit="submit()"
+                                                class="login-form ng-pristine ng-valid-email ng-invalid ng-invalid-required">
+                                                <input placeholder="Email" type="email" ng-model="item.email"
+                                                    required="required"
+                                                    class="login ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required">
+                                                <input type="text" placeholder="Số điện thoại" maxlength="14"
+                                                    ng-model="user.mobilePhone" required="required"
+                                                    class="login register-input ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength">
 
 
                                                 <div class="row captcha">
@@ -610,7 +691,8 @@
                                                                 document.getElementById("demo-form").submit();
                                                             }
                                                         </script>
-                                                        <div class="g-recaptcha" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit' data-action='submit'></div>
+                                                        <div class="g-recaptcha" data-sitekey="reCAPTCHA_site_key"
+                                                            data-callback='onSubmit' data-action='submit'></div>
                                                     </div>
                                                 </div><button class="btn primary input"><i ng-show="isSubmit"
                                                         class="fa fa-pulse fa-spinner ng-hide"></i>Cấp lại mật
@@ -654,12 +736,14 @@
             </div>
         </div>
     </div>
-    <div id="popupPolicies" ng-controller="policiesPopupController" style="z-index: 1100" class="dialog modal fade ng-scope">
+    <div id="popupPolicies" ng-controller="policiesPopupController" style="z-index: 1100"
+        class="dialog modal fade ng-scope">
         <div class="modal-dialog">
             <div class="modal-outer-container">
                 <div class="modal-middle-container">
                     <div class="login-wrapper animated bounceIn location">
-                        <div class="login-container dialog"><span class="close" aria-hidden="true" data-dismiss="modal" aria-label="Close">&times;</span>
+                        <div class="login-container dialog"><span class="close" aria-hidden="true" data-dismiss="modal"
+                                aria-label="Close">&times;</span>
                             <h2>Chính sách</h2>
                             <div id="policiesTab">
                                 <div ng-controller="policyController" class="tab-movies-line ng-scope">
@@ -667,7 +751,10 @@
                                         <!-- ngRepeat: (key, item) in info -->
                                     </ul>
                                     <div class="tab-content content-text">
-                                        Trong này sẽ có cái lz gì đấy như là Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic molestias eveniet doloribus! Laudantium, ex numquam? Repellat tempore optio facilis, quia provident reprehenderit est dolore modi debitis nobis eligendi
+                                        Trong này sẽ có cái lz gì đấy như là Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit. Hic molestias eveniet doloribus! Laudantium, ex numquam?
+                                        Repellat tempore optio facilis, quia provident reprehenderit est dolore modi
+                                        debitis nobis eligendi
                                         enim culpa!
                                     </div>
                                 </div>
@@ -701,292 +788,466 @@
                                     <article>
                                         <div class="row">
                                             <div class="col-md-4 col-sm-4 col-xs-4">
-                                                <div class="detail-feat-img"><img src="assets/img/18186819528_ce5cc34da2_o.jpg" class="loading" data-was-processed="true"></div>
+                                                <div class="detail-feat-img"><img
+                                                        src="assets/img/18186819528_ce5cc34da2_o.jpg" class="loading"
+                                                        data-was-processed="true"></div>
                                             </div>
                                             <div class="details col-md-8 col-sm-8 col-xs-8">
                                                 <h2 class="detail-title">Chris Evans</h2>
                                                 <div class="detail-view">
                                                     <ul class="article-blog-like">
-                                                        <li><span><div class="view-wrap"><i class="fa fa-eye"></i><span>127673</span></div>
-                                                </span>
-                                                </li>
-                                                <li><span class="like"><div data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true" class="fb-like fb_iframe_widget" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=1427253957539434&amp;container_width=0&amp;href=https%3A%2F%2Fwww.galaxycine.vn%2Fdien-vien%2Fchris-evans&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;show_faces=false&amp;size=small"><span style="vertical-align: bottom; width: 150px; height: 20px;"><iframe name="fbe069a72ac73c" width="1000px" height="1000px" data-testid="fb:like Facebook Social Plugin" title="fb:like Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="assets/like.html" style="border: none; visibility: visible; width: 150px; height: 20px;" class=""></iframe></span></div>
-                                            </span>
-                                            </li>
-                                            </ul>
+                                                        <li><span>
+                                                                <div class="view-wrap"><i
+                                                                        class="fa fa-eye"></i><span>127673</span></div>
+                                                            </span>
+                                                        </li>
+                                                        
+                                                    </ul>
+                                                </div>
+                                                <div class="detail-info content-text">
+                                                    <p></p>
+                                                    <p><strong><em>Khác với Chris Hemsworth vẫn đang loay hoay trong
+                                                                hình tượng vị thần sấm sét, đa số người hâm mộ vẫn nhìn
+                                                                nhận rõ ràng, Chris Evans và Captain America là hai con
+                                                                người hoàn toàn khác nhau.</em></strong></p>
+                                                    <p></p>
+                                                    <p>Ngày sinh : 13/6/1981</p>
+                                                    <p>Chiều cao: 183 cm</p>
+                                                    <p>Quốc tịch: Mỹ</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="detail-info content-text">
-                                            <p></p>
-                                            <p><strong><em>Khác với Chris Hemsworth vẫn đang loay hoay trong hình tượng vị thần sấm sét, đa số người hâm mộ vẫn nhìn nhận rõ ràng, Chris Evans và Captain America là hai con người hoàn toàn khác nhau.</em></strong></p>
-                                            <p></p>
-                                            <p>Ngày sinh : 13/6/1981</p>
-                                            <p>Chiều cao: 183 cm</p>
-                                            <p>Quốc tịch: Mỹ</p>
-                                        </div>
-                            </div>
-                        </div>
-                        </article>
-                        </section>
-                        <div class="tab-movies">
-                            <div class="tab-movies-line">
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#tab_images_actors" data-toggle="tab">Hình ảnh</a></li>
-                                    <li><a href="#tab_movies_actors" data-toggle="tab">Phim đã tham gia</a></li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div id="tab_images_actors" class="tab-pane active">
-                                        <div class="bx-wrapper" style="max-width: 750px;">
-                                            <div class="bx-viewport" aria-live="polite" style="width: 100%; overflow: hidden; position: relative; height: 132.986px;">
-                                                <div class="slider-images-actors actors-img-group" style="width: 5215%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-                                                    <div class="slide-item" style="float: left; list-style: none; position: relative; width: 180px; margin-right: 10px;" aria-hidden="false">
-                                                        <a data-fancybox="gallery" class="fancybox"><img src="assets/img/chris-evans_1591258788943.jpg" class="loading" data-was-processed="true"></a>
+                                    </article>
+                                </section>
+                                <div class="tab-movies">
+                                    <div class="tab-movies-line">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#tab_images_actors" data-toggle="tab">Hình
+                                                    ảnh</a></li>
+                                            <li><a href="#tab_movies_actors" data-toggle="tab">Phim đã tham gia</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div id="tab_images_actors" class="tab-pane active">
+                                                <div class="bx-wrapper" style="max-width: 750px;">
+                                                    <div class="bx-viewport" aria-live="polite"
+                                                        style="width: 100%; overflow: hidden; position: relative; height: 132.986px;">
+                                                        <div class="slider-images-actors actors-img-group"
+                                                            style="width: 5215%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+                                                            <div class="slide-item"
+                                                                style="float: left; list-style: none; position: relative; width: 180px; margin-right: 10px;"
+                                                                aria-hidden="false">
+                                                                <a data-fancybox="gallery" class="fancybox"><img
+                                                                        src="assets/img/chris-evans_1591258788943.jpg"
+                                                                        class="loading" data-was-processed="true"></a>
+                                                            </div>
+                                                            <div class="slide-item"
+                                                                style="float: left; list-style: none; position: relative; width: 180px; margin-right: 10px;"
+                                                                aria-hidden="false">
+                                                                <a data-fancybox="gallery" class="fancybox"><img
+                                                                        src="assets/img/chris-evans-1_1591258719251.jpg"
+                                                                        class="loading" data-was-processed="true"></a>
+                                                            </div>
+                                                            <div class="slide-item"
+                                                                style="float: left; list-style: none; position: relative; width: 180px; margin-right: 10px;"
+                                                                aria-hidden="false">
+                                                                <a data-fancybox="gallery" class="fancybox"><img
+                                                                        src="assets/img/unnamed_1591258727055.jpg"
+                                                                        class="loading" data-was-processed="true"></a>
+                                                            </div>
+                                                            <div class="slide-item"
+                                                                style="float: left; list-style: none; position: relative; width: 180px; margin-right: 10px;"
+                                                                aria-hidden="false">
+                                                                <a data-fancybox="gallery" class="fancybox"><img
+                                                                        src="assets/img/original_1591258955288.jpg"
+                                                                        class="loading" data-was-processed="true"></a>
+                                                            </div>
+                                                            <div class="slide-item"
+                                                                style="float: left; list-style: none; position: relative; width: 180px; margin-right: 10px;"
+                                                                aria-hidden="true">
+                                                                <a data-fancybox="gallery" class="fancybox"><img
+                                                                        src="assets/img/1489517701-esq040117chrisevans004_1591258962286.jpg"
+                                                                        class="loading" data-was-processed="true"></a>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="slide-item" style="float: left; list-style: none; position: relative; width: 180px; margin-right: 10px;" aria-hidden="false">
-                                                        <a data-fancybox="gallery" class="fancybox"><img src="assets/img/chris-evans-1_1591258719251.jpg" class="loading" data-was-processed="true"></a>
-                                                    </div>
-                                                    <div class="slide-item" style="float: left; list-style: none; position: relative; width: 180px; margin-right: 10px;" aria-hidden="false">
-                                                        <a data-fancybox="gallery" class="fancybox"><img src="assets/img/unnamed_1591258727055.jpg" class="loading" data-was-processed="true"></a>
-                                                    </div>
-                                                    <div class="slide-item" style="float: left; list-style: none; position: relative; width: 180px; margin-right: 10px;" aria-hidden="false">
-                                                        <a data-fancybox="gallery" class="fancybox"><img src="assets/img/original_1591258955288.jpg" class="loading" data-was-processed="true"></a>
-                                                    </div>
-                                                    <div class="slide-item" style="float: left; list-style: none; position: relative; width: 180px; margin-right: 10px;" aria-hidden="true">
-                                                        <a data-fancybox="gallery" class="fancybox"><img src="assets/img/1489517701-esq040117chrisevans004_1591258962286.jpg" class="loading" data-was-processed="true"></a>
+                                                    <div class="bx-controls bx-has-controls-direction">
+                                                        <div class="bx-controls-direction"><a class="bx-prev disabled"
+                                                                href="">Prev</a><a class="bx-next" href="">Next</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="bx-controls bx-has-controls-direction">
-                                                <div class="bx-controls-direction"><a class="bx-prev disabled" href="">Prev</a><a class="bx-next" href="">Next</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="tab_movies_actors" class="tab-pane">
-                                        <div class="row movies-group">
-                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                <table class="table table-striped table-condensed table-actors-movies">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <a><img src="assets/img/civil-ngang.jpg">CAPTAIN AMERICA: NỘI CHIẾN SIÊU ANH HÙNG</a>
-                                                            </td>
-                                                            <td>Steve Rogers / Captain America</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a><img src="assets/img/knivesoutbanner_1574995238663.jpg">Knives Out</a>
-                                                            </td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a><img src="assets/img/640wx396h_1554864314405.jpg">Avengers: Endgame</a>
-                                                            </td>
-                                                            <td>Captain America</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a><img src="assets/img/1312777406924-9679.jpeg">KẺ BÁO THÙ ĐẦU TIÊN</a>
-                                                            </td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a><img src="assets/img/avengers-1-2_1521777673799.jpg">AVENGERS: INFINITY WAR</a>
-                                                            </td>
-                                                            <td>Captain America</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <div id="tab_movies_actors" class="tab-pane">
+                                                <div class="row movies-group">
+                                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                                        <table
+                                                            class="table table-striped table-condensed table-actors-movies">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <a><img src="assets/img/civil-ngang.jpg">CAPTAIN
+                                                                            AMERICA: NỘI CHIẾN SIÊU ANH HÙNG</a>
+                                                                    </td>
+                                                                    <td>Steve Rogers / Captain America</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <a><img
+                                                                                src="assets/img/knivesoutbanner_1574995238663.jpg">Knives
+                                                                            Out</a>
+                                                                    </td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <a><img
+                                                                                src="assets/img/640wx396h_1554864314405.jpg">Avengers:
+                                                                            Endgame</a>
+                                                                    </td>
+                                                                    <td>Captain America</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <a><img
+                                                                                src="assets/img/1312777406924-9679.jpeg">KẺ
+                                                                            BÁO THÙ ĐẦU TIÊN</a>
+                                                                    </td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <a><img
+                                                                                src="assets/img/avengers-1-2_1521777673799.jpg">AVENGERS:
+                                                                            INFINITY WAR</a>
+                                                                    </td>
+                                                                    <td>Captain America</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <section id="info">
+                                    <h3>Tiểu sử</h3>
+                                    <div class="content-text-actors-info content-cast content-text">
+                                        <p></p>
+                                        <p><span style="font-size:14px;"><strong><em>Khác với Chris Hemsworth vẫn đang
+                                                        loay hoay trong hình tượng vị thần sấm sét, đa số người hâm mộ
+                                                        vẫn nhìn nhận rõ ràng, Chris Evans và Captain America là hai con
+                                                        người hoàn toàn khác nhau. </em></strong></span></p>
+
+                                        <p><span style="font-size:14px;">Sinh ngày 13 tháng 6 năm 1981 tại Boston, bang
+                                                Massachusetts, con đường diễn xuất của cậu bé Chris Evans bắt đầu từ nhỏ
+                                                với những vở kịch trong trường học. Tình yêu diễn xuất lớn dần theo năm
+                                                tháng, khi trưởng thành, Evans lắng nghe tiếng gọi con tim, tới New York
+                                                và thi vào trường nghệ thuật Lee Strasberg.</span></p>
+
+                                        <p><span style="font-size:14px;">Theo lời khuyên của bạn bè, anh bắt đầu tham
+                                                gia thử vai một vài phim rồi dần nhận ra đam mê của bản thân là phim
+                                                trường chứ không phải sân khấu kịch nghệ. Ban đầu con đường sự nghiệp
+                                                của Chris khá bằng phẳng. Năm 2000, anh xuất hiện lần đầu tiên trên một
+                                                phim truyền hình của đài CBS. Sau vài vai diễn nhỏ trên các phim kinh
+                                                phí thấp, Evans bắt đầu xuất hiện trong các dự án lớn hơn.</span></p>
+
+                                        <p><span style="font-size:14px;">Cuối năm 2001, tên tuổi Chris Evans vụt sáng
+                                                với vai diễn chàng hotboy trường học trong bộ <a
+                                                    href="phim-dang-chieu"><i>phim chiếu rạp</i></a> <em>Not Another
+                                                    Teen Movie</em>. Chiều cao 1m83 cùng khuôn mặt đẹp trai “chuẩn Mỹ”
+                                                giúp anh nhanh chóng trở thành người tình trong mộng của nhiều cô
+                                                gái.</span></p>
+
+                                        <p><span style="font-size:14px;">Năm 2004, một cơ hội khác đến với Evans khi anh
+                                                tham gia vai chính trong bộ phim đầu tư trung bình <em>The Perfect
+                                                    Score</em>. Đáng tiếc, phim nhận thất bại phòng vé nặng nề. Tuy
+                                                nhiên, đây là chính là bộ phim “đầu tay” của một trong những tình bạn
+                                                đẹp nhất Holllywood của “nam thần” Chris Evans với “mỹ nhân màn bạc nóng
+                                                bỏng” Scarlett Johansson.</span></p>
+
+                                        <p><span style="font-size:14px;">Sau khi tiếp tục xuất hiện trong vài bộ phim
+                                                kinh phí thấp với doanh thu không mấy khả quan, vào đầu năm 2005, Evans
+                                                chính thức đổi đời bằng vai diễn Johnny Storm trong <em>Fantastic
+                                                    Four</em> cùng với Jessica Alba và Ioan Gruffudd. Bướng bỉnh, bốc
+                                                đồng nhưng lại đẹp trai hấp dẫn khó cưỡng, Johnny Storm - Human Torch
+                                                của Chris Evans nhanh chóng lấy được cảm tình của người hâm mộ, trở
+                                                thành một gương mặt trẻ sáng giá của Hollywood.</span></p>
+
+                                        <p><span style="font-size:14px;">Không ngoa khi nói rằng Human Torch là vai diễn
+                                                để đời của Evans, thành công của nhân vật này đủ bảo đảm danh tiếng của
+                                                anh suốt nhiều năm trời. &nbsp;Thậm chí, cho dù giờ đây, khi Chris Evans
+                                                đã là Captain Ameica – một trong những Avenger nổi tiếng nhất và Human
+                                                Torch đã chọn được một diễn viên mới thì cũng không ít người nhớ đến anh
+                                                thông qua hình tượng này.</span></p>
+
+                                        <p><span style="font-size:14px;">Tuy nhiên, dẫu Human Torch có nổi tiếng đến thế
+                                                nào thì cũng không bảo đảm nổi doanh thu cho phim của Chris Evans.<i><a
+                                                        href="phim-dang-chieu"> Phim chiếu rạp</a> </i>của anh liên tục
+                                                thất bại thê thảm cả về doanh thu lẫn đánh giá của giới phê bình trừ hai
+                                                vai thứ trong <em>The Nanny Diaries</em> và <em>Fantastic Four: Rise of
+                                                    the Silver Surfer</em>.</span></p>
+
+                                        <p><span style="font-size:14px;">Sự nghiệp của chàng hotboy nước Mỹ vẫn tiếp tục
+                                                loay hoay giữa phim flop và vẻ đẹp trai ngời ngời của mình cho đến ngày
+                                                tìm được “mùa xuân thứ hai” trong cuộc đời - Steve Roger a.k.a Captain
+                                                America.</span></p>
+
+                                        <p><span style="font-size:14px;">Một “thanh niên nghiêm túc” đặt mục tiêu bảo vệ
+                                                tổ quốc lên hàng đầu, một chiến binh đến từ thế giới cũ - Captain
+                                                America là một nhân vật hoàn toàn khác với những gì Chris Evan thể hiện
+                                                trước đó. Evans vào vai Captain ngọt đến mức người xem quên mất anh là
+                                                chàng trai vui vẻ tăng động ngoài đời thực. Và thành công đạt được thật
+                                                ngoài sức tưởng tượng. Có thể nói đây là lần thứ hai anh tìm được nhân
+                                                vật đổi đời. Lần đầu tiên sau nhiều năm, người ta nhớ đến Chris Evans
+                                                với một cái tên khác Human Torch.</span></p>
+
+                                        <p><span style="font-size:14px;">Khác với Chris Hemsworth bị cái bóng Thor “ám
+                                                ảnh” các vai diễn khác và trong cả cuộc sống riêng, đời thật của
+                                                “Captain America” Chris Evans dễ thở hơn nhiều khi anh gần như là một
+                                                người hoàn toàn khác Steve Roger. Trái với tính cách chín chắn trầm tĩnh
+                                                của Captain, con người ngoài đời của Evans có phần giống Human Torch
+                                                hơn. Anh nhiệt tình vui vẻ, sẵn sàng quậy hết mình trên show và tham gia
+                                                bất cứ trò điên nào của team Avengers. Cùng với Chris Hemsworth và Chris
+                                                Patt, anh tạo thành bộ 3 Hot Chris nhà Marvel với điểm chung là khuôn
+                                                mặt đẹp trai, thân hình chuẩn cùng tính cách vui nổ trời. Ngoài ra, từ
+                                                sau <em>Captain America: The First Avenger</em>, anh cũng khá thân thiết
+                                                với các bạn diễn Hayley Atwell và Sebastian Stan.</span></p>
+
+                                        <p><span style="font-size:14px;">Đẹp trai, nổi tiếng, vui vẻ nhưng đời sống
+                                                riêng tư của Evans khá ảm đạm. Anh có nhiều tin đồn với các người đẹp
+                                                như Scarlett Johansson, Lily Collins cùng đương kim phu nhân của Justin
+                                                Timberlake - Jessica Biel.</span></p>
+
+                                        <p><span style="font-size:14px;">Là một thanh niên gần như hoàn hảo với tấm lòng
+                                                vàng dành cho các hoạt động từ thiện cùng sự ủng hộ nhiệt tình dành cho
+                                                LGBT, Chris Evans chỉ có một vài tật xấu nho nhỏ như… thích để râu. Bất
+                                                cứ khi nào không phải giữ hình tượng để tham gia đóng phim, khuôn mặt
+                                                đẹp trai thần thánh của đội trưởng Mỹ luôn bị bao phủ bởi râu là
+                                                râu.</span></p>
+
+                                        <p style="margin-right:0in; margin-left:0in"><span style="font-size:14px;"><span
+                                                    style="font-family: Arial,Helvetica,sans-serif;">Ngoài ra, Evans còn
+                                                    một sở thích kiêm tật xấu cực kỳ nổi tiếng là… sờ ngực, sờ từ ngực
+                                                    người khác đến ngực của chính mình. Thói quen gây bão này của anh đã
+                                                    trở thành meme huyền thoại được các fan, bạn diễn và cả chính bản
+                                                    thân anh đem ra chọc cười suốt ngày. Từ Robert Downey Jr. tới Tom
+                                                    Hiddleston, Mark Ruffalo, hay cả người chỉ mới xuất hiện cùng một
+                                                    phim<i> Age Of Ultron</i> như &nbsp;“Quicksilver” Aaron
+                                                    Taylor-Johnson cũng đều không thể thoát “độc thủ thần chưởng” này
+                                                    của chàng đội trưởng Mỹ.</span></span>
+                                        </p>
+
+                                        <p style="margin-right:0in; margin-left:0in"><span style="font-size:14px;"><span
+                                                    style="font-family: Arial,Helvetica,sans-serif;">Xuyên suốt MCU,
+                                                    Captain vẫn là một trong những nhân vật ấn tượng nhất. Chỉ là một
+                                                    người phàm tiêm huyết thanh nhưng anh chưa bao giờ ngần ngại xông
+                                                    pha lên phía trước, dùng sự dũng cảm và mưu trí của một chiến binh
+                                                    để chiến đấu cùng Thanos và “đàn em”. Ngay khi Steve Rogers vẫn còn
+                                                    hăng hái bảo vệ trái đất, Chris Evans lại nghĩ rằng đã đến lúc anh
+                                                    nên dừng lại. Khi các "đồng chí" ở <a
+                                                        href="movie-blog/nhung-bi-mat-dong-troi-trailer-avengers-endgame-vua-tiet-lo">Biệt
+                                                        đội siêu anh hùng </a>vẫn chưa lên tiếng, Evans là người đầu
+                                                    tiên tuyên bố sẽ từ bỏ lớp áo Captain America đã gắn bó với anh gần
+                                                    mười năm nay sau <a href="dat-ve/avengers-endgame"><i>Avengers:
+                                                            Endgame</i></a>. Và rốt cuộc, ở chặng cuối <a
+                                                        href="dat-ve/avengers-endgame">Avengers: Hồi Kết</a>, Captain
+                                                    America đã trao lại chiếc khiên lừng danh cho người đồng đội Falcon.
+                                                    Dẫu còn nhiều ý kiến tranh cãi, đây vẫn là cái kết rất đẹp cho Đại
+                                                    Úy Mỹ. </span></span>
+                                        </p>
+
+                                        <p style="margin-right:0in; margin-left:0in"><span style="font-size:14px;"><span
+                                                    style="font-family: Arial,Helvetica,sans-serif;">Ngoài ra, chỉ trong
+                                                    năm 2019, Chris kịp rũ bỏ lớp áo Steve Rogers để hóa thân thành gã
+                                                    đẹp trai nhà giàu nhưng cục súc Ransom Drysdale (Knives Out). Vai
+                                                    diễn ấn tượng này nhận được vô số lời khen. Dự án tiếp theo của
+                                                    Chris Evans chưa được công bố chính thức, theo tin đồn đó là
+                                                    <i>Little Shop Of Horror</i>. Lần này, có lẽ anh sẽ tái hợp cùng <a
+                                                        href="dien-vien/scarlett-johansson">Scarlett
+                                                        Johansson</a>!</span></span>
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </section>
                             </div>
                         </div>
-                        <section id="info">
-                            <h3>Tiểu sử</h3>
-                            <div class="content-text-actors-info content-cast content-text">
-                                <p></p>
-                                <p><span style="font-size:14px;"><strong><em>Khác với Chris Hemsworth vẫn đang loay hoay trong hình tượng vị thần sấm sét, đa số người hâm mộ vẫn nhìn nhận rõ ràng, Chris Evans và Captain America là hai con người hoàn toàn khác nhau. </em></strong></span></p>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <section id="getBuyTicket" class="hidden-xs">
+                                <section ng-controller="quickBuyTicket" class="tabs-buyticket ng-scope">
+                                    <div class="label-tab-buyticket">mua vé nhanh</div>
+                                    <div class="content-movie btn-box-select-ticket">
+                                        <form class="ng-pristine ng-valid">
+                                            <galaxy-select ng-model="byMovie"
+                                                class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                                <a class="btn btn-select btn-select-light">
 
-                                <p><span style="font-size:14px;">Sinh ngày 13 tháng 6 năm 1981 tại Boston, bang Massachusetts, con đường diễn xuất của cậu bé Chris Evans bắt đầu từ nhỏ với những vở kịch trong trường học. Tình yêu diễn xuất lớn dần theo năm tháng, khi trưởng thành, Evans lắng nghe tiếng gọi con tim, tới New York và thi vào trường nghệ thuật Lee Strasberg.</span></p>
+                                                    <span class="btn-select-value ng-binding">Chọn phim</span>
+                                                    <span class="btn-select-arrow"></span>
+                                                    <select ng-change="onChange()" ng-model="curentIndex"
+                                                        class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <option value="? number:-1 ?" selected="selected"></option>
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                            Behind You
+                                                        </option>
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                            Rogue
+                                                        </option>
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                            My Love, Don't Cross That River
+                                                        </option>
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                            Simon's Got A Gift
+                                                        </option>
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                            Inception
+                                                        </option>
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="5" class="ng-binding ng-scope" value="number:5">
+                                                            You're Not Alone
+                                                        </option>
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="6" class="ng-binding ng-scope" value="number:6">
+                                                            My Spy
+                                                        </option>
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="7" class="ng-binding ng-scope" value="number:7">
+                                                            Black Water: Abyss
+                                                        </option>
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="8" class="ng-binding ng-scope" value="number:8">
+                                                            Peninsula
+                                                        </option>
+                                                        <option ng-repeat="item in items"
+                                                            ng-selected="item[model.keyValue] == model.currentValue"
+                                                            ng-value="9" class="ng-binding ng-scope" value="number:9">
+                                                            Big Hero 6
+                                                        </option>
+                                                    </select>
+                                                </a>
+                                            </galaxy-select>
+                                            <galaxy-select ng-model="cinemaConfig"
+                                                class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                                <a class="btn btn-select btn-select-light">
+                                                    <span class="btn-select-value ng-binding">Chọn rạp</span>
+                                                    <span class="btn-select-arrow"></span>
+                                                    <select ng-change="onChange()" ng-model="curentIndex"
+                                                        class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <option value="? number:-1 ?" selected="selected"></option>
+                                                    </select>
+                                                </a>
+                                            </galaxy-select>
+                                            <galaxy-select ng-model="dateConfig"
+                                                class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                                <a class="btn btn-select btn-select-light">
 
-                                <p><span style="font-size:14px;">Theo lời khuyên của bạn bè, anh bắt đầu tham gia thử vai một vài phim rồi dần nhận ra đam mê của bản thân là phim trường chứ không phải sân khấu kịch nghệ. Ban đầu con đường sự nghiệp của Chris khá bằng phẳng. Năm 2000, anh xuất hiện lần đầu tiên trên một phim truyền hình của đài CBS. Sau vài vai diễn nhỏ trên các phim kinh phí thấp, Evans bắt đầu xuất hiện trong các dự án lớn hơn.</span></p>
+                                                    <span class="btn-select-value ng-binding">Chọn ngày</span>
+                                                    <span class="btn-select-arrow"></span>
+                                                    <select ng-change="onChange()" ng-model="curentIndex"
+                                                        class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <option value="? number:-1 ?" selected="selected"></option>
+                                                    </select>
+                                                </a>
+                                            </galaxy-select>
+                                            <galaxy-select ng-model="sessionConfig"
+                                                class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                                <a class="btn btn-select btn-select-light">
 
-                                <p><span style="font-size:14px;">Cuối năm 2001, tên tuổi Chris Evans vụt sáng với vai diễn chàng hotboy trường học trong bộ <a href="phim-dang-chieu"><i>phim chiếu rạp</i></a> <em>Not Another Teen Movie</em>. Chiều cao 1m83 cùng khuôn mặt đẹp trai “chuẩn Mỹ” giúp anh nhanh chóng trở thành người tình trong mộng của nhiều cô gái.</span></p>
-
-                                <p><span style="font-size:14px;">Năm 2004, một cơ hội khác đến với Evans khi anh tham gia vai chính trong bộ phim đầu tư trung bình <em>The Perfect Score</em>. Đáng tiếc, phim nhận thất bại phòng vé nặng nề. Tuy nhiên, đây là chính là bộ phim “đầu tay” của một trong những tình bạn đẹp nhất Holllywood của “nam thần” Chris Evans với “mỹ nhân màn bạc nóng bỏng” Scarlett Johansson.</span></p>
-
-                                <p><span style="font-size:14px;">Sau khi tiếp tục xuất hiện trong vài bộ phim kinh phí thấp với doanh thu không mấy khả quan, vào đầu năm 2005, Evans chính thức đổi đời bằng vai diễn Johnny Storm trong <em>Fantastic Four</em> cùng với Jessica Alba và Ioan Gruffudd. Bướng bỉnh, bốc đồng nhưng lại đẹp trai hấp dẫn khó cưỡng, Johnny Storm - Human Torch của Chris Evans nhanh chóng lấy được cảm tình của người hâm mộ, trở thành một gương mặt trẻ sáng giá của Hollywood.</span></p>
-
-                                <p><span style="font-size:14px;">Không ngoa khi nói rằng Human Torch là vai diễn để đời của Evans, thành công của nhân vật này đủ bảo đảm danh tiếng của anh suốt nhiều năm trời. &nbsp;Thậm chí, cho dù giờ đây, khi Chris Evans đã là Captain Ameica – một trong những Avenger nổi tiếng nhất và Human Torch đã chọn được một diễn viên mới thì cũng không ít người nhớ đến anh thông qua hình tượng này.</span></p>
-
-                                <p><span style="font-size:14px;">Tuy nhiên, dẫu Human Torch có nổi tiếng đến thế nào thì cũng không bảo đảm nổi doanh thu cho phim của Chris Evans.<i><a href="phim-dang-chieu"> Phim chiếu rạp</a> </i>của anh liên tục thất bại thê thảm cả về doanh thu lẫn đánh giá của giới phê bình trừ hai vai thứ trong <em>The Nanny Diaries</em> và <em>Fantastic Four: Rise of the Silver Surfer</em>.</span></p>
-
-                                <p><span style="font-size:14px;">Sự nghiệp của chàng hotboy nước Mỹ vẫn tiếp tục loay hoay giữa phim flop và vẻ đẹp trai ngời ngời của mình cho đến ngày tìm được “mùa xuân thứ hai” trong cuộc đời - Steve Roger a.k.a Captain America.</span></p>
-
-                                <p><span style="font-size:14px;">Một “thanh niên nghiêm túc” đặt mục tiêu bảo vệ tổ quốc lên hàng đầu, một chiến binh đến từ thế giới cũ - Captain America là một nhân vật hoàn toàn khác với những gì Chris Evan thể hiện trước đó. Evans vào vai Captain ngọt đến mức người xem quên mất anh là chàng trai vui vẻ tăng động ngoài đời thực. Và thành công đạt được thật ngoài sức tưởng tượng. Có thể nói đây là lần thứ hai anh tìm được nhân vật đổi đời. Lần đầu tiên sau nhiều năm, người ta nhớ đến Chris Evans với một cái tên khác Human Torch.</span></p>
-
-                                <p><span style="font-size:14px;">Khác với Chris Hemsworth bị cái bóng Thor “ám ảnh” các vai diễn khác và trong cả cuộc sống riêng, đời thật của “Captain America” Chris Evans dễ thở hơn nhiều khi anh gần như là một người hoàn toàn khác Steve Roger. Trái với tính cách chín chắn trầm tĩnh của Captain, con người ngoài đời của Evans có phần giống Human Torch hơn. Anh nhiệt tình vui vẻ, sẵn sàng quậy hết mình trên show và tham gia bất cứ trò điên nào của team Avengers. Cùng với Chris Hemsworth và Chris Patt, anh tạo thành bộ 3 Hot Chris nhà Marvel với điểm chung là khuôn mặt đẹp trai, thân hình chuẩn cùng tính cách vui nổ trời. Ngoài ra, từ sau <em>Captain America: The First Avenger</em>, anh cũng khá thân thiết với các bạn diễn Hayley Atwell và Sebastian Stan.</span></p>
-
-                                <p><span style="font-size:14px;">Đẹp trai, nổi tiếng, vui vẻ nhưng đời sống riêng tư của Evans khá ảm đạm. Anh có nhiều tin đồn với các người đẹp như Scarlett Johansson, Lily Collins cùng đương kim phu nhân của Justin Timberlake - Jessica Biel.</span></p>
-
-                                <p><span style="font-size:14px;">Là một thanh niên gần như hoàn hảo với tấm lòng vàng dành cho các hoạt động từ thiện cùng sự ủng hộ nhiệt tình dành cho LGBT, Chris Evans chỉ có một vài tật xấu nho nhỏ như… thích để râu. Bất cứ khi nào không phải giữ hình tượng để tham gia đóng phim, khuôn mặt đẹp trai thần thánh của đội trưởng Mỹ luôn bị bao phủ bởi râu là râu.</span></p>
-
-                                <p style="margin-right:0in; margin-left:0in"><span style="font-size:14px;"><span style="font-family: Arial,Helvetica,sans-serif;">Ngoài ra, Evans còn một sở thích kiêm tật xấu cực kỳ nổi tiếng là… sờ ngực, sờ từ ngực người khác đến ngực của chính mình. Thói quen gây bão này của anh đã trở thành meme huyền thoại được các fan, bạn diễn và cả chính bản thân anh đem ra chọc cười suốt ngày. Từ Robert Downey Jr. tới Tom Hiddleston, Mark Ruffalo, hay cả người chỉ mới xuất hiện cùng một phim<i> Age Of Ultron</i> như &nbsp;“Quicksilver” Aaron Taylor-Johnson cũng đều không thể thoát “độc thủ thần chưởng” này của chàng đội trưởng Mỹ.</span></span>
-                                </p>
-
-                                <p style="margin-right:0in; margin-left:0in"><span style="font-size:14px;"><span style="font-family: Arial,Helvetica,sans-serif;">Xuyên suốt MCU, Captain vẫn là một trong những nhân vật ấn tượng nhất. Chỉ là một người phàm tiêm huyết thanh nhưng anh chưa bao giờ ngần ngại xông pha lên phía trước, dùng sự dũng cảm và mưu trí của một chiến binh để chiến đấu cùng Thanos và “đàn em”. Ngay khi Steve Rogers vẫn còn hăng hái bảo vệ trái đất, Chris Evans lại nghĩ rằng đã đến lúc anh nên dừng lại. Khi các "đồng chí" ở <a href="movie-blog/nhung-bi-mat-dong-troi-trailer-avengers-endgame-vua-tiet-lo">Biệt đội siêu anh hùng </a>vẫn chưa lên tiếng, Evans là người đầu tiên tuyên bố sẽ từ bỏ lớp áo Captain America đã gắn bó với anh gần mười năm nay sau <a href="dat-ve/avengers-endgame"><i>Avengers: Endgame</i></a>. Và rốt cuộc, ở chặng cuối <a href="dat-ve/avengers-endgame">Avengers: Hồi Kết</a>, Captain America đã trao lại chiếc khiên lừng danh cho người đồng đội Falcon. Dẫu còn nhiều ý kiến tranh cãi, đây vẫn là cái kết rất đẹp cho Đại Úy Mỹ. </span></span>
-                                </p>
-
-                                <p style="margin-right:0in; margin-left:0in"><span style="font-size:14px;"><span style="font-family: Arial,Helvetica,sans-serif;">Ngoài ra, chỉ trong năm 2019, Chris kịp rũ bỏ lớp áo Steve Rogers để hóa thân thành gã đẹp trai nhà giàu nhưng cục súc Ransom Drysdale (Knives Out). Vai diễn ấn tượng này nhận được vô số lời khen. Dự án tiếp theo của Chris Evans chưa được công bố chính thức, theo tin đồn đó là <i>Little Shop Of Horror</i>. Lần này, có lẽ anh sẽ tái hợp cùng <a href="dien-vien/scarlett-johansson">Scarlett Johansson</a>!</span></span>
-                                </p>
-                                <p></p>
-                            </div>
-                        </section>
+                                                    <span class="btn-select-value ng-binding">Chọn suất</span>
+                                                    <span class="btn-select-arrow"></span>
+                                                    <select ng-change="onChange()" ng-model="curentIndex"
+                                                        class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <option value="? number:-1 ?" selected="selected"></option>
+                                                    </select>
+                                                </a>
+                                            </galaxy-select><a id="loginBuyticket" ng-click="buyTicket()"
+                                                class="btn primary fl-right btn-buyticket-box">Mua vé</a>
+                                        </form>
+                                    </div>
+                                </section>
+                            </section>
+                            <section id="movieSidebar" class="hidden-xs">
+                                <h3>Phim đang chiếu</h3>
+                                <div class="row movies-group">
+                                    <div class="col-md-13 col-sm-12 col-xs-12 movie-item">
+                                        <div class="article-movie-home"><img
+                                                src="assets/img/450-ham-quy_1597634132726.jpg" class="loading"
+                                                data-was-processed="true">
+                                            <a href="dat-ve.html">
+                                                <div class="decription-hover overlay">
+                                                    <div class="movies-content"><i class="icon-c18"></i>
+                                                        <div class="group">
+                                                            <div class="btn secondary-white">mua vé</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="title-movie">
+                                            <h4 class="upper-text">Behind You</h4>
+                                            <h4 class="vn upper-text">Hầm Quỷ</h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-13 col-sm-12 col-xs-12 movie-item">
+                                        <div class="article-movie-home"><img src="assets/img/450_1597717998760.jpg"
+                                                class="loading" data-was-processed="true">
+                                            <a href="dat-ve.html">
+                                                <div class="decription-hover overlay">
+                                                    <div class="movies-content"><i class="icon-c18"></i>
+                                                        <div class="group">
+                                                            <div class="btn secondary-white">mua vé</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="title-movie">
+                                            <h4 class="upper-text">Rogue</h4>
+                                            <h4 class="vn upper-text">Biệt Đội Săn Mồi</h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-13 col-sm-12 col-xs-12 movie-item">
+                                        <div class="article-movie-home"><img
+                                                src="assets/img/450-minh-oi_1597654382025.jpg">
+                                            <a href="dat-ve.html">
+                                                <div class="decription-hover overlay">
+                                                    <div class="movies-content"><i></i>
+                                                        <div class="group">
+                                                            <div class="btn secondary-white">mua vé</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="title-movie">
+                                            <h4 class="upper-text">My Love, Don't Cross That River</h4>
+                                            <h4 class="vn upper-text">Mình Ơi, Xin Đừng Qua Sông</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 pull-right"><a href="phim-dang-chieu.html"
+                                            class="btn secondary fl-right">Xem thêm</a></div>
+                                </div>
+                            </section>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <section id="getBuyTicket" class="hidden-xs">
-                        <section ng-controller="quickBuyTicket" class="tabs-buyticket ng-scope">
-                        <div class="label-tab-buyticket">mua vé nhanh</div>
-                            <div class="content-movie btn-box-select-ticket">
-                                <form class="ng-pristine ng-valid">
-                                    <galaxy-select ng-model="byMovie" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
-                                        <a class="btn btn-select btn-select-light">
-
-                                            <span class="btn-select-value ng-binding">Chọn phim</span>
-                                            <span class="btn-select-arrow"></span>
-                                            <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty"><option value="? number:-1 ?" selected="selected"></option>
-                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
-                                                Behind You
-                                                </option>
-                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
-                                                Rogue
-                                                </option>
-                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
-                                                My Love, Don't Cross That River
-                                                </option>
-                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
-                                                Simon's Got A Gift
-                                                </option>
-                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
-                                                Inception
-                                                </option>
-                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="5" class="ng-binding ng-scope" value="number:5">
-                                                You're Not Alone
-                                                </option>
-                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="6" class="ng-binding ng-scope" value="number:6">
-                                                My Spy
-                                                </option>
-                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="7" class="ng-binding ng-scope" value="number:7">
-                                                Black Water: Abyss
-                                                </option>
-                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="8" class="ng-binding ng-scope" value="number:8">
-                                                Peninsula
-                                                </option>
-                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="9" class="ng-binding ng-scope" value="number:9">
-                                                Big Hero 6
-                                                </option>
-                                            </select>
-                                        </a>
-                                    </galaxy-select>
-                                    <galaxy-select ng-model="cinemaConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
-                                        <a class="btn btn-select btn-select-light">
-                                            <span class="btn-select-value ng-binding">Chọn rạp</span>
-                                            <span class="btn-select-arrow"></span>
-                                            <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty">
-                                                <option value="? number:-1 ?" selected="selected"></option>
-                                            </select>
-                                        </a>
-                                    </galaxy-select>
-                                    <galaxy-select ng-model="dateConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
-                                        <a class="btn btn-select btn-select-light">
-
-                                            <span class="btn-select-value ng-binding">Chọn ngày</span>
-                                            <span class="btn-select-arrow"></span>
-                                            <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty">
-                                                <option value="? number:-1 ?" selected="selected"></option>
-                                            </select>
-                                        </a>
-                                    </galaxy-select>
-                                    <galaxy-select ng-model="sessionConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
-                                        <a class="btn btn-select btn-select-light">
-
-                                            <span class="btn-select-value ng-binding">Chọn suất</span>
-                                            <span class="btn-select-arrow"></span>
-                                            <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty">
-                                                <option value="? number:-1 ?" selected="selected"></option>
-                                            </select>
-                                        </a>
-                                    </galaxy-select><a id="loginBuyticket" ng-click="buyTicket()" class="btn primary fl-right btn-buyticket-box">Mua vé</a>
-                                </form>
-                            </div>
-                        </section>
-                    </section>
-                    <section id="movieSidebar" class="hidden-xs">
-                        <h3>Phim đang chiếu</h3>
-                        <div class="row movies-group">
-                            <div class="col-md-13 col-sm-12 col-xs-12 movie-item">
-                                <div class="article-movie-home"><img src="assets/img/450-ham-quy_1597634132726.jpg" class="loading" data-was-processed="true">
-                                    <a href="dat-ve.html">
-                                        <div class="decription-hover overlay">
-                                            <div class="movies-content"><i class="icon-c18"></i>
-                                                <div class="group">
-                                                    <div class="btn secondary-white">mua vé</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="title-movie">
-                                    <h4 class="upper-text">Behind You</h4>
-                                    <h4 class="vn upper-text">Hầm Quỷ</h4>
-                                </div>
-                            </div>
-                            <div class="col-md-13 col-sm-12 col-xs-12 movie-item">
-                                <div class="article-movie-home"><img src="assets/img/450_1597717998760.jpg" class="loading" data-was-processed="true">
-                                    <a href="dat-ve.html">
-                                        <div class="decription-hover overlay">
-                                            <div class="movies-content"><i class="icon-c18"></i>
-                                                <div class="group">
-                                                    <div class="btn secondary-white">mua vé</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="title-movie">
-                                    <h4 class="upper-text">Rogue</h4>
-                                    <h4 class="vn upper-text">Biệt Đội Săn Mồi</h4>
-                                </div>
-                            </div>
-                            <div class="col-md-13 col-sm-12 col-xs-12 movie-item">
-                                <div class="article-movie-home"><img src="assets/img/450-minh-oi_1597654382025.jpg">
-                                    <a href="dat-ve.html">
-                                        <div class="decription-hover overlay">
-                                            <div class="movies-content"><i></i>
-                                                <div class="group">
-                                                    <div class="btn secondary-white">mua vé</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="title-movie">
-                                    <h4 class="upper-text">My Love, Don't Cross That River</h4>
-                                    <h4 class="vn upper-text">Mình Ơi, Xin Đừng Qua Sông</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12 pull-right"><a href="phim-dang-chieu.html" class="btn secondary fl-right">Xem thêm</a></div>
-                        </div>
-                    </section>
-                </div>
             </div>
-        </div>
-        </div>
         </div>
 
         <!-- ======= Contact Section ======= -->
@@ -1036,7 +1297,8 @@
 
                     <div class="col-lg-8 mt-5 mt-lg-0">
                         <div data-aos="fade-up">
-                            <iframe style="border:0; width: 700px; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.0855462599047!2d108.22231711699898!3d16.061049995256443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTbCsDAzJzM5LjgiTiAxMDjCsDEzJzI1LjUiRQ!5e0!3m2!1sen!2s!4v1597320681181!5m2!1sen!2s"
+                            <iframe style="border:0; width: 700px; height: 350px;"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.0855462599047!2d108.22231711699898!3d16.061049995256443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTbCsDAzJzM5LjgiTiAxMDjCsDEzJzI1LjUiRQ!5e0!3m2!1sen!2s!4v1597320681181!5m2!1sen!2s"
                                 frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
@@ -1060,17 +1322,13 @@
                             <li class="widget-container widget_nav_menu">
                                 <h1 class="title-widget">Giới thiệu</h1>
                                 <ul>
-                                    <li><a href="ve-chung-toi"><i
-                                                class="fa fa-angle-double-right"></i> Về chúng
+                                    <li><a href="ve-chung-toi"><i class="fa fa-angle-double-right"></i> Về chúng
                                             tôi</a></li>
-                                    <li><a href="thoa-thuan-su-dung"><i
-                                                class="fa fa-angle-double-right"></i>
+                                    <li><a href="thoa-thuan-su-dung"><i class="fa fa-angle-double-right"></i>
                                             Thoả thuận sử dụng</a></li>
-                                    <li><a href="quy-che-hoat-dong"><i
-                                                class="fa fa-angle-double-right"></i> Quy
+                                    <li><a href="quy-che-hoat-dong"><i class="fa fa-angle-double-right"></i> Quy
                                             chế hoạt động</a></li>
-                                    <li><a href="chinh-sach-bao-mat"><i
-                                                class="fa fa-angle-double-right"></i>
+                                    <li><a href="chinh-sach-bao-mat"><i class="fa fa-angle-double-right"></i>
                                             Chính sách bảo mật</a></li>
                                 </ul>
                             </li>
@@ -1081,17 +1339,13 @@
                             <li class="widget-container widget_nav_menu">
                                 <h1 class="title-widget">Góc điện ảnh</h1>
                                 <ul>
-                                    <li><a href="dien-anh"><i
-                                                class="fa fa-angle-double-right"></i> Thể loại
+                                    <li><a href="dien-anh"><i class="fa fa-angle-double-right"></i> Thể loại
                                             phim</a></li>
-                                    <li><a href="binh-luan-phim"><i
-                                                class="fa fa-angle-double-right"></i> Bình
+                                    <li><a href="binh-luan-phim"><i class="fa fa-angle-double-right"></i> Bình
                                             luận phim</a></li>
-                                    <li><a href="movie-blog"><i
-                                                class="fa fa-angle-double-right"></i> Blog điện
+                                    <li><a href="movie-blog"><i class="fa fa-angle-double-right"></i> Blog điện
                                             ảnh</a></li>
-                                    <li><a href="phim-hay"><i
-                                                class="fa fa-angle-double-right"></i> Phim hay
+                                    <li><a href="phim-hay"><i class="fa fa-angle-double-right"></i> Phim hay
                                             tháng</a></li>
                                 </ul>
                             </li>
@@ -1102,16 +1356,12 @@
                             <li class="widget-container widget_nav_menu">
                                 <h1 class="title-widget">Hỗ trợ</h1>
                                 <ul>
-                                    <li><a href="gop-y"><i
-                                                class="fa fa-angle-double-right"></i> Góp ý</a></li>
-                                    <li><a href="sale-and-service"><i
-                                                class="fa fa-angle-double-right"></i> Sale
+                                    <li><a href="gop-y"><i class="fa fa-angle-double-right"></i> Góp ý</a></li>
+                                    <li><a href="sale-and-service"><i class="fa fa-angle-double-right"></i> Sale
                                             &amp; Services</a></li>
-                                    <li><a href="rap-gia-ve"><i
-                                                class="fa fa-angle-double-right"></i> Rạp / giá
+                                    <li><a href="rap-gia-ve"><i class="fa fa-angle-double-right"></i> Rạp / giá
                                             vé</a></li>
-                                    <li><a href="tuyen-dung"><i
-                                                class="fa fa-angle-double-right"></i> Tuyển
+                                    <li><a href="tuyen-dung"><i class="fa fa-angle-double-right"></i> Tuyển
                                             dụng</a></li>
                                 </ul>
                             </li>
@@ -1139,15 +1389,18 @@
                                 <h1 class="title-widget">Download App</h1>
                                 <div class="social-icons">
                                     <ul class="nomargin">
-                                        <a href="https://itunes.apple.com/vn/app/galaxy-cinema/id593312549?l=vi&amp;mt=8" target="_blank"><i id="social" class="fa fa-apple"></i></a>
-                                        <a href="https://play.google.com/store/apps/details?id=com.galaxy.cinema&amp;hl=vi" target="_blank"><i id="social" class="fa fa-google"></i></a></ul>
-                        </ul>
-                        </div>
-                        </li>
+                                        <a href="https://itunes.apple.com/vn/app/galaxy-cinema/id593312549?l=vi&amp;mt=8"
+                                            target="_blank"><i id="social" class="fa fa-apple"></i></a>
+                                        <a href="https://play.google.com/store/apps/details?id=com.galaxy.cinema&amp;hl=vi"
+                                            target="_blank"><i id="social" class="fa fa-google"></i></a>
+                                    </ul>
                         </ul>
                     </div>
+                    </li>
+                    </ul>
                 </div>
             </div>
+        </div>
         </div>
         <div class="container">
             <div class="row">
@@ -1155,7 +1408,8 @@
                     <div class="row">
                         <a href=""><img src="assets/img/galaxy-logo-footer.png" alt="Galaxy Cinema"></a>
                         <div class="copyright">
-                            <p>Công Ty Cổ Phần Phim Thiên Ngân, Tầng 5, Toà Nhà Mặt Trời Sông Hồng, 23 Phan Chu Trinh, Phường Phan Chu Trinh, Quận Hoàn Kiếm, Hà Nội</p>
+                            <p>Công Ty Cổ Phần Phim Thiên Ngân, Tầng 5, Toà Nhà Mặt Trời Sông Hồng, 23 Phan Chu Trinh,
+                                Phường Phan Chu Trinh, Quận Hoàn Kiếm, Hà Nội</p>
                         </div>
                     </div>
                 </div>

@@ -54,12 +54,6 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
-        // thongtinxuatchieu = new Array();
-        // thongtinxuatchieu[0] = new Array("01/09/2020","02/09/2020","03/09/2020");
-        // thongtinxuatchieu[1] = new Array("19:15", "21:15", "22:15");
-        // thongtinxuatchieu[2] = new Array("11:15", "12:00", "13:00","14:25","16:00","20:00");
-        // thongtinxuatchieu[3] = new Array("13:30", "15:30", "19;15","21:15","22:15");
-
         $(function() {
             $("#datepicker").datepicker();
         });
@@ -710,6 +704,21 @@
                                                     <td>
                                                         <a th:href="@{/chonsession(id=${listSession.Id})}" class="showtimes-list ng-binding">
                                                             <div class="ng-untouched ng-valid ng-not-empty" th:utext="${listSession.Time}">10:20</div>
+                                                        </a>
+                                                    </td>
+                                                </div>
+                                            </li>
+                                        </tr>
+                                    </ul>
+                                    <ul class="list-group">
+                                        <tr th:each="listSession, state : ${listSession}">
+                                            <li class="list-group-item ng-scope">
+                                                <div class="showtimes-row">
+                                                    <td th:utext="${litSession.Day}">02/09/2020</td>
+                                                    <div class="showtimes-item ng-scope"><label class="ng-binding">2D - Phụ đề</label></div>
+                                                    <td>
+                                                        <a th:href="@{/chonsession(id=${listSession.Id})}" class="showtimes-list ng-binding">
+                                                            <div class="ng-untouched ng-valid ng-not-empty" th:utext="${listSession.Time}">12:00</div>
                                                         </a>
                                                     </td>
                                                 </div>
